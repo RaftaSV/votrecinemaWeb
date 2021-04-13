@@ -1,0 +1,55 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+	<display-name>Archetype Created Web Application</display-name>
+	
+	<servlet>
+		<servlet-name>controllerProveedores</servlet-name>
+		<display-name>controllerProveedores</display-name>
+		<description></description>
+		<servlet-class>com.proyect.unab.votrecinema.Controller.controllerProveedores</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>controllerProductos</servlet-name>
+		<display-name>controllerProductos</display-name>
+		<description></description>
+		<servlet-class>com.proyect.unab.votrecinema.Controller.controllerProductos</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>controllerPersonas</servlet-name>
+		<display-name>controllerPersonas</display-name>
+		<description></description>
+		<servlet-class>com.proyect.unab.votrecinema.Controller.controllerPersonas</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>controllerRoles</servlet-name>
+		<display-name>controllerRoles</display-name>
+		<description></description>
+		<servlet-class>com.proyect.unab.votrecinema.Controller.controllerRoles</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>controllerProveedores</servlet-name>
+		<url-pattern>/controllerProveedores</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>controllerProductos</servlet-name>
+		<url-pattern>/controllerProductos</url-pattern>
+	</servlet-mapping>
+	
+		<servlet-mapping>
+		<servlet-name>controllerPersonas</servlet-name>
+		<url-pattern>/controllerPersonas</url-pattern>
+	</servlet-mapping>
+	
+		<servlet-mapping>
+			<servlet-name>controllerRoles</servlet-name>
+			<url-pattern>/controllerRoles</url-pattern>
+		</servlet-mapping>
+	
+</web-app>
