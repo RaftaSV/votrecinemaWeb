@@ -36,7 +36,7 @@ public class controllerSalas extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//doGet(request, response);
+		
 		ClsSalas sala = new ClsSalas();
 		Gson json = new Gson();
 		response.getWriter().append(json.toJson(sala.MostrarSalas()));
