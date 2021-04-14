@@ -32,7 +32,6 @@
 		<FONT COLOR="white">Salas </FONT>
 </nav>
 
-<body>
 <h1 class="text-center display-1"
 		style="font-family: Brush Script MT, arial">SALAS</h1>
 	<style type="text/css">
@@ -51,6 +50,9 @@ body {
 }
 -->
 </style>
+
+<body>
+
 
 <script type="text/javascript">
 
@@ -88,7 +90,7 @@ $(document).ready(function () {
   <thead>
       <th>IDSALA</th>
       <th>CAPACIDAD</th>
-      <th>NUMERO DE SALA</th>
+      <th>NUMERO_DE_SALA</th>
   </thead>
 </table>
 
