@@ -26,6 +26,8 @@
 		href="Productos.jsp"> <FONT COLOR="white">Productos </FONT></a> <a
 		class="flex-sm-fill text-sm-center nav-link" href="personas.jsp"> <FONT COLOR="white">Personas </FONT></a>
 	<a class="flex-sm-fill text-sm-center nav-link  active" href="rol.jsp"><FONT COLOR="white">Roles </FONT></a>
+	<a class="flex-sm-fill text-sm-center nav-link" href="Salas.jsp">
+		<FONT COLOR="white">Salas </FONT>
 </nav>
 
 

@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+ <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
@@ -27,6 +27,8 @@
 		href="personas.jsp"> <FONT COLOR="white">Personas </FONT></a> <a
 		class="flex-sm-fill text-sm-center nav-link  " href="rol.jsp"><FONT
 		COLOR="white">Roles </FONT></a>
+		<a class="flex-sm-fill text-sm-center nav-link" href="Salas.jsp">
+		<FONT COLOR="white">Salas </FONT>
 </nav>
 <body>
 
