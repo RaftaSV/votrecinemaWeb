@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <html>
@@ -27,23 +27,24 @@
 	</a> <a class="flex-sm-fill text-sm-center nav-link" href="personas.jsp">
 		<FONT COLOR="white">Personas </FONT>
 	</a> <a class="flex-sm-fill text-sm-center nav-link  " href="rol.jsp"><FONT
-		COLOR="white">Roles </FONT>
-	</a> <a class="flex-sm-fill text-sm-center nav-link active" href="Salas.jsp">
+		COLOR="white">Roles </FONT> </a> 
+		<a class="flex-sm-fill text-sm-center nav-link active" href="Salas.jsp">
 		<FONT COLOR="white">Salas </FONT>
 </nav>
 
 <h1 class="text-center display-1"
-		style="font-family: Brush Script MT, arial">SALAS</h1>
-	<style type="text/css">
-	
-	<!--
+	style="font-family: Brush Script MT, arial"  > <font COLOR="black"> SALAS</font></h1>
+<style type="text/css">
+<!--
 body {
- background-image: url(https://previews.123rf.com/images/peshkova/peshkova1708/peshkova170800949/84565450-resumen-circuito-cerebro-fondo-concepto-de-inteligencia-artificial-representaci%C3%B3n-3d.jpg);
-	  background-position: center center;	  
-	  background-repeat: no-repeat;
+	background-image:
+		url(https://previews.123rf.com/images/peshkova/peshkova1708/peshkova170800949/84565450-resumen-circuito-cerebro-fondo-concepto-de-inteligencia-artificial-representaci%C3%B3n-3d.jpg);
+	background-position: center center;
+	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-size: cover;
 }
+
 #mail {
 	width: 100%;
 	position: fixed;
@@ -54,7 +55,7 @@ body {
 <body>
 
 
-<script type="text/javascript">
+	<script type="text/javascript">
 
 $(document).ready(function () {
 
@@ -65,7 +66,7 @@ $(document).ready(function () {
 		//Recibir informacion
 
 		let datos = JSON.parse(response);
-		console.log(datos);
+		//console.log(datos);
 
 		var tabla = document.getElementById('tablasalas');
 		for (let item of datos) {
@@ -75,24 +76,22 @@ $(document).ready(function () {
 		<td> ${item.idSala} </td>
 	    <td> ${item.Capacidad} </td>
 	    <td> ${item.Numero_Sala}</td>
-	</tr>     
-			
+	</tr>
+`
 		}
-
-
 	});
 });
 
 
 </script>
 
-<table class="table table-dark" id="tablasalas">
-  <thead>
-      <th>IDSALA</th>
-      <th>CAPACIDAD</th>
-      <th>NUMERO_DE_SALA</th>
-  </thead>
-</table>
+	<table class="table table-dark" id="tablasalas">
+		<thead>
+			<th>IDSALA</th>
+			<th>CAPACIDAD</th>
+			<th>NUMERO_DE_SALA</th>
+		</thead>
+	</table>
 
 
 </body>

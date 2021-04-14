@@ -32,6 +32,13 @@
 		<servlet-class>com.proyect.unab.votrecinema.Controller.controllerRoles</servlet-class>
 	</servlet>
 	
+	<servlet>
+		<servlet-name>controllerSalas</servlet-name>
+		<display-name>controllerSalas</display-name>
+		<description></description>
+		<servlet-class>com.proyect.unab.votrecinema.Controller.controllerSalas</servlet-class>
+	</servlet>
+	
 	<servlet-mapping>
 		<servlet-name>controllerProveedores</servlet-name>
 		<url-pattern>/controllerProveedores</url-pattern>
@@ -50,6 +57,11 @@
 		<servlet-mapping>
 			<servlet-name>controllerRoles</servlet-name>
 			<url-pattern>/controllerRoles</url-pattern>
+		</servlet-mapping>
+	
+		<servlet-mapping>
+			<servlet-name>controllerSalas </servlet-name>
+			<url-pattern>/controllerSalas </url-pattern>
 		</servlet-mapping>
 	
 </web-app>

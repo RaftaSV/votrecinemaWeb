@@ -35,7 +35,7 @@
 <body>
 
 	<h1 class="text-center display-1"
-		style="font-family: Brush Script MT, arial">PRODUCTOS</h1>
+		style="font-family: Brush Script MT, arial"> <font COLOR="black"> PRODUCTOS</font></h1>
 	<style type="text/css">
 <!--
 body {
@@ -65,7 +65,7 @@ body {
 					//Recibir informacion
 
 					let datos = JSON.parse(response);
-					console.log(datos);
+					//console.log(datos);
 
 					var tabla = document.getElementById('tablaproductos');
 					for (let item of datos) {
@@ -76,7 +76,7 @@ body {
 				    <td> ${item.Producto} </td>
 				    <td> ${item.precio}</td>
 				    <td>${item.Cantidad} </td>
-				    <td>${item.idProveedor} </td>
+				
 				    <td>${item.Nombre} </td>
 					</tr>
 				`
@@ -96,7 +96,6 @@ body {
 			<th>PRODUCTO</th>
 			<th>PRECIO</th>
 			<th>CANTIDAD</th>
-			<th>IDPROVEEDOR</th>
 			<th>PROVEEDOR</th>
 		</thead>
 	</table>

@@ -40,6 +40,8 @@ public class controllerSalas extends HttpServlet {
 		ClsSalas sala = new ClsSalas();
 		Gson json = new Gson();
 		response.getWriter().append(json.toJson(sala.MostrarSalas()));
+		
+
 	}
 
 	

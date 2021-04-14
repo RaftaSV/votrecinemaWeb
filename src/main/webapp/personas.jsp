@@ -33,7 +33,7 @@
 <body>
 
 	<h1 class="text-center display-1"
-		style="font-family: Brush Script MT, arial">PERSONAS</h1>
+		style="font-family: Brush Script MT, arial"> <font COLOR="black"> PERSONAS</font></h1>
 	<style type="text/css">
 <!--
 body {
@@ -59,7 +59,8 @@ body {
 			}, function(response){
 				
 				let datos = JSON.parse(response);
-				console.log(datos);
+				//console.log(datos);
+				
 				var tabla = document.getElementById('tablaPersonas');
 				for(let item of datos){
 					

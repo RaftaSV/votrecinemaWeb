@@ -35,7 +35,7 @@
 
 <body>
 	<h1 class="text-center display-1"
-		style="font-family: Brush Script MT, arial">PROVEEDORES</h1>
+		style="font-family: Brush Script MT, arial"> <font COLOR="black"> PROVEEDORES</font></h1>
 	<style type="text/css">
 <!--
 body {

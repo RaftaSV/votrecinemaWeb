@@ -33,7 +33,7 @@
 
 
 
-<h1 class="text-center display-1" style="font-family:Brush Script MT,arial" >ROLES</h1>
+<h1 class="text-center display-1" style="font-family:Brush Script MT,arial" > <font COLOR="black"> ROLES</font></h1>
 <style type="text/css">
 <!--
 body {
@@ -65,7 +65,7 @@ body {
 					//Recibir informacion
 
 					let datos = JSON.parse(response);
-					console.log(datos);
+					//console.log(datos);
 
 					var tabla = document.getElementById('tablaroles');
 					for (let item of datos) {
