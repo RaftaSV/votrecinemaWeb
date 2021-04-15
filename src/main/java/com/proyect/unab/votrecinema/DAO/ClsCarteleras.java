@@ -48,6 +48,7 @@ public class ClsCarteleras {
         return lista;
     }
 
+
     public void InsertarCartelera(Carteleras Cartel) {
         try {
             CallableStatement cs = conectar.prepareCall("call SP_I_CARTELERA (?,?,?,?)");

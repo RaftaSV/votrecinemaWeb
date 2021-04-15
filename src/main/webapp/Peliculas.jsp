@@ -27,17 +27,20 @@
 	</a> <a class="flex-sm-fill text-sm-center nav-link" href="personas.jsp">
 		<FONT COLOR="white">Personas </FONT>
 	</a> <a class="flex-sm-fill text-sm-center nav-link  " href="rol.jsp"><FONT
-		COLOR="white">Roles </FONT> </a> 
-		<a class="flex-sm-fill text-sm-center nav-link active" href="Salas.jsp">
-		<FONT COLOR="white">Salas </FONT>
-		<a class="flex-sm-fill text-sm-center nav-link" href="Horarios.jsp">
-		<FONT COLOR="white">Horarios </FONT>
-			<a class="flex-sm-fill text-sm-center nav-link " href="Peliculas.jsp">
-		<FONT COLOR="white">Peliculas </FONT>
+		COLOR="white">Roles </FONT> </a> <a
+		class="flex-sm-fill text-sm-center nav-link " href="Salas.jsp"> <FONT
+		COLOR="white">Salas </FONT> <a
+		class="flex-sm-fill text-sm-center nav-link " href="Horarios.jsp">
+			<FONT COLOR="white">Horarios </FONT> <a
+			class="flex-sm-fill text-sm-center nav-link active"
+			href="Peliculas.jsp"> <FONT COLOR="white">Peliculas </FONT>
+			
 </nav>
 
 <h1 class="text-center display-1"
-	style="font-family: Brush Script MT, arial"  > <font COLOR="black"> SALAS</font></h1>
+	style="font-family: Brush Script MT, arial">
+	<font COLOR="black"> PELICULAS</font>
+</h1>
 <style type="text/css">
 <!--
 body {
@@ -60,40 +63,45 @@ body {
 
 
 	<script type="text/javascript">
+		$(document).ready(function() {
 
-$(document).ready(function () {
+			$.post('controllerPelicula', {
+			//Enviar informacion
 
-	$.post('controllerSalas', {
-		//Enviar informacion
+			}, function(response) {
+				//Recibir informacion
 
-	}, function (response) {
-		//Recibir informacion
+				let datos = JSON.parse(response);
+				console.log(datos);
+				
+				var tabla = document.getElementById('tablapelicula');
+				for (let item of datos) {
 
-		let datos = JSON.parse(response);
-		//console.log(datos);
+					tabla.innerHTML += `
+			 <tr>
+				<td> ${item.idPelicula} </td>
+			    <td>  ${item.Nombre} </td>
+			    <td>  ${item.Duracion} </td>
+			    <td>  ${item.Year} </td>
+			    <td> ${item.Sipnosis} </td>
+			    
 
-		var tabla = document.getElementById('tablasalas');
-		for (let item of datos) {
+			</tr>
+		`
+				}
 
-			tabla.innerHTML += `
-	 <tr>
-		<td> ${item.idSala} </td>
-	    <td> ${item.Capacidad} </td>
-	    <td> ${item.Numero_Sala}</td>
-	</tr>
-`
-		}
-	});
-});
+			});
+		});
+	</script>
 
-
-</script>
-
-	<table class="table table-dark" id="tablasalas">
+	<table class="table table-dark" id="tablapelicula">
 		<thead>
-			<th>IDSALA</th>
-			<th>CAPACIDAD</th>
-			<th>NUMERO DE SALA</th>
+			<th>ID PELICULA</th>
+			<th>NOMBRE</th>
+			<th>DURACION</th>
+			<th> FECHA DE ESTRENO</th>
+		    <th>SINOPSIS</th>
+
 		</thead>
 	</table>
 

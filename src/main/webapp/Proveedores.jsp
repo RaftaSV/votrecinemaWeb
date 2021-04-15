@@ -30,6 +30,10 @@
 		COLOR="white">Roles </FONT></a>
 		<a class="flex-sm-fill text-sm-center nav-link" href="Salas.jsp">
 		<FONT COLOR="white">Salas </FONT>
+		<a class="flex-sm-fill text-sm-center nav-link" href="Horarios.jsp">
+		<FONT COLOR="white">Horarios </FONT>
+			<a class="flex-sm-fill text-sm-center nav-link " href="Peliculas.jsp">
+		<FONT COLOR="white">Peliculas </FONT>
 </nav>
 
 
