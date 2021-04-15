@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -28,6 +29,9 @@
 	<a class="flex-sm-fill text-sm-center nav-link  active" href="rol.jsp"><FONT COLOR="white">Roles </FONT></a>
 	<a class="flex-sm-fill text-sm-center nav-link" href="Salas.jsp">
 		<FONT COLOR="white">Salas </FONT>
+
+	<a class="flex-sm-fill text-sm-center nav-link  " href="Carteleras.jsp"><FONT
+		COLOR="white">Carteleras </FONT></a>
 </nav>
 
 

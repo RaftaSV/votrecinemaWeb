@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 
 <head>
@@ -20,27 +19,25 @@
 
 </head>
 <nav class="nav nav-pills flex-column flex-sm-row">
-	<a class="flex-sm-fill text-sm-center nav-link active "
+	<a class="flex-sm-fill text-sm-center nav-link  "
 		href="Proveedores.jsp"> <FONT COLOR="white">Proveedores </FONT></a> <a
-		class="flex-sm-fill text-sm-center nav-link" href="Productos.jsp">
-		<FONT COLOR="white">Productos </FONT>
+		class="flex-sm-fill text-sm-center nav-link " href="Productos.jsp">
+		<FONT COLOR="white ">Productos </FONT>
 	</a> <a class="flex-sm-fill text-sm-center nav-link" href="personas.jsp">
 		<FONT COLOR="white">Personas </FONT>
 	</a> <a class="flex-sm-fill text-sm-center nav-link  " href="rol.jsp"><FONT
 		COLOR="white">Roles </FONT></a>
-
 		<a class="flex-sm-fill text-sm-center nav-link" href="Salas.jsp">
 		<FONT COLOR="white">Salas </FONT>
-
-		<a class="flex-sm-fill text-sm-center nav-link  " href="Carteleras.jsp"><FONT
+		
+		<a class="flex-sm-fill text-sm-center nav-link active " href="Carteleras.jsp"><FONT
 		COLOR="white">Carteleras </FONT></a>
-
 </nav>
 
-
 <body>
+
 	<h1 class="text-center display-1"
-		style="font-family: Brush Script MT, arial"> <font COLOR="black"> PROVEEDORES</font></h1>
+		style="font-family: Brush Script MT, arial">CARTELERAS</h1>
 	<style type="text/css">
 <!--
 body {
@@ -59,12 +56,11 @@ body {
 -->
 </style>
 
-
 	<script type="text/javascript">
 
 			$(document).ready(function () {
 
-				$.post('controllerProveedores', {
+				$.post('controllerCarteleras', {
 					//Enviar informacion
 
 				}, function (response) {
@@ -73,37 +69,44 @@ body {
 					let datos = JSON.parse(response);
 					//console.log(datos);
 
-					var tabla = document.getElementById('tablaDatos');
+					var tabla = document.getElementById('tablaCarteleras');
 					for (let item of datos) {
 
 						tabla.innerHTML += `
 				 <tr>
-					<td> ${item.idProveedor} </td>
-				    <td> ${item.Nombre} </td>
-				   <td> ${item.Telefono}</td>
-				   <td>${item.Direccion} </td>
+					<td> ${item.idCarteleras} </td>
+					<td> ${item.portada} </td>
+					<td> ${item.Nombre} </td>
+				    <td>${item.Fecha} </td>
+				    <td>${item.HoraInicio} </td>
+				    <td> ${item.Numero_Sala} </td>
+				    <td>${item.Duracion} </td>
+				    <td>${item.Precio} </td>
+				    <td>${item.Sipnosis} </td>
+				    <td>${item.tipo} </td>
 					</tr>
-				`
-                  
-						
+				`	
 					}
 
 
 				});
 			});
-	// Rafael Antonio Gonzalez Portillo
+	
 
 		</script>
-
-	<table class="table table-dark" id="tablaDatos">
+	<table class="table table-dark" id="tablaCarteleras">
 		<thead>
-			<th>ID</th>
+			<th>IDCARTELERAS</th>
+			<th>PORTADA</th>
 			<th>NOMBRE</th>
-			<th>TELEFONO</th>
-			<th>DIRECCION</th>
+			<th>FECHA</th>
+			<th>HORA</th>
+			<th>DURACION</th>
+			<th>PRECIO</th>
+			<th>SIPNOSIS</th>
+			<th>TIPO</th>
 		</thead>
 	</table>
 
 </body>
-
 </html>

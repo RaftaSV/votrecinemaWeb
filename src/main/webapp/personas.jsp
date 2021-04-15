@@ -16,7 +16,7 @@
 	rel="stylesheet"
 	integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
 	crossorigin="anonymous">
-
+	
 </head>
 <nav class="nav nav-pills flex-column flex-sm-row">
 	<a class="flex-sm-fill text-sm-center nav-link  "
@@ -29,6 +29,10 @@
 		COLOR="white">Roles </FONT></a>
 		<a class="flex-sm-fill text-sm-center nav-link" href="Salas.jsp">
 		<FONT COLOR="white">Salas </FONT>
+		
+		<a class="flex-sm-fill text-sm-center nav-link  " href="Carteleras.jsp"><FONT
+		COLOR="white">Carteleras </FONT></a>
+
 </nav>
 <body>
 
