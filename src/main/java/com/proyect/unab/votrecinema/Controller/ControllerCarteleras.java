@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 import com.proyect.unab.votrecinema.DAO.ClsCarteleras;
-import com.proyect.unab.votrecinema.DAO.ClsPersona;
 
 /**
  * Servlet implementation class ControllerCarteleras
@@ -39,8 +38,6 @@ public class ControllerCarteleras extends HttpServlet {
 		// TODO Auto-generated method stub
 		//doGet(request, response);
 		ClsCarteleras cartelera  = new ClsCarteleras();
-		
-		ClsPersona per = new  ClsPersona();
 		Gson json = new Gson();
 		response.getWriter().append(json.toJson(cartelera.CargarDatos()));
 	}

@@ -27,19 +27,15 @@
 	</a> <a class="flex-sm-fill text-sm-center nav-link" href="personas.jsp">
 		<FONT COLOR="white">Personas </FONT>
 	</a> <a class="flex-sm-fill text-sm-center nav-link  " href="rol.jsp"><FONT
-		COLOR="white">Roles </FONT> </a> <a
-		class="flex-sm-fill text-sm-center nav-link " href="Salas.jsp"> <FONT
-		COLOR="white">Salas </FONT> <a
-		class="flex-sm-fill text-sm-center nav-link " href="Horarios.jsp">
-			<FONT COLOR="white">Horarios </FONT> <a
-			class="flex-sm-fill text-sm-center nav-link "
-			href="Peliculas.jsp"> <FONT COLOR="white">Peliculas </FONT>
-			<a
-		class="flex-sm-fill text-sm-center nav-link " href="Horarios.jsp">
-			<FONT COLOR="white">Horarios </FONT> <a
-			class="flex-sm-fill text-sm-center nav-link active"
-			href="Carteleras.jsp"> <FONT COLOR="white">Cartelereas </FONT>
-			
+		COLOR="white">Roles </FONT> 
+	</a> <a class="flex-sm-fill text-sm-center nav-link " href="Salas.jsp">
+		<FONT COLOR="white">Salas </FONT> 
+	</a> <a class="flex-sm-fill text-sm-center nav-link " href="Horarios.jsp">
+		<FONT COLOR="white">Horarios </FONT>
+    </a> <a class="flex-sm-fill text-sm-center nav-link " href="Peliculas.jsp">
+		<FONT COLOR="white">Peliculas </FONT> </a>	
+		<a class="flex-sm-fill text-sm-center nav-link active " href="Carteleras.jsp">
+		<FONT COLOR="white">Carteleras </FONT> </a>
 </nav>
 
 <h1 class="text-center display-1"
@@ -84,10 +80,12 @@ body {
 
 					tabla.innerHTML += `
 			 <tr>
-				
-			  
-			    
-
+						<td> ${item.idCarteleras} </td>
+						<td> ${item.Nombre} </td>
+						<td> ${item.Duracion} </td>
+						<td> ${item.Fecha} </td>
+						<td> ${item.Sipnosis} </td>
+					    
 			</tr>
 		`
 				}

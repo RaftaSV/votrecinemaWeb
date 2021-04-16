@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 import com.proyect.unab.votrecinema.DAO.ClsPeliculas;
-import com.proyect.unab.votrecinema.DAO.ClsPersona;
 
 /**
  * Servlet implementation class controllerPelicula

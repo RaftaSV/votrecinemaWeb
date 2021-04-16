@@ -29,11 +29,13 @@
 	</a> <a class="flex-sm-fill text-sm-center nav-link  " href="rol.jsp"><FONT
 		COLOR="white">Roles </FONT></a>
 		<a class="flex-sm-fill text-sm-center nav-link" href="Salas.jsp">
-		<FONT COLOR="white">Salas </FONT>
+		<FONT COLOR="white">Salas </FONT></a>
 		<a class="flex-sm-fill text-sm-center nav-link" href="Horarios.jsp">
-		<FONT COLOR="white">Horarios </FONT>
+		<FONT COLOR="white">Horarios </FONT></a>
 			<a class="flex-sm-fill text-sm-center nav-link " href="Peliculas.jsp">
-		<FONT COLOR="white">Peliculas </FONT>
+		<FONT COLOR="white">Peliculas </FONT></a>
+		<a class="flex-sm-fill text-sm-center nav-link " href="Carteleras.jsp">
+		<FONT COLOR="white">Carteleras </FONT> </a>
 </nav>
 
 <body>
