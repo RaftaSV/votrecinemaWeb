@@ -1,14 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page contentType="text/html; charset=UTF-8"%>
 <!DOCTYPE html>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <html>
 <head>
-<meta charset="ISO-8859-1">
 <title>VOTRECINEMA</title>
-<!-- Required meta tags -->
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- Bootstrap CSS -->
 <link
@@ -31,12 +26,13 @@
 		class="flex-sm-fill text-sm-center nav-link " href="Salas.jsp"> <FONT
 		COLOR="white">Salas </FONT></a> <a
 		class="flex-sm-fill text-sm-center nav-link " href="Horarios.jsp">
-			<FONT COLOR="white">Horarios </FONT></a> <a
-			class="flex-sm-fill text-sm-center nav-link active"
-			href="Peliculas.jsp"> <FONT COLOR="white">Peliculas </FONT></a>
-			<a class="flex-sm-fill text-sm-center nav-link " href="Carteleras.jsp">
-		<FONT COLOR="white">Carteleras </FONT> </a>
-			
+		<FONT COLOR="white">Horarios </FONT>
+	</a> <a class="flex-sm-fill text-sm-center nav-link active"
+		href="Peliculas.jsp"> <FONT COLOR="white">Peliculas </FONT></a> <a
+		class="flex-sm-fill text-sm-center nav-link " href="Carteleras.jsp">
+		<FONT COLOR="white">Carteleras </FONT>
+	</a>
+
 </nav>
 
 <h1 class="text-center display-1"
@@ -72,7 +68,7 @@ body {
 
 			}, function(response) {
 				//Recibir informacion
-
+ 
 				let datos = JSON.parse(response);
 				console.log(datos);
 				
@@ -101,8 +97,8 @@ body {
 			<th>ID PELICULA</th>
 			<th>NOMBRE</th>
 			<th>DURACION</th>
-			<th> FECHA DE ESTRENO</th>
-		    <th>SINOPSIS</th>
+			<th>FECHA DE ESTRENO</th>
+			<th>SINOPSIS</th>
 
 		</thead>
 	</table>

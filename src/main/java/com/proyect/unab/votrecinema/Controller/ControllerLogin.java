@@ -5,20 +5,19 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import com.google.gson.Gson;
-import com.proyect.unab.votrecinema.DAO.ClsPeliculas;
-
+import javax.servlet.http.HttpSession;
+import com.proyect.unab.votrecinema.Entidades.Roles;
+import com.proyect.unab.votrecinema.DAO.*;
 /**
- * Servlet implementation class controllerPelicula
+ * Servlet implementation class ControllerLogin
  */
-public class controllerPelicula extends HttpServlet {
+public class ControllerLogin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public controllerPelicula() {
+	public ControllerLogin() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -41,12 +40,38 @@ public class controllerPelicula extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		// doGet(request, response);
-		ClsPeliculas pelicula = new ClsPeliculas();
-		Gson json = new Gson();
-		response.setCharacterEncoding("UTF8");
-		
-		response.getWriter().append(json.toJson(pelicula.ListaPeliculas()));
+		HttpSession session = request.getSession(true);
 
+		String btncerrar = request.getParameter("btncerrar");
+
+		if (btncerrar != null) {
+
+			response.sendRedirect("Index.jsp");
+
+			session.invalidate();
+		} else {
+
+			String user = request.getParameter("user");
+			String pass = request.getParameter("pass");
+
+			Roles rol = new Roles();
+
+			rol.setUsuario(user);
+			rol.setPasword(pass);
+
+			clsLoguin cls = new clsLoguin();
+
+			boolean resultado = cls.Loguin(user, pass);
+
+			if (resultado == true) {
+
+				session.setAttribute("usuario", resultado);
+				int tipo = cls.rol;
+				
+				if (tipo == 2) {
+					response.sendRedirect("rol.jsp");
+				}
+			}
+		}
 	}
-
 }

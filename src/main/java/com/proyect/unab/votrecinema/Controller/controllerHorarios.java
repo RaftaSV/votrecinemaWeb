@@ -39,6 +39,7 @@ public class controllerHorarios extends HttpServlet {
 		//doGet(request, response);
 		ClsHorarios horario = new ClsHorarios();
 		Gson json = new Gson();
+		response.setCharacterEncoding("UTF8");
 		response.getWriter().append(json.toJson(horario.cargarHorarios()));
 	}
 
