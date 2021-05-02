@@ -23,14 +23,15 @@ img {
 
 form {
 	padding: 30px;
-	background: #000;
+	background: rgba(0, 0, 0, 0.6);
 	width: 400px;
 	margin: 30px auto;
 	border-radius: 0.4em;
 	border: 1px solid #191919;
+	box-shadow: 0 5px 10px 5px rgba(0, 0, 0, 0.5);
 	overflow: hidden;
 	position: relative;
-	box-shadow: 0 5px 10px 5px rgba(0, 0, 0, 0.5);
+	
 
 }
 
