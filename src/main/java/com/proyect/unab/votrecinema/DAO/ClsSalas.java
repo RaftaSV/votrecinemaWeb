@@ -11,7 +11,6 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -44,11 +43,11 @@ public class ClsSalas {
     public void GuardarSala(Salas sal) {
         try {
             CallableStatement call = conectar.prepareCall("call SP_I_SALAS(?,?)");
-            call.setInt("pCapacidad", sal.getCapacidad());
-            call.setInt("pNumero", sal.getNumero_Sala());
+            call.setInt("pCapacidad", (int) sal.getCapacidad());
+            call.setInt("pNumero", (int) sal.getNumero_Sala());
             call.executeQuery();
             conectar.close();
-            JOptionPane.showMessageDialog(null, "Guardado con exito");
+            System.out.println("Guardado con exito");
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -58,19 +57,16 @@ public class ClsSalas {
     public void ActualizarSala(Salas S) {
         try {
             CallableStatement call = conectar.prepareCall("call SP_U_SALAS(?,?,?)");
-            call.setInt("pid", S.getIdSala());
-            call.setInt("pCapacidad", S.getCapacidad());
-            call.setInt("pNumero", S.getNumero_Sala());
-             int res = JOptionPane.showConfirmDialog(null, "¿Desea Actualizar este registro?", "Advertencia", JOptionPane.YES_NO_OPTION);
-            if (res == 0) {
+            call.setInt("pid", (int) S.getIdSala());
+            call.setInt("pCapacidad", (int) S.getCapacidad());
+            call.setInt("pNumero", (int) S.getNumero_Sala());
+             
                 call.execute();
-                JOptionPane.showMessageDialog(null, "Actualizacion Exitosa");
+                System.out.println("Actualizacion Exitosa");
               
                 conectar.close();
 
-            } else {
-
-            }
+            
         } catch (Exception e) {
             System.out.println("Error" + e);
         }
@@ -79,15 +75,12 @@ public class ClsSalas {
     public void EliminarSala(Salas sa) {
         try {
             CallableStatement call = conectar.prepareCall("call SP_D_SALAS(?)");
-            call.setInt("pId", sa.idSala);
-            int res = JOptionPane.showConfirmDialog(null, "¿Desea Eliminar este registro?", "Advertencia", JOptionPane.YES_NO_OPTION);
-            if (res == 0) {
-                call.execute();
-                JOptionPane.showMessageDialog(null, "Eliminacion Exitosa");
-            } else {
+            call.setInt("pId", (int) sa.idSala);
+            call.execute();
+			System.out.println("Eliminado exitosamente"+sa.idSala);
 
-            }
-
+			conectar.close();
+			
         } catch (Exception e) {
             System.out.println("Error" + e);
         }
