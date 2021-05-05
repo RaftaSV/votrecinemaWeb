@@ -107,7 +107,7 @@
 			function leerdatos() {
 				var rowIdx;
 				var idProducto, producto, precio, cantidad,idproveedor;
-				var tabla = document.getElementById('tablaDatos');
+				var tabla = document.getElementById('tablaproductos');
 				var rows = tabla.getElementsByTagName('tr');
 				var selectedRow;
 				var rowCellValue;
@@ -139,13 +139,14 @@
 							}
 
 						}
-						if (id > 0) {
+						if (idProducto > 0) {
 							idProducto, producto, precio, cantidad,idproveedor;
 							document.getElementById('id').value = idProducto;
 							document.getElementById('Producto').value = producto;
 							document.getElementById('Precio').value = precio;
 							document.getElementById('Cantidad').value = cantidad;
 							document.getElementById('idpro').value = idproveedor;
+						
 							
 
 						}
@@ -165,9 +166,7 @@
 	<div>
 
 		<div class="tabla" id="tabladiv">
-			<table id="tablaDatos" onclick="leerdatos() "
-				class="table table-sm table-dark">
-				<table class="table table-dark" id="tablaproductos">
+			<table id="tablaproductos" onclick="leerdatos() " class="table table-sm table-dark">
 					<thead>
 						<th>IDPRODUCTO</th>
 						<th>PRODUCTO</th>
@@ -186,9 +185,10 @@
 				<input type="hidden" id="id"> <br> <label>Producto</label>
 				<br> <input type="text" id="Producto"> <br> <label>Precio</label>
 				<br> <input type="text" id="Precio"> <br> <label>Cantidad</label>
-				<br> <input type="text" id="Cantidad"> <input
-					type="hidden" id="idpro"> <br> <label>Proveerdor</label>
-				<br> <input type="text" id="Proveerdor"> <br> <br>
+				<br> <input type="text" id="Cantidad"> 
+				<br> <label>Proveerdor</label>
+				<input type="text" id="idpro">  <br> 
+				<br>
 				<button onclick="Guardar()">Guardar</button>
 			</center>
 		</div>
