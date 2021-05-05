@@ -50,19 +50,20 @@
 	
 	function MOSTRARCRUD() {
 		var CRUD = document.getElementById("PANELCRUD"), tabladiv = document.getElementById('tabladiv');
-
+		document.getElementById('nombre').value = "";
+		document.getElementById('telefono').value = "";
+		document.getElementById('direccion').value = "";
+		document.getElementById('idpro').value = "";
 		if (CRUD.style.display === "none") {
 			CRUD.style.display = "inline-block";
 			tabladiv.style.width = "75%";
+			
 
 
 		} else {
 			CRUD.style.display = "none";
 			tabladiv.style.width = "98%";
-			document.getElementById('nombre').value = "";
-				document.getElementById('telefono').value = "";
-				document.getElementById('direccion').value = "";
-				document.getElementById('idpro').value = "";
+			
 
 
 		}
