@@ -1,0 +1,64 @@
+@charset "ISO-8859-1";
+
+body {
+	background-image:
+		url(https://previews.123rf.com/images/peshkova/peshkova1708/peshkova170800949/84565450-resumen-circuito-cerebro-fondo-concepto-de-inteligencia-artificial-representaci%C3%B3n-3d.jpg);
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+}
+
+.tabla {
+	overflow: scroll;
+	background: white;
+	margin-left: 10px;
+	margin-right: 10px;
+	display: inline-block;
+	width: 98%;
+	height: 450px;
+	background: white;
+}
+
+.crud {
+	position: absolute;
+	display: inline-block;
+	background: rgba(0, 0, 0, 0.6);
+	width: 22%;
+	height: 280px;
+}
+.crudProductos {
+	position: absolute;
+	display: inline-block;
+	background: rgba(0, 0, 0, 0.6);
+	width: 22%;
+	height: 380px;
+}
+
+label {
+	border-bottom: 1px solid #19191a;
+	color: white;
+	padding-bottom: 8px;
+	
+}
+input{
+	width: 95%;
+}
+
+#nombre {
+	padding-top: 5px;
+}
+
+#EDITAR {
+	margin-left: 90%;
+	border-radius: 20px;
+	background: gray;
+	color: white;
+	width: 90px;
+}
+
+tr {
+	cursor: pointer;
+	transition: all .25s ease-in-out
+}
+

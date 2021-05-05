@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 import com.proyect.unab.votrecinema.DAO.ClsProductos;
+import com.proyect.unab.votrecinema.Entidades.*;
 
 /**
  * Servlet implementation class controllerProductos
@@ -29,6 +30,30 @@ public class controllerProductos extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+		String eliminar = "";
+		int idProducto;
+		try {
+			idProducto = Integer.parseInt(request.getParameter("id"));
+
+		} catch (Exception e) {
+			idProducto = 0;
+		}
+		try {
+
+			eliminar = request.getParameter("Eliminar");
+
+		} catch (Exception e) {
+			
+		}
+if (eliminar.equals("btne")) {
+			
+			Producto pro = new Producto();
+			pro.setIdProducto(idProducto);
+			ClsProductos cls = new ClsProductos();
+			cls.EliminarProducto(pro);
+			response.sendRedirect("Productos.jsp");
+
+		}
 	}
 
 	/**

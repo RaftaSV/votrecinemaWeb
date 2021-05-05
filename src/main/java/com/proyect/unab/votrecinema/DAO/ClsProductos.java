@@ -51,7 +51,7 @@ public class ClsProductos {
             call.setInt("pProveedor", (int) pro.getIdProveedor());
             call.executeQuery();
             conectar.close();
-            JOptionPane.showMessageDialog(null, "Guardado con exito");
+System.out.println("Guardado con exito");
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -67,15 +67,11 @@ public class ClsProductos {
             call.setInt("pCantidad", pro.getCantidad());
             call.setInt("pProveedor", (int) pro.getIdProveedor());
             call.executeQuery();
-            int res = JOptionPane.showConfirmDialog(null, "¿Desea Actualizar este registro?", "Advertencia", JOptionPane.YES_NO_OPTION);
-            if (res == 0) {
+          
                 call.execute();
-                JOptionPane.showMessageDialog(null, "Actualizacion Exitosa");     
+                System.out.println("Actualizacion Exitosa");     
                 conectar.close();
 
-            } else {
-
-            }
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -85,13 +81,8 @@ public class ClsProductos {
         try {
             CallableStatement call = conectar.prepareCall("call SP_D_PRODUCTOS(?)");
             call.setInt("pId", (int) pro.getIdProducto());
-            int res = JOptionPane.showConfirmDialog(null, "¿Desea Eliminar este registro?", "Advertencia", JOptionPane.YES_NO_OPTION);
-            if (res == 0) {
-                call.execute();
-                JOptionPane.showMessageDialog(null, "Eliminado con exito");
-            } else {
-
-            }
+            call.execute();
+            System.out.println("Actualizacion Exitosa");     
             conectar.close();
 
         } catch (Exception e) {
