@@ -58,7 +58,10 @@
 
 		function MOSTRARCRUD() {
 			var CRUD = document.getElementById("PANELCRUD"), tabladiv = document.getElementById('tabladiv');
-
+			document.getElementById('nombre').value = "";
+			document.getElementById('telefono').value = "";
+			document.getElementById('direccion').value = "";
+			document.getElementById('idpro').value = "";
 			if (CRUD.style.display === "none") {
 				CRUD.style.display = "inline-block";
 				tabladiv.style.width = "75%";
@@ -67,10 +70,7 @@
 			} else {
 				CRUD.style.display = "none";
 				tabladiv.style.width = "98%";
-				document.getElementById('nombre').value = "";
-					document.getElementById('telefono').value = "";
-					document.getElementById('direccion').value = "";
-					document.getElementById('idpro').value = "";
+				
 
 
 			}
@@ -89,7 +89,7 @@
 						datos.forEach(function (item) {
 							tabla.innerHTML += `
 								 <tr onclick="seleccionar()" >
-									<td id="id"> ${item.idProveedor} </td>
+									<td style="display:none;"> ${item.idProveedor} </td>
 								    <td >  ${item.Nombre} </td>
 								   <td> ${item.Telefono}</td>
 								   <td>${item.Direccion} </td>
@@ -202,7 +202,7 @@
 			
 			
 		)
-		document.getElementById('nombre').value = "";
+		                document.getElementById('nombre').value = "";
 						document.getElementById('telefono').value = "";
 						document.getElementById('direccion').value = "";
 						document.getElementById('idpro').value = "";
@@ -224,7 +224,7 @@
 		<div class="tabla" id="tabladiv">
 			<table id="tablaDatos" onclick="leerdatos() " class="table table-sm table-dark">
 				<thead >
-					<th>ID</th>
+					<th style="display:none;">ID</th>
 					<th>NOMBRE</th>
 					<th>TELEFONO</th>
 					<th>DIRECCION</th>

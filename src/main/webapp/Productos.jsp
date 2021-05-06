@@ -50,9 +50,10 @@
 	
 	function MOSTRARCRUD() {
 		var CRUD = document.getElementById("PANELCRUD"), tabladiv = document.getElementById('tabladiv');
-		document.getElementById('nombre').value = "";
-		document.getElementById('telefono').value = "";
-		document.getElementById('direccion').value = "";
+		document.getElementById('id').value = "";
+		document.getElementById('Producto').value = "";
+		document.getElementById('Precio').value = "";
+		document.getElementById('Cantidad').value = "";
 		document.getElementById('idpro').value = "";
 		if (CRUD.style.display === "none") {
 			CRUD.style.display = "inline-block";
@@ -67,6 +68,7 @@
 
 
 		}
+		
 	}
 
 			$(document).ready(function () {
@@ -85,11 +87,11 @@
 
 						tabla.innerHTML += `
 				 <tr>
-					<td> ${item.idProducto} </td>
+					<td style="display:none;"> ${item.idProducto} </td>
 				    <td> ${item.Producto} </td>
 				    <td> ${item.precio}</td>
 				    <td>${item.Cantidad} </td>
-				    <td>${item.idProveedor}</td>
+				    <td style="display:none;" >${item.idProveedor}</td>
 				    <td>${item.Nombre} </td>
 				    <td>
 				    <a class="btn btn-danger" href="controllerProductos?id=${item.idProducto}&Eliminar=btne"> ELIMINAR </a> 
@@ -169,11 +171,11 @@
 		<div class="tabla" id="tabladiv">
 			<table id="tablaproductos" onclick="leerdatos() " class="table table-sm table-dark">
 					<thead>
-						<th>IDPRODUCTO</th>
+						<th style="display:none;">IDPRODUCTO</th>
 						<th>PRODUCTO</th>
 						<th>PRECIO</th>
 						<th>CANTIDAD</th>
-						<th>IDPROVE</th>
+						<th style="display:none;"  >IDPROVE</th>
 						<th>PROVEEDOR</th>
 						<th>ACCIONES</th>
 					</thead>
