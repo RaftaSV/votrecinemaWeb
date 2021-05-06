@@ -174,16 +174,15 @@
 		function Guardar() {
 			
 			$(document).ready(function () {
-			var idper, nombre, apellido, dui, Eliminar;
+			var id, nombre, apellido, dui, Eliminar;
 			nombre = $("#nombre").val();
 			apellido = $("#apellido").val();
 			dui = $("#dui").val();
-			idper = $("#idper").val();
+			id = $("#idper").val();
 			Eliminar="no";
-			console.log(idper);
 			$.get('controllerPersonas', {
 				
-				idper, nombre, apellido, dui, Eliminar
+				id, nombre, apellido, dui, Eliminar
 		
 			});
 		}

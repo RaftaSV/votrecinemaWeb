@@ -9,7 +9,6 @@ import com.proyect.unab.votrecinema.Entidades.*;
 
 import java.sql.*;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
 
 /**
  *

@@ -37,19 +37,15 @@ public class controllerPersonas extends HttpServlet {
 		String nombre = null;
 		String apellido = null;
 		String dui = null;
-		int idper = 0;
-		int id;
+		String id= "";
 		try {
-			id = Integer.parseInt(request.getParameter("id"));
-
+			 id =(request.getParameter("id"));	
 		} catch (Exception e) {
-			id = 0;
+			id="0";
 		}
-		try {
-			idper = Integer.parseInt(request.getParameter("idper"));
-		}catch (Exception e){
-			
-		}
+		
+		
+	
 		try {
 			
 			nombre = request.getParameter("nombre");
@@ -65,11 +61,11 @@ public class controllerPersonas extends HttpServlet {
 		} catch (Exception e) {
 			
 		}
-		
+		int idper = Integer.parseInt(id.replace(" ", ""));
 if (eliminar.equals("btne")) {
 			
 			Personas per = new Personas();
-			per.setIdPersona(id);
+			per.setIdPersona(idper);
 			ClsPersona cls = new ClsPersona();
 			cls.EliminarPersonas(per);
 			response.sendRedirect("personas.jsp");
@@ -91,7 +87,8 @@ if (eliminar.equals("btne")) {
 				per.setApellidos(apellido);
 				per.setDUI(dui);
 				ClsPersona cls = new ClsPersona();
-				cls.AgregarPersona(per);
+				cls.AgregarPersona(per); 
+				
 			}
 		}
 	}
