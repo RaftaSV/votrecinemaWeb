@@ -32,8 +32,13 @@ public class controllerProductos extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		String eliminar = "";
 		int idProducto;
+		int idProveedor;
+		String producto="";
+		double precio;
+		int cantidad;
+		
 		try {
-			idProducto = Integer.parseInt(request.getParameter("id"));
+			idProducto = Integer.parseInt(request.getParameter("id").replace(" ",""));
 
 		} catch (Exception e) {
 			idProducto = 0;
@@ -45,6 +50,20 @@ public class controllerProductos extends HttpServlet {
 		} catch (Exception e) {
 			
 		}
+		try {
+	
+			idProveedor = Integer.parseInt(request.getParameter("idpro"));
+			producto  = request.getParameter("producto");
+			precio = Double.parseDouble(request.getParameter("precio"));
+			cantidad = Integer.parseInt(request.getParameter("cantidad"));
+			
+		} catch (Exception e) {
+			idProveedor=0;
+			cantidad=0;
+			precio=0;
+		}
+		
+		
 if (eliminar.equals("btne")) {
 			
 			Producto pro = new Producto();
@@ -53,6 +72,35 @@ if (eliminar.equals("btne")) {
 			cls.EliminarProducto(pro);
 			response.sendRedirect("Productos.jsp");
 
+		}else {
+			if(idProducto>0) {
+				Producto Producto = new Producto();
+				Producto.setIdProducto(idProducto);
+				Producto.setProducto(producto);
+				Producto.setIdProveedor(idProveedor);
+				Producto.setCantidad(cantidad);
+				Producto.setPrecio(precio);
+				
+				ClsProductos cls = new ClsProductos();
+				cls.ActualiarProducto(Producto);
+				
+			}else {
+				
+				Producto Producto = new Producto();
+				Producto.setProducto(producto);
+				Producto.setIdProveedor(idProveedor);
+				Producto.setCantidad(cantidad);
+				Producto.setPrecio(precio);
+			
+			ClsProductos cls = new ClsProductos();
+				cls.GuardarProducto(Producto);
+						
+				
+				
+				
+				
+			}
+			
 		}
 	}
 
