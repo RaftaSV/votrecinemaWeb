@@ -104,14 +104,9 @@
 					} catch (e) {
 						// TODO: handle exception
 					}
-					
+
 				});
-
-
-
 			})
-
-
 		}
 
 

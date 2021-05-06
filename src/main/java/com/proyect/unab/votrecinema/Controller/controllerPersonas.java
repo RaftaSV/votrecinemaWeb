@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 import com.proyect.unab.votrecinema.DAO.ClsPersona;
+import com.proyect.unab.votrecinema.DAO.ClsProveedores;
+import com.proyect.unab.votrecinema.Entidades.Personas;
+import com.proyect.unab.votrecinema.Entidades.Proveedor;
 
 /**
  * Servlet implementation class controllerPersonas
@@ -20,7 +23,7 @@ public class controllerPersonas extends HttpServlet {
      */
     public controllerPersonas() {
         super();
-        // TODO Auto-generated constructor stub
+        
     }
 
 	/**
@@ -29,6 +32,68 @@ public class controllerPersonas extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		String eliminar = "";
+		String nombre = null;
+		String apellido = null;
+		String dui = null;
+		int idper = 0;
+		int id;
+		try {
+			id = Integer.parseInt(request.getParameter("id"));
+
+		} catch (Exception e) {
+			id = 0;
+		}
+		try {
+			idper = Integer.parseInt(request.getParameter("idper"));
+		}catch (Exception e){
+			
+		}
+		try {
+			
+			nombre = request.getParameter("nombre");
+			apellido = request.getParameter("apellido");
+			dui = request.getParameter("dui");
+		} catch (Exception e) {
+		}
+		
+		try {
+
+			eliminar = request.getParameter("Eliminar");
+
+		} catch (Exception e) {
+			
+		}
+		
+if (eliminar.equals("btne")) {
+			
+			Personas per = new Personas();
+			per.setIdPersona(id);
+			ClsPersona cls = new ClsPersona();
+			cls.EliminarPersonas(per);
+			response.sendRedirect("personas.jsp");
+
+		} else {
+			
+			if (idper > 0) {
+				Personas per = new Personas();
+				per.setIdPersona(idper);
+				per.setNombres(nombre);
+				per.setApellidos(apellido);
+				per.setDUI(dui);
+				ClsPersona cls = new ClsPersona();
+				cls.ActualizarPersona(per);
+
+			} else {
+				Personas per = new Personas();
+				per.setNombres(nombre);
+				per.setApellidos(apellido);
+				per.setDUI(dui);
+				ClsPersona cls = new ClsPersona();
+				cls.AgregarPersona(per);
+			}
+		}
 	}
 
 	/**
@@ -39,6 +104,8 @@ public class controllerPersonas extends HttpServlet {
 		//doGet(request, response);
 		ClsPersona persona = new ClsPersona();
 		Gson json = new Gson();
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8");
 		response.getWriter().append(json.toJson(persona.ListaPersonas()));
 	}
 
