@@ -10,7 +10,6 @@ import com.proyect.unab.votrecinema.Entidades.*;
 import java.sql.CallableStatement;
 import java.sql.*;
 import java.util.*;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -42,7 +41,7 @@ public class ClsRoles {
             conect.close();
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
+            System.out.println(e);
         }
 
         return Roll;
@@ -53,10 +52,10 @@ public class ClsRoles {
             CallableStatement cs = conect.prepareCall("call SP_I_ROLES(?,?,?,?)");
             cs.setString("pUsuario", r.getUsuario());
             cs.setString("pPass", r.getPasword());
-            cs.setInt("pTipoRol", r.getTipoRol());
-            cs.setInt("pIdPersona", r.getId_Persona());
+            cs.setInt("pTipoRol", (int) r.getTipoRol());
+            cs.setInt("pIdPersona", (int) r.getId_Persona());
             cs.execute();
-            JOptionPane.showMessageDialog(null, "Guardado Exitoso");
+            System.out.println("Guardado Exitoso");
         } catch (Exception e) {
             System.out.println("Error" + e);
         }
@@ -85,7 +84,7 @@ public class ClsRoles {
             conect.close();
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
+            System.out.println(e);
         }
 
         return Roll;
@@ -96,21 +95,17 @@ public class ClsRoles {
     public void ActualizarRol(Roles r) {
         try {
             CallableStatement cs = conect.prepareCall("call SP_U_ROLES(?,?,?,?,?)");
-            cs.setInt("pId", r.getIdRol());
+            cs.setInt("pId", (int) r.getIdRol());
             cs.setString("pUsuario", r.getUsuario());
             cs.setString("pPass", r.getPasword());
-            cs.setInt("pTipoRol", r.getTipoRol());
-            cs.setInt("pIdPersona", r.getId_Persona());
-            int res = JOptionPane.showConfirmDialog(null, "¿Desea Actualizar este registro?", "Advertencia", JOptionPane.YES_NO_OPTION);
-            if (res == 0) {
-                cs.execute();
-                JOptionPane.showMessageDialog(null, "Actualizacion Exitosa");
+            cs.setInt("pTipoRol", (int) r.getTipoRol());
+            cs.setInt("pIdPersona", (int) r.getId_Persona());
+            cs.execute();
+            System.out.println("Actualizacion Exitosa");
                
                 conect.close();
 
-            } else {
-
-            }
+            
         } catch (Exception e) {
             System.out.println("Error" + e);
         }
@@ -119,20 +114,16 @@ public class ClsRoles {
      public void ActualizarRolsinpass(Roles r) {
         try {
             CallableStatement cs = conect.prepareCall("call SP_U_ROLESSINPASS(?,?,?,?)");
-            cs.setInt("pId", r.getIdRol());
+            cs.setInt("pId", (int) r.getIdRol());
             cs.setString("pUsuario", r.getUsuario());
-            cs.setInt("pTipoRol", r.getTipoRol());
-            cs.setInt("pIdPersona", r.getId_Persona());
-            int res = JOptionPane.showConfirmDialog(null, "¿Desea Actualizar dejando la contraseña antigua?", "Advertencia", JOptionPane.YES_NO_OPTION);
-            if (res == 0) {
-                cs.execute();
-                JOptionPane.showMessageDialog(null, "Actualizacion Exitosa");
+            cs.setInt("pTipoRol", (int) r.getTipoRol());
+            cs.setInt("pIdPersona", (int) r.getId_Persona());
+            cs.execute();
+            System.out.println("Actualizacion Exitosa");
                 
                 conect.close();
 
-            } else {
-
-            }
+           
         } catch (Exception e) {
             System.out.println("Error" + e);
         }
@@ -142,14 +133,10 @@ public class ClsRoles {
     public void EliminarRol(Roles r) {
         try {
             CallableStatement cs = conect.prepareCall("call SP_D_ROLES(?)");
-            cs.setInt("pIdRol", r.getIdRol());
-            int res = JOptionPane.showConfirmDialog(null, "¿Desea Eliminar este registro?", "Advertencia", JOptionPane.YES_NO_OPTION);
-            if (res == 0) {
-                cs.execute();
-                JOptionPane.showMessageDialog(null, "Eliminado Exitoso");
-            } else {
-
-            }
+            cs.setInt("pIdRol", (int) r.getIdRol());
+            cs.execute();
+            System.out.println("Eliminado Exitoso");
+            
 
         } catch (Exception e) {
             System.out.println("Error" + e);
@@ -166,7 +153,7 @@ public class ClsRoles {
             call.setString("pUser", rol.getUsuario());
             call.setString("pPass", rol.getPasword());
             call.executeQuery();
-            JOptionPane.showMessageDialog(null, "Registro exitoso");
+            System.out.println("Registro exitoso");
         } catch (Exception e) {
             System.out.println("error" + e);
         }

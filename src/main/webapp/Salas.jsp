@@ -1,13 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
-<script
-	src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"
-	type="text/javascript"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
-<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <LINK REL=StyleSheet HREF="CCS/Diseño.css" TYPE="text/css" />
-
 <head>
 <meta charset="ISO-8859-1">
 <title>VOTRECINEMA</title>
@@ -21,28 +17,13 @@
 	rel="stylesheet"
 	integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
 	crossorigin="anonymous">
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
 </head>
 
 <h1 class="text-center display-1"
 	style="font-family: Brush Script MT, arial"  > <font COLOR="black"> SALAS</font></h1>
-<style type="text/css">
-<!--
-body {
-	background-image:
-		url(https://previews.123rf.com/images/peshkova/peshkova1708/peshkova170800949/84565450-resumen-circuito-cerebro-fondo-concepto-de-inteligencia-artificial-representaci%C3%B3n-3d.jpg);
-	background-position: center center;
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-	background-size: cover;
-}
 
-#mail {
-	width: 100%;
-	position: fixed;
-}
--->
-</style>
+
 
 
 <body>

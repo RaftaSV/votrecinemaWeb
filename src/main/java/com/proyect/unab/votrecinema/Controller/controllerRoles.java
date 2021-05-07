@@ -7,9 +7,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import com.google.gson.Gson;
 import com.proyect.unab.votrecinema.DAO.ClsRoles;
+import com.proyect.unab.votrecinema.Entidades.Roles;
 
 /**
  * Servlet implementation class controllerRoles
@@ -31,6 +31,79 @@ public class controllerRoles extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		String eliminar = "";
+		int idRol;
+		int idPersona;
+		String usuario="";
+		String password="";
+		int tiporol;
+		
+		try {
+			idRol = Integer.parseInt(request.getParameter("id").replace(" ",""));
+
+		} catch (Exception e) {
+			idRol = 0;
+		}
+		try {
+
+			eliminar = request.getParameter("Eliminar");
+
+		} catch (Exception e) {
+			
+		}
+		try {
+	
+			idPersona = Integer.parseInt(request.getParameter("idpro"));
+			usuario  = request.getParameter("producto");
+			password  = request.getParameter("producto");
+			tiporol = Integer.parseInt(request.getParameter("cantidad"));
+			
+		} catch (Exception e) {
+			idPersona=0;
+			tiporol=0;
+			
+		}
+		
+		
+if (eliminar.equals("btne")) {
+			
+			Roles rol = new Roles();
+			rol.setIdRol(idRol);
+			ClsRoles cls = new ClsRoles();
+			cls.EliminarRol(rol);
+			response.sendRedirect("rol.jsp");
+
+		}else {
+			if(idRol>0) {
+				Roles rol = new Roles();
+				rol.setIdRol(idRol);
+				rol.setUsuario(usuario);
+				rol.setPasword(password);
+				rol.setId_Persona(idPersona);
+				rol.setTipoRol(tiporol);
+				
+				ClsRoles cls = new ClsRoles();
+				cls.ActualizarRol(rol);
+				
+			}else {
+				
+				Roles rol = new Roles();
+				rol.setUsuario(usuario);
+				rol.setPasword(password);
+				rol.setId_Persona(idPersona);
+				rol.setTipoRol(tiporol);
+				
+				ClsRoles cls = new ClsRoles();
+				cls.AgregarRol(rol);
+						
+				
+				
+				
+				
+			}
+			
+		}
 	}
 
 	/**
