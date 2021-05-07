@@ -89,4 +89,26 @@ public class ClsProveedores {
 			System.out.println("Error" + e);
 		}
 	}
+
+	public ArrayList<Proveedor> ListaProveedoresCompleta() {
+		ArrayList<Proveedor> provee = new ArrayList<>();
+		try {
+			CallableStatement call = conectar.prepareCall("select *from proveedores");
+			ResultSet resultado = call.executeQuery();
+			while (resultado.next()) {
+				Proveedor pro = new Proveedor();
+				pro.setIdProveedor(resultado.getInt("idProveedor"));
+				pro.setNombre(resultado.getString("Nombre"));
+				pro.setTelefono(resultado.getString("Telefono"));
+				pro.setDireccion(resultado.getString("Direccion"));
+				provee.add(pro);
+
+			}
+			conectar.close();
+		} catch (Exception e) {
+			System.out.println("Error" + e);
+		}
+		return provee;
+
+	}
 }

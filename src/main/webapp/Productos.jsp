@@ -54,7 +54,6 @@
 		document.getElementById('Producto').value = "";
 		document.getElementById('Precio').value = "";
 		document.getElementById('Cantidad').value = "";
-		document.getElementById('idpro').value = "";
 		if (CRUD.style.display === "none") {
 			CRUD.style.display = "inline-block";
 			tabladiv.style.width = "75%";
@@ -109,7 +108,7 @@
 
 			function leerdatos() {
 				var rowIdx;
-				var idProducto, producto, precio, cantidad,idproveedor;
+				var idProducto, producto, precio, cantidad,proveedor,pro;
 				var tabla = document.getElementById('tablaproductos');
 				var rows = tabla.getElementsByTagName('tr');
 				var selectedRow;
@@ -137,18 +136,34 @@
 								contador++;
 							}
 							else if (contador == 5) {
-								idproveedor = selectedRow[j].innerText;
+								proveedor = selectedRow[j].innerText;
+								contador++;
+							}else if (contador == 6) {
+								pro = selectedRow[j].innerText;
+ 
+								console.log(pro);
 								contador++;
 							}
 
 						}
 						if (idProducto > 0) {
-							idProducto, producto, precio, cantidad,idproveedor;
+							var select=document.getElementById('combo');
+							for(var i=1;i<select.length;i++)
+							{
+								if(select.options[i].text==pro)
+								{
+									// seleccionamos el valor que coincide
+									select.selectedIndex=i;
+								}else{
+									select.selectedIndex=0;
+								}
+							}
+						
 							document.getElementById('id').value = idProducto;
 							document.getElementById('Producto').value = producto;
 							document.getElementById('Precio').value = precio;
 							document.getElementById('Cantidad').value = cantidad;
-							document.getElementById('idpro').value = idproveedor;
+							
 						
 							
 
@@ -156,8 +171,65 @@
 					}
 				}
 			}
+			
+			
+			function cargarcombo() {
+
+				$(document).ready(function () {
 
 
+					$.post('controllerProveedores', function (datos) {
+						try {
+							var combo = document.getElementById('combo');
+							
+							datos.forEach(function (item) {
+								combo.innerHTML += `
+									<option value="${item.idProveedor}">${item.Nombre} </option>
+										<td style="display:none;">  </td>
+									`
+
+							})
+							
+						} catch (e) {
+							// TODO: handle exception
+						}
+
+					});
+				})
+			}
+			
+			function Guardar() {
+				
+				$(document).ready(function () {
+					var idProducto, producto, precio, cantidad,idpro;
+					id = $("#id").val();
+					producto = $("#Producto").val();
+					precio = $("#Precio").val();
+					cantidad = $("#Cantidad").val();
+					idpro =$("#combo").val();
+				Eliminar="no";
+				 
+				
+				$.get('controllerProductos', {
+					
+					id, producto, precio, cantidad,idpro,Eliminar
+
+
+				});
+			}
+				
+				
+			)
+			                document.getElementById('id').value = "";
+							document.getElementById('Producto').value = "";
+							document.getElementById('Precio').value = "";
+							document.getElementById('Cantidad').value = "";
+							
+							window.location.reload();
+			
+			}
+			
+window.onload = cargarcombo();
 		</script>
 
 
@@ -169,17 +241,18 @@
 	<div>
 
 		<div class="tabla" id="tabladiv">
-			<table id="tablaproductos" onclick="leerdatos() " class="table table-sm table-dark">
-					<thead>
-						<th style="display:none;">IDPRODUCTO</th>
-						<th>PRODUCTO</th>
-						<th>PRECIO</th>
-						<th>CANTIDAD</th>
-						<th style="display:none;"  >IDPROVE</th>
-						<th>PROVEEDOR</th>
-						<th>ACCIONES</th>
-					</thead>
-				</table>
+			<table id="tablaproductos" onclick="leerdatos() "
+				class="table table-sm table-dark">
+				<thead>
+					<th style="display: none;">IDPRODUCTO</th>
+					<th>PRODUCTO</th>
+					<th>PRECIO</th>
+					<th>CANTIDAD</th>
+					<th style="display: none;">IDPROVE</th>
+					<th>PROVEEDOR</th>
+					<th>ACCIONES</th>
+				</thead>
+			</table>
 		</div>
 
 
@@ -188,10 +261,9 @@
 				<input type="hidden" id="id"> <br> <label>Producto</label>
 				<br> <input type="text" id="Producto"> <br> <label>Precio</label>
 				<br> <input type="text" id="Precio"> <br> <label>Cantidad</label>
-				<br> <input type="text" id="Cantidad"> 
-				<br> <label>Proveerdor</label>
-				<input type="text" id="idpro">  <br> 
-				<br>
+				<br> <input type="text" id="Cantidad"> <br> <label>Proveerdor</label>
+				<br> <select class="" id="combo" required>
+				</select> <br> <br>
 				<button onclick="Guardar()">Guardar</button>
 			</center>
 		</div>

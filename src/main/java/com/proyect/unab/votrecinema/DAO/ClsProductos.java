@@ -50,6 +50,7 @@ public class ClsProductos {
             call.setInt("pProveedor", (int) pro.getIdProveedor());
             call.executeQuery();
             conectar.close();
+            System.out.println(pro.getProducto());
 System.out.println("Guardado con exito");
         } catch (Exception e) {
             System.out.println(e);
@@ -81,7 +82,7 @@ System.out.println("Guardado con exito");
             CallableStatement call = conectar.prepareCall("call SP_D_PRODUCTOS(?)");
             call.setInt("pId", (int) pro.getIdProducto());
             call.execute();
-            System.out.println("Actualizacion Exitosa");     
+            System.out.println("Eliminar Exitosa");     
             conectar.close();
 
         } catch (Exception e) {
