@@ -195,14 +195,7 @@ body {
 	
 	}
 
-
-	
-
-
-
 	window.onload = cargardatos;
-
-
 
 </script>
 
@@ -232,10 +225,6 @@ body {
 				
 
 				<button onclick="Guardar()">Guardar</button>
-
-
-
-
 			</center>
 		</div>
 	</div>

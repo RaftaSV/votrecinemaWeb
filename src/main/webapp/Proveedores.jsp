@@ -183,12 +183,7 @@
 						window.location.reload();
 		
 		}
-
-
 		
-
-
-
 		window.onload = cargardatos;
 
 	</script>
@@ -217,10 +212,6 @@
 				<br> <input type="text" id="direccion"> <br> <br>
 
 				<button onclick="Guardar()">Guardar</button>
-
-
-
-
 			</center>
 		</div>
 	</div>

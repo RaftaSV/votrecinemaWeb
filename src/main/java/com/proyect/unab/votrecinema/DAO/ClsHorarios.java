@@ -7,6 +7,7 @@ package com.proyect.unab.votrecinema.DAO;
 import com.proyect.unab.votrecinema.Conexion.Conexion;
 import com.proyect.unab.votrecinema.Entidades.*;
 import java.sql.*;
+import java.sql.Date;
 import java.util.*;
 import javax.swing.JOptionPane;
 
@@ -59,14 +60,13 @@ public class ClsHorarios {
         return lista;
     }
 
-    public void InsertarHorario(Horarios ho) {
+    public void GuardarHorarios(Horarios ho, Date horaInicio) {
         try {
             CallableStatement call = conectar.prepareCall("call SP_I_HORARIOS(?)");
-            call.setTime("pHora", ho.getHoraInicio());
-            call.executeQuery();
-            JOptionPane.showMessageDialog(null, "Guardado exitosamente");
-            conectar.close();
-
+            call.setTime("pHora", (Time) ho.getHoraInicio());
+			call.execute();
+			conectar.close();
+			JOptionPane.showMessageDialog(null, "Guardado exitosamente");
         } catch (Exception e) {
             System.out.println("error " + e);
         }
@@ -74,42 +74,31 @@ public class ClsHorarios {
     }
 
     public void ActualizarHorario(Horarios ho) {
-        try {
-            CallableStatement call = conectar.prepareCall("call SP_U_HORARIOS(?,?)");
-            call.setInt("pId", ho.getIdHorario());
-            call.setTime("pHora", ho.getHoraInicio());
-            int res = JOptionPane.showConfirmDialog(null, "¿Desea Actualizar este registro?", "Advertencia", JOptionPane.YES_NO_OPTION);
-            if (res == 0) {
-                call.executeQuery();
-                JOptionPane.showMessageDialog(null, "Actualizacion Exitosa");
-                conectar.close();
+    	try {
+			CallableStatement call = conectar.prepareCall("call SP_U_HORARIO(?,?,?,?)");
+			call.setInt("pId", (int) ho.getIdHorario());
+			call.setTime("pHoraInicio", (Time) ho.getHoraInicio());
+		
+			call.execute();
+			System.out.println("Actualizacion exitosa");
 
-            } else {
-
-            }
-        } catch (Exception e) {
-            System.out.println("error " + e);
-        }
-
-    }
+		} catch (Exception e) {
+			System.out.println("Error" + e);
+		}
+	}
 
     public void EliminarHorario(Horarios ho) {
-        try {
-            CallableStatement call = conectar.prepareCall("call SP_D_HORARIOS(?)");
-            call.setInt("pId", ho.getIdHorario());
+    		try {
+    			CallableStatement call = conectar.prepareCall("call SP_D_HORARIOS(?)");
 
-            int res = JOptionPane.showConfirmDialog(null, "¿Desea Eliminar este registro?", "Advertencia", JOptionPane.YES_NO_OPTION);
-            if (res == 0) {
-                call.executeQuery();
-                JOptionPane.showMessageDialog(null, "Eliminacion Exitosa");
-                conectar.close();
+    			call.setInt("pId", (int)ho.getIdHorario());
+    			call.execute();
+    			System.out.println("Eliminado exitosamente");
 
-            } else {
+    			conectar.close();
 
-            }
-        } catch (Exception e) {
-            System.out.println("error " + e);
-        }
-
+    		} catch (Exception e) {
+    			System.out.println("Error" + e);
+    		}
     }
 }
