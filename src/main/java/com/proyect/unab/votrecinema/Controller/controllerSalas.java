@@ -56,7 +56,6 @@ public class controllerSalas extends HttpServlet {
 			
 		}
 
-		
 
 		if (eliminar.equals("btne")) {
 			

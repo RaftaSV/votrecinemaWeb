@@ -37,17 +37,20 @@ public class controllerProveedores extends HttpServlet {
 		String telefono = null;
 		String direccion = null;
 		int id;
+		
 		try {
 			id = Integer.parseInt(request.getParameter("id"));
 
 		} catch (Exception e) {
 			id = 0;
 		}
+		
 		try {
 
 			nombre = request.getParameter("nombre");
 			telefono = request.getParameter("telefono");
 			direccion = request.getParameter("direccion");
+			
 		} catch (Exception e) {
 			id = 0;
 		}

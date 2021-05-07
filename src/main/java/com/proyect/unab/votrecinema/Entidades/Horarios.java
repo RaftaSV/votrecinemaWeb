@@ -33,7 +33,7 @@ public class Horarios extends Salas {
 	public void setIdHorario(int idHorario) {
 		this.idHorario = idHorario;
 	}
-	public Time getHoraInicio() {
+	public Date getHoraInicio() {
 		return HoraInicio;
 	}
 	public void setHoraInicio(Time horaInicio) {
