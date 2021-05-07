@@ -3,7 +3,7 @@
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"
 	type="text/javascript"></script>
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <LINK REL=StyleSheet HREF="CCS/Diseño.css" TYPE="text/css" />
@@ -23,24 +23,7 @@
 	crossorigin="anonymous">
 
 </head>
-<nav class="nav nav-pills flex-column flex-sm-row">
-	<a class="flex-sm-fill text-sm-center nav-link  "
-		href="Proveedores.jsp"> <FONT COLOR="white">Proveedores </FONT></a> <a
-		class="flex-sm-fill text-sm-center nav-link" href="Productos.jsp">
-		<FONT COLOR="white ">Productos </FONT>
-	</a> <a class="flex-sm-fill text-sm-center nav-link active"
-		href="personas.jsp"> <FONT COLOR="white">Personas </FONT></a> <a
-		class="flex-sm-fill text-sm-center nav-link  " href="rol.jsp"><FONT
-		COLOR="white">Roles </FONT></a>
-		<a class="flex-sm-fill text-sm-center nav-link" href="Salas.jsp">
-		<FONT COLOR="white">Salas </FONT></a>
-		<a class="flex-sm-fill text-sm-center nav-link" href="Horarios.jsp">
-		<FONT COLOR="white">Horarios </FONT></a>
-			<a class="flex-sm-fill text-sm-center nav-link " href="Peliculas.jsp">
-		<FONT COLOR="white">Peliculas </FONT></a>
-		<a class="flex-sm-fill text-sm-center nav-link " href="Carteleras.jsp">
-		<FONT COLOR="white">Carteleras </FONT> </a>
-</nav>
+
 
 
 <body>
@@ -198,7 +181,7 @@
 		window.onload = cargardatos;
 
 	</script>
-	<button id="EDITAR" onclick="MOSTRARCRUD()">C-R-U-D</button>
+	<button id="EDITAR" onclick="MOSTRARCRUD()" class="far fa-edit fa-2x"></button>
 	<div>
 
 		<div class="tabla" id="tabladiv">

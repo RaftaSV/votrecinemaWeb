@@ -69,7 +69,7 @@ public class ControllerLogin extends HttpServlet {
 				int tipo = cls.rol;
 				
 				if (tipo == 2) {
-					response.sendRedirect("rol.jsp");
+					response.sendRedirect("Principal.jsp");
 				}
 			}
 		}

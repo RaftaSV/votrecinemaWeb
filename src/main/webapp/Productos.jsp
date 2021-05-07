@@ -17,27 +17,8 @@
 	rel="stylesheet"
 	integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
 	crossorigin="anonymous">
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
 </head>
-<nav class="nav nav-pills flex-column flex-sm-row">
-	<a class="flex-sm-fill text-sm-center nav-link  "
-		href="Proveedores.jsp"> <FONT COLOR="white">Proveedores </FONT></a> <a
-		class="flex-sm-fill text-sm-center nav-link active"
-		href="Productos.jsp"> <FONT COLOR="white ">Productos </FONT>
-	</a> <a class="flex-sm-fill text-sm-center nav-link" href="personas.jsp">
-		<FONT COLOR="white">Personas </FONT>
-	</a> <a class="flex-sm-fill text-sm-center nav-link  " href="rol.jsp"><FONT
-		COLOR="white">Roles </FONT></a> <a
-		class="flex-sm-fill text-sm-center nav-link" href="Salas.jsp"> <FONT
-		COLOR="white">Salas </FONT></a> <a
-		class="flex-sm-fill text-sm-center nav-link" href="Horarios.jsp">
-		<FONT COLOR="white">Horarios </FONT>
-	</a> <a class="flex-sm-fill text-sm-center nav-link " href="Peliculas.jsp">
-		<FONT COLOR="white">Peliculas </FONT>
-	</a> <a class="flex-sm-fill text-sm-center nav-link " href="Carteleras.jsp">
-		<FONT COLOR="white">Carteleras </FONT>
-	</a>
-</nav>
 
 <body>
 
@@ -237,7 +218,7 @@ window.onload = cargarcombo();
 
 
 
-	<button id="EDITAR" onclick="MOSTRARCRUD()">CRUD</button>
+	<button id="EDITAR" onclick="MOSTRARCRUD()" class="far fa-edit fa-2x"></button>
 	<div>
 
 		<div class="tabla" id="tabladiv">
