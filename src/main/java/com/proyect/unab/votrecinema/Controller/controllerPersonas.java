@@ -8,9 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 import com.proyect.unab.votrecinema.DAO.ClsPersona;
-import com.proyect.unab.votrecinema.DAO.ClsProveedores;
 import com.proyect.unab.votrecinema.Entidades.Personas;
-import com.proyect.unab.votrecinema.Entidades.Proveedor;
+
 
 /**
  * Servlet implementation class controllerPersonas
@@ -39,12 +38,14 @@ public class controllerPersonas extends HttpServlet {
 		String dui = null;
 		String id= "";
 		try {
-			 id =(request.getParameter("id"));	
+			 id = (request.getParameter("id"));	
 		} catch (Exception e) {
 			id="0";
 		}
 		
-		
+		if(id.equals("")) {
+			id="0";
+		}
 	
 		try {
 			
@@ -61,7 +62,7 @@ public class controllerPersonas extends HttpServlet {
 		} catch (Exception e) {
 			
 		}
-		int idper = Integer.parseInt(id.replace(" ", ""));
+		int idper = Integer.parseInt(id.replace(" ",""));
 if (eliminar.equals("btne")) {
 			
 			Personas per = new Personas();
