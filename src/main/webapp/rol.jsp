@@ -264,7 +264,7 @@
 window.onload = cargarcombo();
 window.onload = cargarcomborol();
 		</script>
-	<button id="EDITAR" onclick="MOSTRARCRUD()">CRUD</button>
+	<button id="EDITAR" onclick="MOSTRARCRUD()" class="far fa-edit fa-2x"></button>
 	<div>
 
 		<div class="tabla" id="tabladiv">
@@ -282,7 +282,7 @@ window.onload = cargarcomborol();
 		</div>
 
 
-		<div class="crudRoles" id="PANELCRUD" style="display: none;">
+		<div class="crud" id="PANELCRUD" style="display: none;">
 			<center>
 				<input type="hidden" id="id"> <br>
 				<label>Usuario</label>

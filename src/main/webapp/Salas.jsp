@@ -24,8 +24,6 @@
 	style="font-family: Brush Script MT, arial"  > <font COLOR="black"> SALAS</font></h1>
 
 
-
-
 <body>
 
 
@@ -63,7 +61,7 @@
 					datos.forEach(function (item) {
 						tabla.innerHTML += `
 							 <tr onclick="seleccionar()" >
-								<td id="id"> ${item.idSala} </td>
+								<td style="display:none;"> ${item.idSala} </td>
 							    <td >  ${item.Capacidad} </td>
 							   <td> ${item.Numero_Sala}</td>
 							   <td>
@@ -186,7 +184,7 @@
 		<div class="tabla" id="tabladiv">
 			<table id="tablaDatos" onclick="leerdatos() " class="table table-sm table-dark">
 				<thead >
-					<th>ID</th>
+					<th style="display:none;">ID</th>
 					<th>CAPACIDAD</th>
 					<th>NUMERO DE SALA</th>
 					<th> ACCIONES </th>

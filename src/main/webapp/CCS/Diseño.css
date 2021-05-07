@@ -19,8 +19,12 @@ body {
 	display: inline-block;
 	width: 98%;
 	height: 450px;
+	
 }
-
+#tablahorarios{
+	
+	text-align: center;
+}
 .crud {
 	position: absolute;
 	display: inline-block;
@@ -36,6 +40,7 @@ body {
 	width: 22%;
 	height: 380px;
 }
+
 
 label {
 	border-bottom: 1px solid #19191a;

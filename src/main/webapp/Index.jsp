@@ -4,7 +4,7 @@
 <LINK REL=StyleSheet HREF="CCS/estilo.css" TYPE="text/css"/>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>LOGUIN</title>
 </head>
 <body >
 

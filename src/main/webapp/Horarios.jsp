@@ -21,23 +21,7 @@
 
 <h1 class="text-center display-1"
 	style="font-family: Brush Script MT, arial"  > <font COLOR="black"> HORARIOS</font></h1>
-<style type="text/css">
-<!--
-body {
-	background-image:
-		url(https://previews.123rf.com/images/peshkova/peshkova1708/peshkova170800949/84565450-resumen-circuito-cerebro-fondo-concepto-de-inteligencia-artificial-representaci%C3%B3n-3d.jpg);
-	background-position: center center;
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-	background-size: cover;
-}
 
-#mail {
-	width: 100%;
-	position: fixed;
-}
--->
-</style>
 
 <body>
 
@@ -59,7 +43,7 @@ $(document).ready(function () {
 
 			tabla.innerHTML += `
 	 <tr>
-		<td> ${item.idHorario} </td>
+		<td style="display:none;"> ${item.idHorario} </td>
 	    <td> <time> ${item.HoraInicio} </time></td>
 	   
 	</tr>
@@ -74,7 +58,7 @@ $(document).ready(function () {
 
 	<table class="table table-dark" id="tablahorario">
 		<thead>
-			<th>ID HORARIO</th>
+			<th style="display:none;">ID HORARIO</th>
 			<th>HORA DE INICIO</th>
 		
 		</thead>
