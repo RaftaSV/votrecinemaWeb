@@ -4,7 +4,7 @@
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+
 <title>VOTRECINEMA</title>
 <!-- Required meta tags -->
 <meta charset="utf-8">
@@ -22,7 +22,6 @@
 <h1 class="text-center display-1"
 	style="font-family: Brush Script MT, arial"  > <font COLOR="black"> HORARIOS</font></h1>
 
-
 <body>
 
 
@@ -36,7 +35,7 @@ $(document).ready(function () {
 	}, function (response) {
 		//Recibir informacion
 
-		let datos = JSON.parse(response);
+		let datos = response;
 		console.log(datos);
 		var tabla = document.getElementById('tablahorario');
 		for (let item of datos) {
@@ -44,7 +43,7 @@ $(document).ready(function () {
 			tabla.innerHTML += `
 	 <tr>
 		<td style="display:none;"> ${item.idHorario} </td>
-	    <td> <time> ${item.HoraInicio} </time></td>
+	    <td style="text-align:center;"> <time> ${item.HoraInicio} </time></td>
 	   
 	</tr>
 `
@@ -59,11 +58,9 @@ $(document).ready(function () {
 	<table class="table table-dark" id="tablahorario">
 		<thead>
 			<th style="display:none;">ID HORARIO</th>
-			<th>HORA DE INICIO</th>
+			<th style="text-align:center;">HORA DE INICIO</th>
 		
 		</thead>
 	</table>
-
-
 </body>
 </html>

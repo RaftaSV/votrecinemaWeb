@@ -30,6 +30,7 @@ public class ClsHorarios {
                 hor.setIdHorario(resultado.getInt("idHorario"));
                 hor.setHoraInicio(resultado.getTime("HoraInicio"));
                 lista.add(hor);
+             
             }
             conectar.close();
 

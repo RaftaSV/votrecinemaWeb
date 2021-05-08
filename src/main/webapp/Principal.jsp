@@ -42,7 +42,7 @@
 	<div class="wrapper">
 		<nav id="sidebar">
 			<div class="sidebar-header" id="menu">
-				<h3>VOTRECINEMA</h3>
+				
 			</div>
 			<button type="button" class="button">PELICULAS</button>
 			<br>
@@ -66,6 +66,7 @@
 		</nav>
 
 		<!-- CONTENEDOR -->
+		
 		<div id="content">
 			<div class="container-fluid" id="boton">
 
@@ -83,7 +84,6 @@
 		</div>
 
 	</div>
-
 
 
 

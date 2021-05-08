@@ -1,11 +1,7 @@
 package com.proyect.unab.votrecinema.Controller;
 
 import java.io.IOException;
-import java.sql.Date;
-import java.sql.Time;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Scanner;
+
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -14,9 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 import com.proyect.unab.votrecinema.DAO.ClsHorarios;
-import com.proyect.unab.votrecinema.DAO.ClsProveedores;
 import com.proyect.unab.votrecinema.Entidades.Horarios;
-import com.proyect.unab.votrecinema.Entidades.Proveedor;
 
 /**
  * Servlet implementation class controllerHorarios
@@ -72,22 +66,9 @@ public class controllerHorarios extends HttpServlet {
 			cls.EliminarHorario(hor);
 			response.sendRedirect("Horarios.jsp");
 
-		} else {			
-			if (Id > 0) {
-				System.out.println(Id);
-				Horarios hora = new Horarios();
-				hora.setIdHorario(Id);
-				hora.setHoraInicio(horaInicio);
-				ClsHorarios cls = new ClsHorarios();
-				cls.ActualizarHorario(hora);
-			} 
-			else {
-				Horarios hora = new Horarios();
-				hora.setHoraInicio(horaInicio);
-				ClsHorarios cls = new ClsHorarios();
-				cls.GuardarHorarios(hora);
-			}
-		}
+		} 
+			
+		
 	}
 
 	/**
@@ -111,6 +92,7 @@ public class controllerHorarios extends HttpServlet {
 		
 		//append cadena especificada a una secuencia de caracteres
 		response.getWriter().append(json.toJson(hora.cargarHorarios()));
+		
 
 	}
 
