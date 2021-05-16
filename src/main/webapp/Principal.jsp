@@ -38,7 +38,8 @@
 <title>VOTRECINEMA</title>
 </head>
 <body>
-
+	<% HttpSession sesion = (HttpSession) request.getSession();
+	 String usu = String.valueOf(sesion.getAttribute("usu")); %>
 	<div class="wrapper">
 		<nav id="sidebar">
 			<div class="sidebar-header" id="menu">
@@ -69,16 +70,14 @@
 		
 		<div id="content">
 			<div class="container-fluid" id="boton">
-
+            
 				<button type="button" id="sidebarCollapse" class="navbar-btn">
 					<span></span> <span></span> <span></span>
 				</button>
-				<button class="btn btn-dark d-inline-block d-lg-none ml-auto"
-					type="button" data-toggle="collapse"
-					data-target="#navbarSupportedContent"
-					aria-controls="navbarSupportedContent" aria-expanded="false"
-					aria-label="Toggle navigation"></button>
+				  	
+				<label id="usuario"> <%=usu%> </label> 	
 			</div>
+			
 			<div id="contenedor"></div>
 
 		</div>
@@ -95,13 +94,13 @@
 			});
 		});
 		var iframe = document.createElement('iframe');
+	
 		function proveedores() {
 			var link = "http://localhost:8080/Votre/Proveedores.jsp"
 			iframe.remove();
 			iframe.frameBorder = 0;
 			iframe.width = "100%";
 			iframe.height = "98%";
-
 			iframe.setAttribute("src", link);
 			document.getElementById("contenedor").appendChild(iframe);
 
@@ -112,7 +111,6 @@
 			iframe.frameBorder = 0;
 			iframe.width = "100%";
 			iframe.height = "98%";
-
 			iframe.setAttribute("src", link);
 			document.getElementById("contenedor").appendChild(iframe);
 		}
@@ -164,5 +162,7 @@
 	}
 	
 	</script>
+
+	
 </body>
 </html>

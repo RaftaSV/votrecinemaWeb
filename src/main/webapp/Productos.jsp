@@ -121,22 +121,26 @@
 								contador++;
 							}else if (contador == 6) {
 								pro = selectedRow[j].innerText;
- 
-								console.log(pro);
 								contador++;
 							}
 
 						}
 						if (idProducto > 0) {
 							var select=document.getElementById('combo');
-							for(var i=1;i<select.length;i++)
+							for(var i=0;i<select.length;i++)
 							{
-								if(select.options[i].text==pro)
+								
+								if(select.options[i].value==proveedor)
 								{
 									// seleccionamos el valor que coincide
-									select.selectedIndex=i;
+							
+									select.selectedIndex= i;
+									break
 								}else{
+									
+									//si ninguno coincide selecionamos el valor que esta en la posicion 0
 									select.selectedIndex=0;
+									
 								}
 							}
 						
@@ -144,10 +148,7 @@
 							document.getElementById('Producto').value = producto;
 							document.getElementById('Precio').value = precio;
 							document.getElementById('Cantidad').value = cantidad;
-							
-						
-							
-
+		
 						}
 					}
 				}
@@ -188,7 +189,7 @@
 					precio = $("#Precio").val();
 					cantidad = $("#Cantidad").val();
 					idpro =$("#combo").val();
-				Eliminar="no";
+				  Eliminar="no";
 				 
 				
 				$.get('controllerProductos', {
@@ -210,7 +211,7 @@
 			
 			}
 			
-window.onload = cargarcombo();
+    window.onload = cargarcombo();
 		</script>
 
 

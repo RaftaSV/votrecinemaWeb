@@ -39,7 +39,7 @@ public class controllerProveedores extends HttpServlet {
 		int id;
 		
 		try {
-			id = Integer.parseInt(request.getParameter("id"));
+			id = Integer.parseInt(request.getParameter("id").replace(" " , ""));
 
 		} catch (Exception e) {
 			id = 0;
@@ -52,7 +52,7 @@ public class controllerProveedores extends HttpServlet {
 			direccion = request.getParameter("direccion");
 			
 		} catch (Exception e) {
-			id = 0;
+		
 		}
 		try {
 
@@ -93,6 +93,7 @@ public class controllerProveedores extends HttpServlet {
 				cls.GuardarProveedor(pro);
 
 			}
+			
 		}
 
 	}

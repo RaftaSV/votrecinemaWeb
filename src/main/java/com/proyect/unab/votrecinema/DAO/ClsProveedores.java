@@ -66,7 +66,6 @@ public class ClsProveedores {
 			call.setString("pNombre", pro.getNombre());
 			call.setString("pTelefono", pro.getTelefono());
 			call.setString("pDireccion", pro.getDireccion());
-
 			call.execute();
 			System.out.println("Actualizacion exitosa");
 

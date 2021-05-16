@@ -164,7 +164,7 @@
 			direccion = $("#direccion").val();
 			id = $("#idpro").val();
 			Eliminar="no";
-			console.log(nombre);
+			console.log(id);
 			$.get('controllerProveedores', {
 				
 				id, nombre, direccion, telefono, Eliminar

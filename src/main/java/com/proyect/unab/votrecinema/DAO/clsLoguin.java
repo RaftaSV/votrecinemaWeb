@@ -14,6 +14,7 @@ public class clsLoguin {
     boolean res = false;
     public int rol=0;
     public  int id;
+    public String usuario;
     public boolean Loguin(String usu, String pass) {
         ArrayList<Roles> listarUsuarioPass = new ArrayList<>();
         ArrayList<Roles> ListaPass = new ArrayList<>();
@@ -37,6 +38,7 @@ public class clsLoguin {
            passbase= i.getPasword();
            rol = i.getTipoRol();
            id=i.getIdRol();
+           usuario = i.getUsuario();
            }
            CallableStatement st2 = conectar.prepareCall("call SP_S_CRIP(?)");
             st2.setString("PcripPass", pass);

@@ -69,8 +69,14 @@ public class ControllerLogin extends HttpServlet {
 				int tipo = cls.rol;
 				
 				if (tipo == 2) {
+					String usuario = cls.usuario;
+					
+					request.getSession().setAttribute("usu", usuario.toUpperCase());
 					response.sendRedirect("Principal.jsp");
 				}
+			}else {
+				
+				response.sendRedirect("Index .jsp");
 			}
 		}
 	}
