@@ -85,29 +85,6 @@
 
 	}
 
-
-	function seleccionar() {
-
-		var index,
-			table = document.getElementById('tablaDatos');
-
-		for (var i = 1; i < table.rows.length; i++) {
-			table.rows[i].onclick = function () {
-				// remove the background from the previous selected row
-				if (typeof index !== "undefined") {
-					table.rows[index].classList.toggle("selected");
-				}
-				console.log(typeof index);
-				// get the selected row index
-				index = this.rowIndex;
-				// add class selected to the row
-				this.classList.toggle("selected");
-				console.log(typeof index);
-			};
-		}
-
-	}
-
 	function leerdatos() {
 		var rowIdx;
 
@@ -201,7 +178,7 @@
 				<br> <input type="text" id="capacidad"> <br> 
 				<label>Numero de Sala</label>
 				<br> <input type="text" id="NumeroSala"> <br> 
-				
+				<br>
 
 				<button onclick="Guardar()">Guardar</button>
 			</center>

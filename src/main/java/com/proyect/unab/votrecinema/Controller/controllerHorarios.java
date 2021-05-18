@@ -1,7 +1,7 @@
 package com.proyect.unab.votrecinema.Controller;
 
 import java.io.IOException;
-
+import java.sql.Time;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -38,14 +38,14 @@ public class controllerHorarios extends HttpServlet {
 		int Id;
 		
 		try {
-			Id = Integer.parseInt(request.getParameter("id"));
+			Id = Integer.parseInt(request.getParameter("id").replace(" ", ""));
 
 		} catch (Exception e) {
 			Id = 0;
 		}
-		
+	
 		try {
-			horaInicio = request.getParameter("horaInicio");
+			horaInicio = request.getParameter("hora");
 			
 		} catch (Exception e) {
 			Id = 0;
@@ -66,7 +66,23 @@ public class controllerHorarios extends HttpServlet {
 			cls.EliminarHorario(hor);
 			response.sendRedirect("Horarios.jsp");
 
-		} 
+		} else {
+			System.out.println(Id);
+			if (Id>0) {
+				Horarios hora = new Horarios();
+				hora.setIdHorario(Id);
+				hora.setHoraInicio(Time.valueOf(horaInicio + ":00"));
+				ClsHorarios cls = new ClsHorarios();
+				cls.ActualizarHorario(hora);
+				
+			}else {
+				Horarios hora = new Horarios();
+				hora.setHoraInicio(Time.valueOf(horaInicio + ":00"));
+				ClsHorarios cls = new ClsHorarios();
+			cls.GuardarHorarios(hora);				
+			}
+			
+		}
 			
 		
 	}

@@ -167,7 +167,7 @@
 							datos.forEach(function (item) {
 								combo.innerHTML += `
 									<option value="${item.idProveedor}">${item.Nombre} </option>
-										<td style="display:none;">  </td>
+										
 									`
 
 							})

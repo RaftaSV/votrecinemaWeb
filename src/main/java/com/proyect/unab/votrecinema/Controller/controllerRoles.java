@@ -54,10 +54,10 @@ public class controllerRoles extends HttpServlet {
 		}
 		try {
 	
-			idPersona = Integer.parseInt(request.getParameter("idpro"));
-			usuario  = request.getParameter("producto");
-			password  = request.getParameter("producto");
-			tiporol = Integer.parseInt(request.getParameter("cantidad"));
+			idPersona = Integer.parseInt(request.getParameter("idpersona"));
+			usuario  = request.getParameter("usuario");
+			password  = request.getParameter("password");
+			tiporol = Integer.parseInt(request.getParameter("tiporol"));
 			
 		} catch (Exception e) {
 			idPersona=0;

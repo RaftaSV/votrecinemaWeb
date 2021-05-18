@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html>
-<script
-	src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"
-	type="text/javascript"></script>
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
@@ -63,26 +61,35 @@
 					//Recibir informacion
 
 					let datos = JSON.parse(response);
-					console.log(datos);
+					//console.log(datos);
 
 					var tabla = document.getElementById('tablaroles');
 					for (let item of datos) {
-
+						  var tipo =item.TipoRol;
+						if(tipo==0){
+							tipo="ADMIN";
+						}else if(tipo ==1){
+							tipo="CAJERO";
+						}else{
+							tipo="USUARIO";
+						}
+						
 						tabla.innerHTML += `
+					
 				 <tr>
-					<td style="display:none;"> ${item.idRol} </td>
+					<td  style="display: none;"> ${item.idRol} </td>
 					<td>${item.Nombres} </td>
 				    <td> ${item.Usuario} </td>
-				    <td style="display:none;"> ${item.Password}</td>
-				    <td>${item.TipoRol} </td>
-				    <td style="display:none;" >${item.Id_Persona}</td>
+				    <td style="display: none;" > ${item.Pasword}</td>
+				    <td style="display: none;">${item.TipoRol} </td>
+				    <td style="display: none;">${item.Id_Persona}</td>
+				    <td> ${tipo} </td>
 				    <td>
 				    <a class="btn btn-danger" href="controllerRoles?id=${item.idRol}&Eliminar=btne"> ELIMINAR </a> 
 				    </td>
+				 
 					</tr>
-				`
-                  
-						
+				`	
 					}
 
 
@@ -92,7 +99,7 @@
 
 			function leerdatos() {
 				var rowIdx;
-				var idRol, usuario, password, tiporoll,persona,rol,tipo;
+				var idRol, usuario, password =" ", tiporoll,persona;
 				var tabla = document.getElementById('tablaroles');
 				var rows = tabla.getElementsByTagName('tr');
 				var selectedRow;
@@ -103,78 +110,52 @@
 						selectedRow = this.cells;
 						var contador = 1;
 						for (j = 0; j < selectedRow.length; j++) {
-
 							if (contador == 1) {
 								idRol = selectedRow[j].innerText;
 								contador++;
 							} else if (contador == 2) {
-								usuario = selectedRow[j].innerText;
+								
 								contador++;
 							}
 							else if (contador == 3) {
-								password = selectedRow[j].innerText;
+								usuario = selectedRow[j].innerText;
 								contador++;
-							}
-							else if (contador == 4) {
-								tiporoll = selectedRow[j].innerText;
+							}else if (contador == 4) {
+								
 								contador++;
 							}
 							else if (contador == 5) {
+								tiporoll = selectedRow[j].innerText;
+								contador++;
+							}
+							else if (contador == 6) {
 								persona = selectedRow[j].innerText;
 								contador++;
-							}else if (contador == 6) {
-								rol = selectedRow[j].innerText;
- 
-								console.log(rol);
-								contador++;
 							}
 
 						}
 						if (idRol > 0) {
-							var select=document.getElementById('combo');
-							for(var i=1;i<select.length;i++)
+							var comborol=document.getElementById('comborol');
+							comborol.selectedIndex=tiporoll;
+					        var combo = document.getElementById('combo');
+							for(var i=0;i<combo.length;i++)
 							{
-								if(select.options[i].text==rol)
+								if(combo.options[i].value==persona)
 								{
 									// seleccionamos el valor que coincide
-									select.selectedIndex=i;
+									combo.selectedIndex=i;
+									break
 								}else{
-									select.selectedIndex=0;
+									combo.selectedIndex=0;
 								}
 							}
-						
 							document.getElementById('id').value = idRol;
 							document.getElementById('usuario').value = usuario;
 							document.getElementById('password').value = password;
-							
-							
-							
-
+	
 						}
 						
-						if (idRol > 0) {
-							var select=document.getElementById('comborol');
-							for(var i=1;i<select.length;i++)
-							{
-								if(select.options[i].text==tipo)
-								{
-									// seleccionamos el valor que coincide
-									select.selectedIndex=i;
-								}else{
-									select.selectedIndex=0;
-								}
-							}
-						
-							document.getElementById('id').value = idRol;
-							document.getElementById('usuario').value = usuario;
-							document.getElementById('password').value = password;
-							
-							
-							
 
-						}
-						
-					
 					    }
 					}
 				}
@@ -185,18 +166,27 @@
 
 				$(document).ready(function () {
 
-
-					$.post('controllerRoles', function (datos) {
+					$.post('controllerPersonas', function (datos) {
 						try {
-							var combo = document.getElementById('combo');
+							var combopersonas = document.getElementById('combo');
 							
 							datos.forEach(function (item) {
-								combo.innerHTML += `
-									<option value="${item.id_Persona}">${item.Nombres} </option>
-										<td style="display:none;">  </td>
+								combopersonas.innerHTML += `
+								console.log(${item.id_Persona});
+									<option value="${item.idPersona}">${item.Nombres} </option>
+										
 									`
 
 							})
+							
+							var comborol = document.getElementById('comborol');
+							
+							comborol.innerHTML += `
+								<option value=0> ADMIN</option>
+								<option value=1> CAJERO</option>
+								<option value=2> USUARIO</option>
+									
+								`
 							
 						} catch (e) {
 							// TODO: handle exception
@@ -206,30 +196,7 @@
 				})
 			}
 			
-			function cargarcomborol() {
-
-				$(document).ready(function () {
-
-
-					$.post('controllerRoles', function (datos) {
-						try {
-							var comborol = document.getElementById('comborol');
-							
-							datos.forEach(function (item) {
-								combo.innerHTML += `
-									<option value="${item.TipoRol}">Elige Rol </option>
-										<td style="display:none;">  </td>
-									`
-
-							})
-							
-						} catch (e) {
-							// TODO: handle exception
-						}
-
-					});
-				})
-			}
+		
 			
 			function Guardar() {
 				
@@ -262,7 +229,7 @@
 			}
 			
 window.onload = cargarcombo();
-window.onload = cargarcomborol();
+
 		</script>
 	<button id="EDITAR" onclick="MOSTRARCRUD()" class="far fa-edit fa-2x"></button>
 	<div>
@@ -273,16 +240,18 @@ window.onload = cargarcomborol();
 				<thead>
 					<th style="display: none;">ID</th>
 					<th>NOMBRES</th>
-					<th>USUARIOS</th>
+					<th>USUARIO</th>
+					<th style="display: none;">pass</th>
+					<th style="display: none;">TIPO</th>
+					<th style="display: none;" >IDPERSONA</th>
 					<th>TIPO</th>
-					<th style="display: none;">IDPERSONA</th>
 					<th>ACCIONES</th>
 				</thead>
 			</table>
 		</div>
 
 
-		<div class="crud" id="PANELCRUD" style="display: none;">
+		<div class="crudProductos" id="PANELCRUD" style="display: none;">
 			<center>
 				<input type="hidden" id="id"> <br>
 				<label>Usuario</label>
@@ -290,16 +259,16 @@ window.onload = cargarcomborol();
 				<label>Password</label>
 				<br> <input type="text" id="password"> <br> 
 				<label>Tipo Rol</label> <br> 
-				<select class="" id="comborol" required>
+				<select id="comborol" required>
 				</select> <br> 
 				<label>Persona</label>
-				<br> <select class="" id="combo" required>
+				<br> <select   id="combo" required>
 				</select> <br> <br>
 				<button onclick="Guardar()">Guardar</button>
 			</center>
 		</div>
 	</div>
-</div>
+
 </body>
 
 </html>

@@ -61,7 +61,7 @@ public class ClsHorarios {
         return lista;
     }
 
-    public void GuardarHorarios(Horarios ho, Date horaInicio) {
+    public void GuardarHorarios(Horarios ho) {
         try {
             CallableStatement call = conectar.prepareCall("call SP_I_HORARIOS(?)");
             call.setTime("pHora", (Time) ho.getHoraInicio());
@@ -76,10 +76,9 @@ public class ClsHorarios {
 
     public void ActualizarHorario(Horarios ho) {
     	try {
-			CallableStatement call = conectar.prepareCall("call SP_U_HORARIO(?,?,?,?)");
-			call.setInt("pId", (int) ho.getIdHorario());
-			call.setTime("pHoraInicio", (Time) ho.getHoraInicio());
-		
+    		CallableStatement call = conectar.prepareCall("call SP_U_HORARIOS(?,?)");
+            call.setInt("pId", ho.getIdHorario());
+            call.setTime("pHora", (Time) ho.getHoraInicio());
 			call.execute();
 			System.out.println("Actualizacion exitosa");
 

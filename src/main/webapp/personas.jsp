@@ -70,7 +70,7 @@
 						$('#tablaDatos tbody tr').remove();
 						datos.forEach(function (item) {
 							tabla.innerHTML += `
-								 <tr onclick="seleccionar()" >
+								 <tr  >
 									<td style="display:none;"> ${item.idPersona} </td>
 								    <td >  ${item.Nombres} </td>
 								   <td> ${item.Apellidos}</td>
@@ -95,14 +95,14 @@
 
 			for (var i = 1; i < table.rows.length; i++) {
 				table.rows[i].onclick = function () {
-					// remove the background from the previous selected row
+					// quitar el color anterior
 					if (typeof index !== "undefined") {
 						table.rows[index].classList.toggle("selected");
 					}
 					console.log(typeof index);
-					// get the selected row index
+					
 					index = this.rowIndex;
-					// add class selected to the row
+
 					this.classList.toggle("selected");
 					console.log(typeof index);
 				};
