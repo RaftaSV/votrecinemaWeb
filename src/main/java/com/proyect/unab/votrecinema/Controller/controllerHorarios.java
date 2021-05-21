@@ -96,17 +96,9 @@ public class controllerHorarios extends HttpServlet {
 		// TODO Auto-generated method stub
 		// doGet(request, response);
 		ClsHorarios hora = new ClsHorarios();
-		
-		//Gson se utiliza para convertir objetos Java
 		Gson json = new Gson();
-		
-		//response es un objeto que contendrá la información que enviaremos como respuesta al navegador
 		response.setContentType("application/json");
-		
-		//UTF-8 cadena de codificación
 		response.setCharacterEncoding("UTF-8");
-		
-		//append cadena especificada a una secuencia de caracteres
 		response.getWriter().append(json.toJson(hora.cargarHorarios()));
 		
 
