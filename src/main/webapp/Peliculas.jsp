@@ -99,6 +99,8 @@
 			    <td align="justify"> ${item.Sipnosis} </td>
 			    <td>
 				<a class="btn btn-danger" href="controllerPelicula?id=${item.idPelicula}&Eliminar=btne"  style="text-align:center;" > ELIMINAR </a> 
+				<a class="btn btn-success" href="controllerPelicula?id=${item.idPelicula}&Eliminar=btne"  style="text-align:center;" > ACTUALIZAR </a> 
+
 				</td>
 
 			</tr>
