@@ -8,7 +8,7 @@ public class Conexion {
 	public Conexion() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			con = DriverManager.getConnection("jdbc:mysql://localhost/votrecinema", "root", "root");
+			con = DriverManager.getConnection("jdbc:mysql://localhost/votrecinemaweb", "root", "root");
 			System.out.println("CONECTADO A LA BD");
 
 		} catch (Exception e) {

@@ -14,53 +14,18 @@
 
 </head>
 
-<nav class="nav nav-pills flex-column flex-sm-row">
-	<a class="flex-sm-fill text-sm-center nav-link  "
-		href="Proveedores.jsp"> <FONT COLOR="white">Proveedores </FONT></a> <a
-		class="flex-sm-fill text-sm-center nav-link " href="Productos.jsp">
-		<FONT COLOR="white ">Productos </FONT>
-	</a> <a class="flex-sm-fill text-sm-center nav-link" href="personas.jsp">
-		<FONT COLOR="white">Personas </FONT>
-	</a> <a class="flex-sm-fill text-sm-center nav-link  " href="rol.jsp"><FONT
-		COLOR="white">Roles </FONT> </a> <a
-		class="flex-sm-fill text-sm-center nav-link " href="Salas.jsp"> <FONT
-		COLOR="white">Salas </FONT></a> <a
-		class="flex-sm-fill text-sm-center nav-link " href="Horarios.jsp">
-		<FONT COLOR="white">Horarios </FONT>
-	</a> <a class="flex-sm-fill text-sm-center nav-link active"
-		href="Peliculas.jsp"> <FONT COLOR="white">Peliculas </FONT></a> <a
-		class="flex-sm-fill text-sm-center nav-link " href="Carteleras.jsp">
-		<FONT COLOR="white">Carteleras </FONT>
-	</a>
-
-</nav>
 
 <h1 class="text-center display-1"
 	style="font-family: Brush Script MT, arial">
 	<font COLOR="black"> PELICULAS</font>
 </h1>
-<style type="text/css">
-<!--
-body {
-	background-image:
-		url(https://previews.123rf.com/images/peshkova/peshkova1708/peshkova170800949/84565450-resumen-circuito-cerebro-fondo-concepto-de-inteligencia-artificial-representaci%C3%B3n-3d.jpg);
-	background-position: center center;
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-	background-size: cover;
-}
-
-#mail {
-	width: 100%;
-	position: fixed;
-}
--->
-</style>
 
 <body>
 
 
 	<script type="text/javascript">
+	
+	
 		$(document).ready(function() {
 
 			$.post('controllerPelicula', {
@@ -74,15 +39,67 @@ body {
 				
 				var tabla = document.getElementById('tablapelicula');
 				for (let item of datos) {
-
+           var hora = item.Duracion ;
+          var minutos = item.Duracion.substr(2,3).replace(":","")
+           hora = hora.substr(0,2);
+           if(hora!=01){
+        	   if(minutos>1 && minutos<9){
+        		   hora=hora.replace("0","")+" Horas con " +minutos.replace("0","")   + " minutos " ;
+        		  
+        	   }else if(minutos>9){
+        		   
+        		   hora=hora.replace("0","")+" Horas con " + minutos + " minutos" ;
+        	   }else{
+        		   
+        		   hora=hora.replace("0","")+" Horas con " +minutos.replace("0","")   + " minuto " ;
+        	   }
+        	   
+           }else{
+        	   if(minutos>1 && minutos<9){
+        		   hora=hora.replace("0","")+" Hora con " +minutos.replace("0","")   + " minutos " ;
+        		  
+        	   }else if(minutos>9){
+        		   
+        		   hora=hora.replace("0","")+" Hora con " + minutos + " minutos" ;
+        	   }else{
+        		   
+        		   hora=hora.replace("0","")+" Hora con " +minutos.replace("0","")   + " minuto " ;
+        	   }
+        	   
+           }
+         var Tipo = item.Tipo;
+         var clasificacion = item.clasificacion;
+        if (clasificacion ==0){
+        	clasificacion ="Para toda la familia";
+        	
+        }else if (clasificacion ==1){
+        	
+        	clasificacion ="Para mayores de 15 años";
+        }else{
+        	
+        	clasificacion ="Para mayores de 18 años";
+ 	
+        }
+         
+         if (Tipo == 0){
+        	 Tipo ="2D";
+         }else {
+        	 Tipo ="3D"; 
+         }
+					
 					tabla.innerHTML += `
 			 <tr>
 				<td> ${item.idPelicula} </td>
+				<td> <img src="Imagenes/${item.Portada}" WIDTH=150 HEIGHT=250 > </td>
 			    <td>  ${item.Nombre} </td>
-			    <td>  ${item.Duracion} </td>
+			    <td>  ${hora}  </td>
 			    <td>  ${item.Year} </td>
-			    <td> ${item.Sipnosis} </td>
-			    
+			    <td>  ${Tipo} </td>
+			    <td>  ${clasificacion} </td>
+			    <td align="justify"> ${item.Sipnosis} </td>
+			    <td>
+				<a class="btn btn-danger" href="controllerPelicula?id=${item.idPelicula}&Eliminar=btne"  style="text-align:center;" > ELIMINAR </a> 
+				</td>
 
 			</tr>
 		`
@@ -95,10 +112,14 @@ body {
 	<table class="table table-dark" id="tablapelicula">
 		<thead>
 			<th>ID PELICULA</th>
+			<th> PORTADA </th>  
 			<th>NOMBRE</th>
-			<th>DURACION</th>
+			<th> DURACION </th>
 			<th>FECHA DE ESTRENO</th>
+			<th> TIPO </th>
+			<th> CLASIFICACION </th>
 			<th>SINOPSIS</th>
+			<th>ACCIONES</th> 
 
 		</thead>
 	</table>

@@ -125,12 +125,13 @@ function leerdatos() {
 }
 
 function Guardar() {
-	
 	$(document).ready(function () {
 	var id, hora, Eliminar;
 	hora = $("#Horario").val();
 	id = $("#id").val();
 	Eliminar="no";
+	
+	
 	$.get('controllerHorarios', {
 		
 		Eliminar,id,hora

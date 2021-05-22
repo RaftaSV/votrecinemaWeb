@@ -19,7 +19,7 @@ public class Peliculas {
 
     private int idPelicula;
     private String Nombre;
-    private byte[] Portada;
+    private String Portada;
     private Date Year;
     private Time  Duracion;
     private String Sipnosis;
@@ -39,10 +39,10 @@ public class Peliculas {
 	public void setNombre(String nombre) {
 		Nombre = nombre;
 	}
-	public byte[] getPortada() {
+	public String getPortada() {
 		return Portada;
 	}
-	public void setPortada(byte[] portada) {
+	public void setPortada(String portada) {
 		Portada = portada;
 	}
 	public Date getYear() {

@@ -30,7 +30,7 @@ public class ClsPeliculas {
                 Peliculas peli = new Peliculas();
                 peli.setIdPelicula(resultado.getInt("idPeliculas"));
                 peli.setNombre(resultado.getString("Nombre"));
-                peli.setPortada(resultado.getBytes("Portada"));
+                peli.setPortada(resultado.getString("Portada"));
                 peli.setYear(resultado.getDate("Yearr"));
                 peli.setDuracion(resultado.getTime("Duracion"));
                 peli.setSipnosis(resultado.getString("Sipnosis"));
@@ -51,7 +51,7 @@ public class ClsPeliculas {
         try {
             CallableStatement call = conectar.prepareCall("call SP_I_PELICULAS(?,?,?,?,?,?,?,?)");
             call.setString("pNombre", peli.getNombre());
-            call.setBytes("pPortada", peli.getPortada());
+            call.setString("pPortada", peli.getPortada());
             call.setDate("pYear", new java.sql.Date(peli.getYear().getTime()));
             call.setTime("pDuracion", peli.getDuracion());
             call.setString("pSipnosis", peli.getSipnosis());
@@ -70,7 +70,7 @@ public class ClsPeliculas {
         try {
             CallableStatement call = conectar.prepareCall("call SP_I_PELICULASMAYORES(?,?,?,?,?,?,?,?)");
             call.setString("pNombre", peli.getNombre());
-            call.setBytes("pPortada", peli.getPortada());
+            call.setString("pPortada", peli.getPortada());
             call.setDate("pYear", new java.sql.Date(peli.getYear().getTime()));
             call.setTime("pDuracion", peli.getDuracion());
             call.setString("pSipnosis", peli.getSipnosis());
@@ -92,21 +92,18 @@ public class ClsPeliculas {
             CallableStatement call = conectar.prepareCall("call SP_U_PELICULAS(?,?,?,?,?,?,?,?,?)");
             call.setInt("pID", peli.getIdPelicula());
             call.setString("pNombre", peli.getNombre());
-            call.setBytes("pPortada", peli.getPortada());
+            call.setString("pPortada", peli.getPortada());
             call.setDate("pYear", new java.sql.Date(peli.getYear().getTime()));
             call.setTime("pDuracion", peli.getDuracion());
             call.setString("pSipnosis", peli.getSipnosis());
             call.setInt("pTipo", peli.getTipo());
             call.setInt("pClasificacion", peli.getClasificacion());
             call.setDouble("pPrecio", peli.getPrecio());
-            int res = JOptionPane.showConfirmDialog(null, "¿Desea Actualizar este registro?", "Advertencia", JOptionPane.YES_NO_OPTION);
-            if (res == 0) {
+            
                 call.execute();
-                JOptionPane.showMessageDialog(null, "Actualizado exitosamente");
+                System.out.println( "Actualizado exitosamente");
                 conectar.close();
-            } else {
-
-            }
+        
 
             conectar.close();
         } catch (Exception e) {
@@ -120,21 +117,18 @@ public class ClsPeliculas {
             CallableStatement call = conectar.prepareCall("call SP_U_PELICULASMAYORES(?,?,?,?,?,?,?,?,?)");
             call.setInt("pID", peli.getIdPelicula());
             call.setString("pNombre", peli.getNombre());
-            call.setBytes("pPortada", peli.getPortada());
+            call.setString("pPortada", peli.getPortada());
             call.setDate("pYear", new java.sql.Date(peli.getYear().getTime()));
             call.setTime("pDuracion", peli.getDuracion());
             call.setString("pSipnosis", peli.getSipnosis());
             call.setInt("pTipo", peli.getTipo());
             call.setInt("pClasificacion", peli.getClasificacion());
             call.setDouble("pPrecio", peli.getPrecio());
-            int res = JOptionPane.showConfirmDialog(null, "¿Desea Actualizar este registro?", "Advertencia", JOptionPane.YES_NO_OPTION);
-            if (res == 0) {
+         
                 call.execute();
-                JOptionPane.showMessageDialog(null, "Actualizado exitosamente");
+                System.out.println("Actualizado exitosamente");
                 conectar.close();
-            } else {
-
-            }
+          
 
             conectar.close();
         } catch (Exception e) {
@@ -153,7 +147,7 @@ public class ClsPeliculas {
                 Peliculas peli = new Peliculas();
                 peli.setIdPelicula(resultado.getInt("idPeliculas"));
                 peli.setNombre(resultado.getString("Nombre"));
-                peli.setPortada(resultado.getBytes("Portada"));
+                peli.setPortada(resultado.getString("Portada"));
                 peli.setYear(resultado.getDate("Yearr"));
                 peli.setDuracion(resultado.getTime("Duracion"));
                 peli.setSipnosis(resultado.getString("Sipnosis"));
@@ -174,13 +168,9 @@ public class ClsPeliculas {
         try {
             CallableStatement call = conectar.prepareCall("call SP_D_PELICULAS(?)");
             call.setInt("pId", pelicula.getIdPelicula());
-            int res = JOptionPane.showConfirmDialog(null, "¿Desea Eliminar este registro?", "Advertencia", JOptionPane.YES_NO_OPTION);
-            if (res == 0) {
-                call.execute();
-                JOptionPane.showMessageDialog(null, "Eliminado exitosamente");
-            } else {
-
-            }
+            call.execute();
+               System.out.println("Eliminado exitosamente");
+           
             conectar.close();
 
         } catch (Exception e) {
@@ -198,7 +188,7 @@ public class ClsPeliculas {
                 Peliculas peli = new Peliculas();
                 peli.setIdPelicula(resultado.getInt("idPeliculas"));
                 peli.setNombre(resultado.getString("Nombre"));
-                peli.setPortada(resultado.getBytes("Portada"));
+                peli.setPortada(resultado.getString("Portada"));
                 peli.setYear(resultado.getDate("Yearr"));
                 peli.setDuracion(resultado.getTime("Duracion"));
                 peli.setSipnosis(resultado.getString("Sipnosis"));

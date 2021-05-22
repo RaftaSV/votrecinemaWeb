@@ -45,7 +45,8 @@
 			<div class="sidebar-header" id="menu">
 				
 			</div>
-			<button type="button" class="button">PELICULAS</button>
+			<button type="button" class="button"
+			 onclick ="peliculas()">PELICULAS</button>
 			<br>
 			<button type="button" class="button"
 				onclick="productos()">PRODUCTOS</button>
@@ -97,6 +98,16 @@
 	
 		function proveedores() {
 			var link = "http://localhost:8080/Votre/Proveedores.jsp"
+			iframe.remove();
+			iframe.frameBorder = 0;
+			iframe.width = "100%";
+			iframe.height = "98%";
+			iframe.setAttribute("src", link);
+			document.getElementById("contenedor").appendChild(iframe);
+
+		}
+		function peliculas() {
+			var link = "http://localhost:8080/Votre/Peliculas.jsp"
 			iframe.remove();
 			iframe.frameBorder = 0;
 			iframe.width = "100%";

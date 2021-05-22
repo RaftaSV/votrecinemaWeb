@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 import com.proyect.unab.votrecinema.DAO.ClsPeliculas;
+import com.proyect.unab.votrecinema.DAO.ClsProveedores;
+import com.proyect.unab.votrecinema.Entidades.Peliculas;
+import com.proyect.unab.votrecinema.Entidades.Proveedor;
 
 /**
  * Servlet implementation class controllerPelicula
@@ -31,6 +34,34 @@ public class controllerPelicula extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+		String eliminar = "";
+		
+		int id =0;
+		
+		try {
+			id = Integer.parseInt(request.getParameter("id").replace(" " , ""));
+
+		} catch (Exception e) {
+			id = 0;
+		}
+		try {
+
+			eliminar = request.getParameter("Eliminar");
+
+		} catch (Exception e) {
+			
+		}
+		System.out.println(id);
+  if (eliminar.equals("btne")) {
+			
+			Peliculas pelicula = new Peliculas();
+			pelicula.setIdPelicula(id);
+			ClsPeliculas cls = new ClsPeliculas();
+			cls.eliminar(pelicula);
+			response.sendRedirect("Peliculas.jsp");
+
+		}
+		
 	}
 
 	/**
