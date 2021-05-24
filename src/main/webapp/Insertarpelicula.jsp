@@ -227,7 +227,8 @@
 
 		//cambiar la imagen por una en negro al dar click sobre seleccionar archivo
 		function fondonegroimagenselecionada() {
-			if($('#id'>0)){
+			var id = $('#id').val();
+			if(id>0){
 				
 			}else{
 			$("#portada").attr("src", "Imagenes/fondonegro.jpg");
