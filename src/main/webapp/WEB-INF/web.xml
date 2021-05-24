@@ -67,6 +67,12 @@
 		<description></description>
 		<servlet-class>com.proyect.unab.votrecinema.Controller.ControllerLogin</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>controllerCRUDPeliculas</servlet-name>
+		<display-name>controllerCRUDPeliculas</display-name>
+		<description></description>
+		<servlet-class>com.proyect.unab.votrecinema.Controller.controllerCRUDPeliculas</servlet-class>
+	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>controllerProveedores</servlet-name>
@@ -112,5 +118,9 @@
 		<servlet-name>ControllerLogin</servlet-name>
 		<url-pattern>/ControllerLogin</url-pattern>
 	</servlet-mapping>
+<servlet-mapping>
+	<servlet-name>controllerCRUDPeliculas</servlet-name>
+	<url-pattern>/controllerCRUDPeliculas</url-pattern>
+</servlet-mapping>
 
 </web-app>

@@ -1,17 +1,23 @@
 package com.proyect.unab.votrecinema.Controller;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.sql.Date;
+import java.sql.Time;
+
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.servlet.http.Part;
 import com.google.gson.Gson;
 import com.proyect.unab.votrecinema.DAO.ClsPeliculas;
-import com.proyect.unab.votrecinema.DAO.ClsProveedores;
 import com.proyect.unab.votrecinema.Entidades.Peliculas;
-import com.proyect.unab.votrecinema.Entidades.Proveedor;
 
+
+@MultipartConfig
 /**
  * Servlet implementation class controllerPelicula
  */
@@ -33,34 +39,9 @@ public class controllerPelicula extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-		String eliminar = "";
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
+
 		
-		int id =0;
-		
-		try {
-			id = Integer.parseInt(request.getParameter("id").replace(" " , ""));
-
-		} catch (Exception e) {
-			id = 0;
-		}
-		try {
-
-			eliminar = request.getParameter("Eliminar");
-
-		} catch (Exception e) {
-			
-		}
-		System.out.println(id);
-  if (eliminar.equals("btne")) {
-			
-			Peliculas pelicula = new Peliculas();
-			pelicula.setIdPelicula(id);
-			ClsPeliculas cls = new ClsPeliculas();
-			cls.eliminar(pelicula);
-			response.sendRedirect("Peliculas.jsp");
-
-		}
 		
 	}
 
@@ -75,7 +56,7 @@ public class controllerPelicula extends HttpServlet {
 		ClsPeliculas pelicula = new ClsPeliculas();
 		Gson json = new Gson();
 		response.setCharacterEncoding("UTF8");
-		
+
 		response.getWriter().append(json.toJson(pelicula.ListaPeliculas()));
 
 	}

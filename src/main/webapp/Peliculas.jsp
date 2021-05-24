@@ -42,27 +42,32 @@
            var hora = item.Duracion ;
           var minutos = item.Duracion.substr(2,3).replace(":","")
            hora = hora.substr(0,2);
+          var hora1 = hora=hora.replace("0","");
            if(hora!=01){
         	   if(minutos>1 && minutos<9){
         		   hora=hora.replace("0","")+" Horas con " +minutos.replace("0","")   + " minutos " ;
-        		  
+        		 
+        		   minutos=minutos.replace("0","");
         	   }else if(minutos>9){
         		   
         		   hora=hora.replace("0","")+" Horas con " + minutos + " minutos" ;
+        		   minutos=minutos;
         	   }else{
         		   
         		   hora=hora.replace("0","")+" Horas con " +minutos.replace("0","")   + " minuto " ;
+        		   minutos=minutos.replace("0","");
+
         	   }
         	   
            }else{
         	   if(minutos>1 && minutos<9){
         		   hora=hora.replace("0","")+" Hora con " +minutos.replace("0","")   + " minutos " ;
-        		  
+        		   minutos=minutos.replace("0","");
         	   }else if(minutos>9){
-        		   
         		   hora=hora.replace("0","")+" Hora con " + minutos + " minutos" ;
+        		   minutos=minutos;
         	   }else{
-        		   
+        		   minutos=minutos.replace("0","");
         		   hora=hora.replace("0","")+" Hora con " +minutos.replace("0","")   + " minuto " ;
         	   }
         	   
@@ -86,10 +91,10 @@
          }else {
         	 Tipo ="3D"; 
          }
-					
+		 
 					tabla.innerHTML += `
 			 <tr>
-				<td> ${item.idPelicula} </td>
+				<td style="display:none;"> ${item.idPelicula} </td>
 				<td> <img src="Imagenes/${item.Portada}" WIDTH=150 HEIGHT=250 > </td>
 			    <td>  ${item.Nombre} </td>
 			    <td>  ${hora}  </td>
@@ -98,8 +103,11 @@
 			    <td>  ${clasificacion} </td>
 			    <td align="justify"> ${item.Sipnosis} </td>
 			    <td>
-				<a class="btn btn-danger" href="controllerPelicula?id=${item.idPelicula}&Eliminar=btne"  style="text-align:center;" > ELIMINAR </a> 
-				<a class="btn btn-success" href="controllerPelicula?id=${item.idPelicula}&Eliminar=btne"  style="text-align:center;" > ACTUALIZAR </a> 
+				<a class="btn btn-success" href="Insertarpelicula.jsp?id=0"  style="text-align:center;" > NUEVA </a> 
+				<br>
+				<a class="btn btn-primary" href="Insertarpelicula.jsp?id=${item.idPelicula}&nombre=${item.Nombre}&hora=${hora1}&minutos=${minutos}&year=${item.Year}&tipo=${item.Tipo}&clasificacion=${item.clasificacion}&sinopsis=${item.Sipnosis}&portada=${item.Portada}&precio=${item.precio}"  style="text-align:center;" > ACTUALIZAR </a> 
+				<br>
+				<a class="btn btn-danger" href="controllerCRUDPeliculas?id=${item.idPelicula}"  style="text-align:center;" > ELIMINAR </a> 
 
 				</td>
 
@@ -113,7 +121,7 @@
 
 	<table class="table table-dark" id="tablapelicula">
 		<thead>
-			<th>ID PELICULA</th>
+			<th style="display:none;">ID PELICULA</th>
 			<th> PORTADA </th>  
 			<th>NOMBRE</th>
 			<th> DURACION </th>

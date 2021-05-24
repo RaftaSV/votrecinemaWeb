@@ -172,7 +172,7 @@
 							
 							datos.forEach(function (item) {
 								combopersonas.innerHTML += `
-								console.log(${item.id_Persona});
+								//console.log(${item.id_Persona});
 									<option value="${item.idPersona}">${item.Nombres} </option>
 										
 									`
