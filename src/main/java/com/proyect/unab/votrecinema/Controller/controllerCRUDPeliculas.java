@@ -175,6 +175,7 @@ try {
 			
 		}
 		response.sendRedirect("Peliculas.jsp");
+		
 	}
 
 }

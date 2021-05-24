@@ -51,6 +51,12 @@
 
 	</div>
 	<script type="text/javascript">
+	
+	function cargar(){
+	    opener.location.reload();
+	    window.close();
+	}
+	
 	function formatDate(date) {
 	    var d = new Date(date),
 	        month = '' + (d.getMonth() + 1),
@@ -167,7 +173,7 @@
 				} else {
 
 					return true;
-
+					
 				}
 				
 			}else{
@@ -187,7 +193,7 @@
 				} else {
 
 					return true;
-
+					window.opener.document.location="http://localhost:8080/Votre/Principal.jsp";
 				}
 				
 			}
