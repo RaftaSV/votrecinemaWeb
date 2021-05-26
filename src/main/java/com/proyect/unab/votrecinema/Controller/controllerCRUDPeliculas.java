@@ -104,7 +104,7 @@ try {
 			Peliculas peliculas = new Peliculas();
 			portada = request.getPart("imagenp");
 			String nombreimagen = portada.getSubmittedFileName();
-			String ruta = "C:\\Users\\rafap\\Documents\\GitHub\\votrecinemaWeb\\src\\main\\webapp\\Imagenes\\"
+			String ruta = "C:\\Users\\14-ck0013lab\\Documents\\GitHub\\votrecinemaWeb\\src\\main\\webapp\\Imagenes\\"
 					+ nombreimagen;
 			try {
 				FileOutputStream fileoutput = new FileOutputStream(ruta);
@@ -140,7 +140,7 @@ try {
 				portada = request.getPart("imagenp");
 				 nombreimagen = portada.getSubmittedFileName();
 				if(imagen!=nombreimagen) {
-				String ruta = "C:\\Users\\rafap\\Documents\\GitHub\\votrecinemaWeb\\src\\main\\webapp\\Imagenes\\"
+				String ruta = "C:\\Users\\14-ck0013lab\\Documents\\GitHub\\votrecinemaWeb\\src\\main\\webapp\\Imagenes\\"
 						+ nombreimagen;
 				FileOutputStream fileoutput = new FileOutputStream(ruta);
 				InputStream stream = portada.getInputStream();
