@@ -1,6 +1,7 @@
 package com.proyect.unab.votrecinema.Controller;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.sql.Time;
 
 import javax.servlet.ServletException;
@@ -79,7 +80,7 @@ public class controllerHorarios extends HttpServlet {
 				Horarios hora = new Horarios();
 				hora.setHoraInicio(Time.valueOf(horaInicio + ":00"));
 				ClsHorarios cls = new ClsHorarios();
-			cls.GuardarHorarios(hora);				
+		    	cls.GuardarHorarios(hora);				
 			}
 			
 		}
@@ -95,12 +96,33 @@ public class controllerHorarios extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		// doGet(request, response);
+		
+		String mensaje = "";
+		 Date fecha = null;
+		 int sala = 0;
 		ClsHorarios hora = new ClsHorarios();
 		Gson json = new Gson();
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
-		response.getWriter().append(json.toJson(hora.cargarHorarios()));
-		
+		 try {
+			 mensaje = request.getParameter("mensaje");
+			 fecha = Date.valueOf(request.getParameter("fecha"));
+			 sala = Integer.parseInt(request.getParameter("sala"));
+		} catch (Exception e) {
+			mensaje="null";
+		}
+			
+		if(mensaje.equals("1")) {
+			Horarios horario = new Horarios();
+			horario.setIds(sala);
+			horario.setFecha(fecha);
+			response.getWriter().append(json.toJson(hora.cargarHora(horario)));
+
+			System.out.println("insertar");
+			
+		}else {
+ 	response.getWriter().append(json.toJson(hora.cargarHorarios()));
+	}
 
 	}
 
