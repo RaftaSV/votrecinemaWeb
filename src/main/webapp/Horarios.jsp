@@ -131,14 +131,27 @@ function Guardar() {
 	id = $("#id").val();
 	Eliminar="no";
 	
+	if(hora => 9 ){
+		alert("No es un horario laboral");
+		$("#Hora").focus();
+		return false;
+	}
+	else if(hora <= 22 ){
+		alert("No es un horario laboral");
+		$("#Hora").focus();
+		return false;
+	}
 	
+	var bool = confirm("Desea guardar " + hora + " ?");
+	if (bool) {
+		document.getElementById('hora').value = "#Horario";
 	$.get('controllerHorarios', {
 		
 		Eliminar,id,hora
 		
 	});
   }
-
+	}
 )
 window.location.reload();
 }
