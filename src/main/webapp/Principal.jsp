@@ -58,7 +58,7 @@
 			<br>
 			<button type="button" class="button" onclick="Horerios()">HORARIOS</button>
 			<br>
-			<button type="button" class=" button">CARTELERAS</button>
+			<button type="button" class=" button" onclick="Carteleras()">CARTELERAS</button>
 			<br>
 			<button type="button" class="button">FACTURAS</button>
 		</nav>
@@ -167,6 +167,18 @@
 		document.getElementById("contenedor").appendChild(iframe);
 		
 	}
+	function Carteleras() {
+		var link = "http://localhost:8080/Votre/Carteleras.jsp"
+		iframe.remove();
+		iframe.frameBorder = 0;
+		iframe.width = "100%";
+		iframe.height = "98%";
+
+		iframe.setAttribute("src", link);
+		document.getElementById("contenedor").appendChild(iframe);
+		
+	}
+	
 	
 	</script>
 

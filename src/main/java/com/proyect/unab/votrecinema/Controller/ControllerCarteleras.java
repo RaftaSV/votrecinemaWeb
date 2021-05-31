@@ -39,7 +39,10 @@ public class ControllerCarteleras extends HttpServlet {
 		//doGet(request, response);
 		ClsCarteleras cartelera  = new ClsCarteleras();
 		Gson json = new Gson();
+		response.setCharacterEncoding("UTF8");
 		response.getWriter().append(json.toJson(cartelera.CargarDatos()));
+		
+		
 	}
 
 }

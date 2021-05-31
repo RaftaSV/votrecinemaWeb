@@ -17,17 +17,17 @@
 </head>
 
 <body>
-	<center>
-		<h1 style="font-family: Brush Script MT, arial">PELICULAS</h1>
-	</center>
+	
+		<h1 style="font-family: Brush Script MT, arial" align="center">PELICULAS</h1>
+	
 	<div id="imagen">
 		<img alt="" src="Imagenes/fondonegro.jpg" id="portada" width="100%"
 			height="100%">
 	</div>
-	<div id="crud">
+	<div id="crud" align="center">
 		<form action="controllerCRUDPeliculas" method="post"
 			enctype="multipart/form-data" onsubmit="return validar()">
-			<center>
+			
 				<input type="hidden" id="id" name="id"> <label>NOMBRE</label>
 				<br> <input type="hidden" id="portadaa" name="portadaa">
 				<input type="text" id="nombre" name="nombre"> <br> <label>PORTADA</label>
@@ -45,7 +45,7 @@
 				</select> <br> <br> <label>PRECIO</label> <br> <input
 					type="number" id="precio" name="precio" min="1" /> <br> <br>
 				<input type="submit" class="btn btn-success" value="GUARDAR ">
-			</center>
+			
 		</form>
 
 
@@ -57,9 +57,9 @@
 	    window.close();
 	}
 	
-	function formatDate(date) {
+	function formatofecha(date) {
 	    var d = new Date(date),
-	        month = '' + (d.getMonth() + 1),
+	        month = '' + (d.getMonth() +1),
 	        day = '' + d.getDate(),
 	        year = d.getFullYear();
 
@@ -134,7 +134,7 @@
 				var imagen = datos.get('portada');
 				document.getElementById('portada').src = "Imagenes/" + imagen;
 				var fecha = datos.get('year').replace(".","").replace('ene','Jan').replace('abr','Apr').replace('ago','Aug');
-				document.getElementById('fecha').value = formatDate(fecha);
+				document.getElementById('fecha').value = formatofecha(fecha);
 				document.getElementById('sinopsis').value = datos.get('sinopsis');
 				tipo.selectedIndex = datos.get('tipo');
 			    clasificacion.selectedIndex = datos.get('clasificacion');
