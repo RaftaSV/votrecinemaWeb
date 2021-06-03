@@ -23,6 +23,12 @@
 	width: 22%;
 	height: 280px;
 }
+.fecha{
+	background: white;
+	display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
 
 .crudProductos {
 	position: absolute;

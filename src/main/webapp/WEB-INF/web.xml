@@ -79,6 +79,12 @@
 		<description></description>
 		<servlet-class>com.proyect.unab.votrecinema.Controller.controllerCRUDcarteleras</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>ControllerClientes</servlet-name>
+		<display-name>ControllerClientes</display-name>
+		<description></description>
+		<servlet-class>com.proyect.unab.votrecinema.Controller.ControllerClientes</servlet-class>
+	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>controllerProveedores</servlet-name>
@@ -131,6 +137,10 @@
 <servlet-mapping>
 	<servlet-name>controllerCRUDcarteleras</servlet-name>
 	<url-pattern>/controllerCRUDcarteleras</url-pattern>
+</servlet-mapping>
+<servlet-mapping>
+	<servlet-name>ControllerClientes</servlet-name>
+	<url-pattern>/ControllerClientes</url-pattern>
 </servlet-mapping>
 
 </web-app>

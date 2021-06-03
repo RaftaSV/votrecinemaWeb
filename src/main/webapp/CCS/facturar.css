@@ -1,0 +1,46 @@
+#fecha {
+    background: white;
+    margin-left: 50%;
+    position: absolute;
+    display: inline-block;
+}
+
+#clientes {
+    display: inline-block;
+    margin-left: 80%;
+}
+
+#cliente {
+    display: inline-block;
+    margin-left: 80%;
+}
+
+#tablacartelera {
+    margin-left: 3%;
+    width: 30%;
+    height: 30%;
+    overflow: scroll;
+    display: inline-block;
+    position: absolute;
+}
+
+#tablaproductos {
+    overflow: scroll;
+    display: inline-block;
+    position: absolute;
+    margin-top: -2%;
+    margin-left: 73%;
+    width: 25%;
+    height: 30%;
+}
+
+#buscarcartelera {
+    margin-left: 3%;
+}
+
+#buscar {
+    margin-top: -4%;
+    margin-left: 73%;
+    display: inline-block;
+    position: absolute;
+}

@@ -251,7 +251,7 @@
 
 			function buscar() {
 
-				window.open('http://localhost:8080/Votre/Buscarpelicula.jsp', 'peliculas', 'location=no,menubar=no,status=no,toolbar=no');
+				window.open('http://localhost:8080/Votre/Buscarpelicula.jsp', 'peliculas', 'menubar=no,status=no,toolbar=no');
 			}
 
 			function Guardar() {

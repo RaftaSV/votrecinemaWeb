@@ -6,11 +6,7 @@
 <head>
 
 
-<script src="http://code.jquery.com/jquery-latest.js"></script>
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-	integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
-	crossorigin="anonymous" />
+
 <LINK REL=StyleSheet HREF="CCS/principal.css" TYPE="text/css" />
 <!-- Bootstrap CSS CDN -->
 <link rel="stylesheet"
@@ -60,7 +56,7 @@
 			<br>
 			<button type="button" class=" button" onclick="Carteleras()">CARTELERAS</button>
 			<br>
-			<button type="button" class="button">FACTURAS</button>
+			<button type="button" class="button" onclick="Facturar()">FACTURAS</button>
 		</nav>
 
 		<!-- CONTENEDOR -->
@@ -94,6 +90,16 @@
 	
 		function proveedores() {
 			var link = "http://localhost:8080/Votre/Proveedores.jsp"
+			iframe.remove();
+			iframe.frameBorder = 0;
+			iframe.width = "100%";
+			iframe.height = "98%";
+			iframe.setAttribute("src", link);
+			document.getElementById("contenedor").appendChild(iframe);
+
+		}
+		function Facturar() {
+			var link = "http://localhost:8080/Votre/Facturar.jsp"
 			iframe.remove();
 			iframe.frameBorder = 0;
 			iframe.width = "100%";
