@@ -82,64 +82,8 @@
             });
 
 
-            function leerdatos() {
-
-                var rowIdx;
-                var idProducto, producto, precio, cantidad, proveedor;
-                var tabla = document.getElementById('tablaproductos');
-                var rows = tabla.getElementsByTagName('tr');
-                var selectedRow;
-                var rowCellValue;
-                for (i = 0; i < rows.length; i++) {
-
-                    rows[i].onclick = function() {
-
-                        rowIdx = this.rowIndex;
-                        selectedRow = this.cells;
-                        var contador = 1;
-                        for (j = 0; j < selectedRow.length; j++) {
-
-                            if (contador == 1) {
-                                idProducto = selectedRow[j].innerText;
-                                contador++;
-                            } else if (contador == 2) {
-                                producto = selectedRow[j].innerText;
-                                contador++;
-                            } else if (contador == 3) {
-                                precio = selectedRow[j].innerText;
-                                contador++;
-                            } else if (contador == 4) {
-                                cantidad = selectedRow[j].innerText;
-                                contador++;
-                            } else if (contador == 5) {
-                                proveedor = selectedRow[j].innerText;
-                                contador++;
-                            }
-
-                        }
-                        if (idProducto > 0) {
-                            var select = document.getElementById('combo');
-                            for (var i = 0; i < select.length; i++) {
-
-                                if (select.options[i].value == proveedor) {
-                                    // seleccionamos el valor que coincide
-
-                                    select.selectedIndex = i;
-                                    break
-                                } else {
-
-                                    //si ninguno coincide selecionamos el valor que esta en la posicion 0
-                                    select.selectedIndex = 0;
-
-                                }
-                            }
 
 
-
-                        }
-                    }
-                }
-            }
 
 
             $(document).on("click", "#tablaproductos tr", function() {
