@@ -156,9 +156,6 @@ function solonumeros(e){
 		NumeroSala = $("#NumeroSala").val();
 		Eliminar="no";
 		
-		for (item.Sala){
-			
-		}
 		
 			if(capacidad=="" ){
 				alert("Es necesario llenar el campo de Capacidad");
@@ -173,6 +170,11 @@ function solonumeros(e){
 				alert("La sala ya existe");
 				$("#NumeroSala").focus();
 			}else{
+				var bool = confirm("Desea guardar la Sala numero " + NumeroSala + " ?");
+				if (bool) {
+					document.getElementById('capacidad').value = "#capacidad";
+					document.getElementById('NumeroSala').value = "#NumeroSala";
+					document.getElementById('idsala').value = "#idsala";
 					$.get('controllerSalas', {
 					
 					id, capacidad, NumeroSala ,Eliminar			
@@ -185,7 +187,7 @@ function solonumeros(e){
 				document.getElementById('idsala').value = "";
 				window.location.reload();
 			}		
-				
+			}
 			
 				
 				
