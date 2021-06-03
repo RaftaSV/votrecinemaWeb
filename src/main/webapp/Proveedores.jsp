@@ -165,7 +165,28 @@
 			id = $("#idpro").val();
 			Eliminar="no";
 			console.log(id);
-			$.get('controllerProveedores', {
+			
+			if(nombre == "" ){
+				alert("Debe rellenar un nombre");
+				$("#nombre").focus();
+				return false;
+				
+			}else if(telefono == ""){
+				alert("Ingrese un numero de telefono");
+				$("#telefono").focus();
+				return false;
+				
+			}else if(direccion == ""){
+				alert("Por favor, ingrese una direccion");
+				$("#direccion").focus();
+				return false;
+			}
+			var bool = confirm("Desea guardar el proveedor " + nombre + " ?");
+			if (bool) {
+				document.getElementById('nombre').value = "#nombre";
+				document.getElementById('telefono').value = "#telefono";
+				document.getElementById('direccion').value = "#direccion";
+			    $.get('controllerProveedores', {
 				
 				id, nombre, direccion, telefono, Eliminar
 				
@@ -174,7 +195,7 @@
 			});
 		}
 			
-			
+			}
 		)
 		                document.getElementById('nombre').value = "";
 						document.getElementById('telefono').value = "";
@@ -208,7 +229,8 @@
 			<center>
 				<input type="hidden" id="idpro"> <br> <label>Nombre</label>
 				<br> <input type="text" id="nombre"> <br> <label>Telefono</label>
-				<br> <input type="tel" id="telefono"> <br> <label>Direccion</label>
+				<br> <input type="number" id="telefono"
+				pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==9) return false;"> <br> <label>Direccion</label>
 				<br> <input type="text" id="direccion"> <br> <br>
 
 				<button onclick="Guardar()">Guardar</button>

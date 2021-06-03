@@ -163,21 +163,44 @@
 			dui = $("#dui").val();
 			id = $("#idper").val();
 			Eliminar="no";
-			$.get('controllerPersonas', {
+
+			if(nombre == "" ){
+				alert("Debe rellenar un nombre");
+				$("#nombre").focus();
+				
+				
+			}else if(apellido == ""){
+				alert("Debe rellenar un apellido");
+				$("#apellido").focus();
+				
+				
+			}else if(dui == ""){
+				alert("Por favor, ingrese su dui");
+				$("#dui").focus();
+				
+			}else{
+			var bool = confirm("Desea guardar la persona " + nombre + " ?");
+			if (bool) {
+				document.getElementById('nombre').value = "#nombre";
+				document.getElementById('apellido').value = "#apellido";
+				document.getElementById('dui').value = "#dui";
+			    $.get('controllerPersonas', {
 				
 				id, nombre, apellido, dui, Eliminar
 		
 			});
+			    
+			    document.getElementById('nombre').value = "";
+				document.getElementById('apellido').value = "";
+				document.getElementById('dui').value = "";
+				document.getElementById('idper').value = "";
+			}	window.location.reload();
 		}
-		)
-		document.getElementById('nombre').value = "";
-						document.getElementById('apellido').value = "";
-						document.getElementById('dui').value = "";
-						document.getElementById('idper').value = "";
-						window.location.reload();
+	})
 		
+		                
+			
 		}
-
 		window.onload = cargardatos;
 
 	</script>
@@ -202,7 +225,8 @@
 				<input type="hidden" id="idper"> <br> <label>Nombre</label>
 				<br> <input type="text" id="nombre"> <br> <label>Apellido</label>
 				<br> <input type="tel" id="apellido"> <br> <label>DUI</label>
-				<br> <input type="text" id="dui"> <br> <br>
+				<br><input type="number" id="dui"pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==9) return false;">
+	            <br> <br>
 
 				<button onclick="Guardar()">Guardar</button>
 
