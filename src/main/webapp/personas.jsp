@@ -167,18 +167,18 @@
 			if(nombre == "" ){
 				alert("Debe rellenar un nombre");
 				$("#nombre").focus();
-				return false;
+				
 				
 			}else if(apellido == ""){
 				alert("Debe rellenar un apellido");
 				$("#apellido").focus();
-				return false;
+				
 				
 			}else if(dui == ""){
 				alert("Por favor, ingrese su dui");
 				$("#dui").focus();
-				return false;
-			}
+				
+			}else{
 			var bool = confirm("Desea guardar la persona " + nombre + " ?");
 			if (bool) {
 				document.getElementById('nombre').value = "#nombre";
@@ -189,15 +189,17 @@
 				id, nombre, apellido, dui, Eliminar
 		
 			});
+			    
+			    document.getElementById('nombre').value = "";
+				document.getElementById('apellido').value = "";
+				document.getElementById('dui').value = "";
+				document.getElementById('idper').value = "";
+			}	window.location.reload();
 		}
-	}
-		)
-		                document.getElementById('nombre').value = "";
-						document.getElementById('apellido').value = "";
-						document.getElementById('dui').value = "";
-						document.getElementById('idper').value = "";
-						window.location.reload();
+	})
 		
+		                
+			
 		}
 		window.onload = cargardatos;
 

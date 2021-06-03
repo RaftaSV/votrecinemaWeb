@@ -124,31 +124,76 @@
 		}
 	}
 
+	
+function solonumeros(e){
+		
+		key=e.keyCode || e.which;
+		teclado=String.fromCharCode(key);
+		numero="0123456789";
+		especiales="8-37-38-46";
+		tecladoEspecial=false;
+		for(var i in especiales){
+			
+			if(key==especiales[i]){
+				
+				tecladoEspecial=true;
+			}
+		}
+		
+		if(numero.indexOf(teclado) == -1 && !tecladoEspecial){
+			return false;
+		}
+	}
+	
+
+	
 	function Guardar() {
 		
 		$(document).ready(function () {
 		var id, capacidad, NumeroSala ,Eliminar;
+		id = $("#idsala").val();
 		capacidad = $("#capacidad").val();
 		NumeroSala = $("#NumeroSala").val();
-		id = $("#idsala").val();
 		Eliminar="no";
-		console.log(capacidad);
-		$.get('controllerSalas', {
-			
-			id, capacidad, NumeroSala ,Eliminar
-			
-
-
-		});
-	}
 		
+		for (item.Sala){
+			
+		}
 		
-	)
-					document.getElementById('capacidad').value = "";
-					document.getElementById('NumeroSala').value = "";
-					document.getElementById('idsala').value = "";
-					window.location.reload();
-	
+			if(capacidad=="" ){
+				alert("Es necesario llenar el campo de Capacidad");
+				$("#capacidad").focus();
+				
+				
+			} else if( NumeroSala==""){
+				alert("Es necesario llenar el campo de Numero de Sala");
+				$("#NumeroSala").focus();
+				
+			}else if($(".NumeroSala").length) {
+				alert("La sala ya existe");
+				$("#NumeroSala").focus();
+			}else{
+					$.get('controllerSalas', {
+					
+					id, capacidad, NumeroSala ,Eliminar			
+					
+				
+				});
+				
+				document.getElementById('capacidad').value = "";
+				document.getElementById('NumeroSala').value = "";
+				document.getElementById('idsala').value = "";
+				window.location.reload();
+			}		
+				
+			
+				
+				
+			
+		
+		})
+					
+		
 	}
 
 	window.onload = cargardatos;
@@ -170,14 +215,14 @@
 
 		</div>
 
-
+		
 		<div class="crud" id="PANELCRUD" style="display: none;">
 			<center>
 				<input type="hidden" id="idsala"> <br> 
 				<label>Capacidad</label>
-				<br> <input type="text" id="capacidad"> <br> 
+				<br> <input type="text" id="capacidad" onkeypress="return solonumeros(event)" > <br> 
 				<label>Numero de Sala</label>
-				<br> <input type="text" id="NumeroSala"> <br> 
+				<br> <input type="text" id="NumeroSala" onkeypress="return solonumeros(event)"> <br> 
 				<br>
 
 				<button onclick="Guardar()">Guardar</button>
