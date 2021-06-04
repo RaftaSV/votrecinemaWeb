@@ -87,7 +87,7 @@
 
 
             $(document).on("click", "#tablaproductos tr", function() {
-                // leerdatos();
+
 
                 var idProducto, producto, precio, cantidad, proveedor;
 
@@ -149,63 +149,69 @@
                 })
             }
 
-            	function Guardar() {
+            function Guardar() {
 
-                    $(document).ready(function() {
-                            var id, producto, precio, cantidad, idpro;
-                            id = $("#id").val();
-                            producto = $("#Producto").val();
-                            precio = $("#Precio").val();
-                            cantidad = $("#Cantidad").val();
-                            idpro = $("#combo").val();
-                            Eliminar = "no";
-                            
-                            
-                            if(producto=="" ){
-                				alert("Es necesario llenar el campo de producto");
-                				$("#Producto").focus();
-                				
-                			} else if( precio==""){
-                				alert("Es necesario agregar precio");
-                				$("#Precio").focus();
-                				
-                			}else if( cantidad==""){
-                				alert("Es necesario agregar la cantidad");
-                				$("#Cantidad").focus();
-                				
-                			}else{
-                			
-                				var bool = confirm("Desea guardar el producto " + producto + " ?");
-                				if (bool) {
-                					document.getElementById('id').value = "id";
-                	                document.getElementById('Producto').value = "Producto";
-                	                document.getElementById('Precio').value = "Precio";
-                	                document.getElementById('Cantidad').value = "Cantidad";
-                	               
+                $(document).ready(function() {
+                    var id, producto, precio, cantidad, idpro;
+                    id = $("#id").val();
+                    producto = $("#Producto").val();
+                    precio = $("#Precio").val();
+                    cantidad = $("#Cantidad").val();
+                    idpro = $("#combo").val();
+                    Eliminar = "no";
+
+
+                    if (producto == "") {
+                        alert("Es necesario llenar el campo de producto");
+                        $("#Producto").focus();
+
+                    } else if (precio == "") {
+                        alert("Es necesario agregar precio");
+                        $("#Precio").focus();
+
+                    } else if (cantidad == "") {
+                        alert("Es necesario agregar la cantidad");
+                        $("#Cantidad").focus();
+
+                    } else {
+
+                        var bool = confirm("Desea guardar el producto " + producto + " ?");
+                        if (bool) {
+
+                            document.getElementById('id').value = "id";
+                            document.getElementById('Producto').value = "Producto";
+                            document.getElementById('Precio').value = "Precio";
+                            document.getElementById('Cantidad').value = "Cantidad";
+
 
                             $.get('controllerProductos', {
 
-                                id, producto, precio, cantidad, idpro,Eliminar
+                                id,
+                                producto,
+                                precio,
+                                cantidad,
+                                idpro,
+                                Eliminar
 
 
                             });
-                           
+
                             document.getElementById('id').value = "";
                             document.getElementById('Producto').value = "";
                             document.getElementById('Precio').value = "";
                             document.getElementById('Cantidad').value = "";
                             window.location.reload();
-                            
-                            
-                				
-                			}
-                         }
-                            
-                     })
-                     
-                }
 
-                window.onload = cargarcombo();
+
+
+                        }
+                    }
+
+                })
+
+            }
+
+            window.onload = cargarcombo();
         </script>
 
 

@@ -132,18 +132,7 @@
                         }
                     }
 
-                    // mostramos las coincidencias
-                    const lastTR = datos.rows[datos.rows.length - 1];
-                    const td = lastTR.querySelector("td ");
-                    lastTR.classList.remove("hide ", "red ");
-                    if (busqueda == " ") {
-                        lastTR.classList.add("hide ");
-                    } else if (total) {
-                        td.innerHTML = "Se ha encontrado " + total + " coincidencia " + ((total > 1) ? "s " : " ");
-                    } else {
-                        lastTR.classList.add("red ");
-                        td.innerHTML = "No se han encontrado coincidencias ";
-                    }
+
 
 
 
@@ -187,18 +176,7 @@
                         }
                     }
 
-                    // mostramos las coincidencias
-                    const lastTR = datos.rows[datos.rows.length - 1];
-                    const td = lastTR.querySelector("td ");
-                    lastTR.classList.remove("hide ", "red ");
-                    if (busqueda == " ") {
-                        lastTR.classList.add("hide ");
-                    } else if (total) {
-                        td.innerHTML = "Se ha encontrado " + total + " coincidencia " + ((total > 1) ? "s " : " ");
-                    } else {
-                        lastTR.classList.add("red ");
-                        td.innerHTML = "No se han encontrado coincidencias ";
-                    }
+
 
 
 
@@ -208,73 +186,86 @@
 
             }
 
+            $('#fecha').on('change', function() {
 
-            $(document).ready(function() {
+                cargarCarteleras();
 
-                $.post('ControllerCarteleras', {
-                    //Enviar informacion
+            });
 
-                }, function(response) {
-                    //Recibir informacion
+            function cargarCarteleras() {
 
-                    let datos = JSON.parse(response);
-                    //console.log(datos);
 
-                    var tabla = document.getElementById('tablacartelera');
-                    for (let item of datos) {
-                        var hora = item.Duracion;
-                        var minutos = item.Duracion.substr(2, 3).replace(":", "")
-                        hora = hora.substr(0, 2);
-                        var hora1 = hora = hora.replace("0", "");
-                        if (hora != 01) {
-                            if (minutos > 1 && minutos < 9) {
-                                hora = hora.replace("0", "") + " Horas con " + minutos.replace("0", "") + " minutos ";
+                var fecha = document.getElementById('fecha').value;
 
-                                minutos = minutos.replace("0", "");
-                            } else if (minutos > 9) {
 
-                                hora = hora.replace("0", "") + " Horas con " + minutos + " minutos";
-                                minutos = minutos;
+                $(document).ready(function() {
+
+                    $.post('ControllerCarteleras', {
+
+                        fecha
+
+                    }, function(response) {
+                        //Recibir informacion
+
+                        let datos = JSON.parse(response);
+                        //console.log(datos);
+
+                        var tabla = document.getElementById('tablacartelera');
+                        $('#tablacartelera tbody tr').remove();
+                        for (let item of datos) {
+                            var hora = item.Duracion;
+                            var minutos = item.Duracion.substr(2, 3).replace(":", "")
+                            hora = hora.substr(0, 2);
+                            var hora1 = hora = hora.replace("0", "");
+                            if (hora != 01) {
+                                if (minutos > 1 && minutos < 9) {
+                                    hora = hora.replace("0", "") + " Horas con " + minutos.replace("0", "") + " minutos ";
+
+                                    minutos = minutos.replace("0", "");
+                                } else if (minutos > 9) {
+
+                                    hora = hora.replace("0", "") + " Horas con " + minutos + " minutos";
+                                    minutos = minutos;
+                                } else {
+
+                                    hora = hora.replace("0", "") + " Horas con " + minutos.replace("0", "") + " minuto ";
+                                    minutos = minutos.replace("0", "");
+
+                                }
+
+                            } else {
+                                if (minutos > 1 && minutos < 9) {
+                                    hora = hora.replace("0", "") + " Hora con " + minutos.replace("0", "") + " minutos ";
+                                    minutos = minutos.replace("0", "");
+                                } else if (minutos > 9) {
+                                    hora = hora.replace("0", "") + " Hora con " + minutos + " minutos";
+                                    minutos = minutos;
+                                } else {
+                                    minutos = minutos.replace("0", "");
+                                    hora = hora.replace("0", "") + " Hora con " + minutos.replace("0", "") + " minuto ";
+                                }
+
+                            }
+                            var Tipo = item.Tipo;
+                            var clasificacion = item.clasificacion;
+                            if (clasificacion == 0) {
+                                clasificacion = "Para toda la familia";
+
+                            } else if (clasificacion == 1) {
+
+                                clasificacion = "Para mayores de 15 a�os";
                             } else {
 
-                                hora = hora.replace("0", "") + " Horas con " + minutos.replace("0", "") + " minuto ";
-                                minutos = minutos.replace("0", "");
+                                clasificacion = "Para mayores de 18 a�os";
 
                             }
 
-                        } else {
-                            if (minutos > 1 && minutos < 9) {
-                                hora = hora.replace("0", "") + " Hora con " + minutos.replace("0", "") + " minutos ";
-                                minutos = minutos.replace("0", "");
-                            } else if (minutos > 9) {
-                                hora = hora.replace("0", "") + " Hora con " + minutos + " minutos";
-                                minutos = minutos;
+                            if (Tipo == 0) {
+                                Tipo = "2D";
                             } else {
-                                minutos = minutos.replace("0", "");
-                                hora = hora.replace("0", "") + " Hora con " + minutos.replace("0", "") + " minuto ";
+                                Tipo = "3D";
                             }
-
-                        }
-                        var Tipo = item.Tipo;
-                        var clasificacion = item.clasificacion;
-                        if (clasificacion == 0) {
-                            clasificacion = "Para toda la familia";
-
-                        } else if (clasificacion == 1) {
-
-                            clasificacion = "Para mayores de 15 a�os";
-                        } else {
-
-                            clasificacion = "Para mayores de 18 a�os";
-
-                        }
-
-                        if (Tipo == 0) {
-                            Tipo = "2D";
-                        } else {
-                            Tipo = "3D";
-                        }
-                        tabla.innerHTML += `
+                            tabla.innerHTML += `
 			 <tr>
 						<td style="display:none;"> ${item.Idcartelera} </td>
 						<td> ${item.Nombre} </td>
@@ -287,11 +278,11 @@
 					    
 			</tr>
 		`
-                    }
+                        }
 
+                    });
                 });
-            });
-
+            }
             $(document).ready(function() {
 
 
@@ -314,6 +305,8 @@
 
                 });
             })
+
+            window.onload = cargarCarteleras;
         </script>
 
 

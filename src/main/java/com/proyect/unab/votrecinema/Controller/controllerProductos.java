@@ -52,10 +52,11 @@ public class controllerProductos extends HttpServlet {
 		}
 		try {
 	
+			
 			idProveedor = Integer.parseInt(request.getParameter("idpro"));
 			producto  = request.getParameter("producto");
-			precio = Double.parseDouble(request.getParameter("precio"));
-			cantidad = Integer.parseInt(request.getParameter("cantidad"));
+			precio = Double.parseDouble(request.getParameter("precio").replace(" ", ""));
+			cantidad = Integer.parseInt(request.getParameter("cantidad").replace(" ", ""));
 			
 		} catch (Exception e) {
 			idProveedor=0;
@@ -80,10 +81,8 @@ if (eliminar.equals("btne")) {
 				Producto.setIdProveedor(idProveedor);
 				Producto.setCantidad(cantidad);
 				Producto.setPrecio(precio);
-				
 				ClsProductos cls = new ClsProductos();
 				cls.ActualiarProducto(Producto);
-				
 			}else {
 				
 				Producto Producto = new Producto();

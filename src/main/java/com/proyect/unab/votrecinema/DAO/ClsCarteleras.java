@@ -102,8 +102,7 @@ public class ClsCarteleras {
 	public ArrayList<Carteleras> BuscarDatos(Carteleras c) {
 		ArrayList<Carteleras> lista = new ArrayList<>();
 		try {
-			CallableStatement call = conectar.prepareCall("call SP_BUSCARCARTELERA(?,?)");
-			call.setString("pNombre", c.getNombre());
+			CallableStatement call = conectar.prepareCall("call SP_BUSCARCARTELERA(?)");
 			call.setDate("pFecha", new java.sql.Date(c.getFecha().getTime()));
 			ResultSet resultado = call.executeQuery();
 			while (resultado.next()) {
