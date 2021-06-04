@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
-<LINK REL=StyleSheet HREF="CCS/Diseño.css" TYPE="text/css" />
+<LINK REL=StyleSheet HREF="CCS/Diseno.css" TYPE="text/css" />
 
 <head>
     <meta charset="ISO-8859-1">
@@ -154,7 +154,7 @@
                 direccion = $("#direccion").val();
                 id = $("#idpro").val();
                 Eliminar = "no";
-              
+
 
                 if (nombre == "") {
                     alert("Debe rellenar un nombre");

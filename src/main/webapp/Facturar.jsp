@@ -51,7 +51,10 @@
         <script type="text/javascript">
             var fecha = new Date();
             var fechaactual = fecha.getFullYear() + "/" + (fecha.getMonth() + 1) + "/" + fecha.getDate();
+            var fechamaxima = fecha.getFullYear() + "/" + (fecha.getMonth() + 1) + "/" + (fecha.getDate() + 7);
             document.getElementById('fecha').value = formatofecha(fechaactual);
+            document.getElementById('fecha').min = formatofecha(fechaactual);
+            document.getElementById('fecha').max = formatofecha(fechamaxima);
 
             function formatofecha(date) {
                 var d = new Date(date),
