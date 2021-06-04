@@ -209,6 +209,23 @@
 					idpersona =$("#combo").val();
 				Eliminar="no";
 				 
+				if(usuario=="" ){
+					alert("Es necesario agregar un usuario");
+					$("#usuario").focus();
+					
+					
+				} else if( password==""){
+					alert("Es necesario agregar una contraseña");
+					$("#password").focus();
+					
+
+				}else{
+					var bool = confirm("Desea guardar el rol del usuario " + usuario + " ?");
+					if (bool) {
+
+						document.getElementById('id').value = "#id";
+						document.getElementById('usuario').value = "#usuario";
+						document.getElementById('password').value = "#password";
 				
 				$.get('controllerRoles', {
 					
@@ -216,15 +233,15 @@
 
 
 				});
-			}
+				document.getElementById('id').value = "";
+				document.getElementById('usuario').value = "";
+				document.getElementById('password').value = "";
 				
-				
-			)
-			                document.getElementById('id').value = "";
-							document.getElementById('usuario').value = "";
-							document.getElementById('password').value = "";
-							
-							window.location.reload();
+				window.location.reload();
+					}		
+				}
+			})
+			                
 			
 			}
 			

@@ -169,18 +169,15 @@
 			if(nombre == "" ){
 				alert("Debe rellenar un nombre");
 				$("#nombre").focus();
-				return false;
 				
 			}else if(telefono == ""){
 				alert("Ingrese un numero de telefono");
 				$("#telefono").focus();
-				return false;
 				
 			}else if(direccion == ""){
 				alert("Por favor, ingrese una direccion");
 				$("#direccion").focus();
-				return false;
-			}
+			}else{
 			var bool = confirm("Desea guardar el proveedor " + nombre + " ?");
 			if (bool) {
 				document.getElementById('nombre').value = "#nombre";
@@ -189,19 +186,16 @@
 			    $.get('controllerProveedores', {
 				
 				id, nombre, direccion, telefono, Eliminar
-				
-
 
 			});
+			    document.getElementById('nombre').value = "";
+				document.getElementById('telefono').value = "";
+				document.getElementById('direccion').value = "";
+				document.getElementById('idpro').value = "";
+				window.location.reload();
 		}
-			
 			}
-		)
-		                document.getElementById('nombre').value = "";
-						document.getElementById('telefono').value = "";
-						document.getElementById('direccion').value = "";
-						document.getElementById('idpro').value = "";
-						window.location.reload();
+			})        
 		
 		}
 		

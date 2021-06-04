@@ -134,13 +134,13 @@ function Guardar() {
 	if(hora => 9 ){
 		alert("No es un horario laboral");
 		$("#Hora").focus();
-		return false;
+
 	}
 	else if(hora <= 22 ){
 		alert("No es un horario laboral");
 		$("#Hora").focus();
-		return false;
-	}
+	
+	}else{
 	
 	var bool = confirm("Desea guardar " + hora + " ?");
 	if (bool) {
@@ -149,10 +149,10 @@ function Guardar() {
 		
 		Eliminar,id,hora
 		
-	});
-  }
+	   });
 	}
-)
+  }
+})
 window.location.reload();
 }
 

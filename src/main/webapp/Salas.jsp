@@ -85,44 +85,20 @@
 
 	}
 
-	function leerdatos() {
-		var rowIdx;
+	$(document).on("click", "#tablaDatos tr", function() {
+        // leerdatos();
 
-		var id, capacidad, NumeroSala;
-		var tabla = document.getElementById('tablaDatos');
-		var rows = tabla.getElementsByTagName('tr');
-		var selectedRow;
-		var rowCellValue;
-		for (i = 0; i < rows.length; i++) {
-			rows[i].onclick = function () {
-				rowIdx = this.rowIndex;
-				selectedRow = this.cells;
-				var contador = 1;
-				for (j = 0; j < selectedRow.length; j++) {
+        var id, capacidad, NumeroSala;
+        id = $(this).find('td:first-child').html();
+        capacidad = $(this).find('td:nth-child(2)').html();
+        NumeroSala = $(this).find('td:nth-child(3)').html();
+       
+        document.getElementById('idsala').value = id;
+    	document.getElementById('capacidad').value = capacidad;
+		document.getElementById('NumeroSala').value = NumeroSala;
 
-					if (contador == 1) {
-						id = selectedRow[j].innerText;
-						contador++;
-					} else if (contador == 2) {
-						capacidad = selectedRow[j].innerText;
-						contador++;
-					}
-					else if (contador == 3) {
-						NumeroSala = selectedRow[j].innerText;
-						contador++;
-					}
+    });
 
-				}
-				if (id > 0) {
-
-					document.getElementById('capacidad').value = capacidad;
-					document.getElementById('NumeroSala').value = NumeroSala;
-					document.getElementById('idsala').value = id;
-
-				}
-			}
-		}
-	}
 
 	
 function solonumeros(e){
@@ -166,9 +142,7 @@ function solonumeros(e){
 				alert("Es necesario llenar el campo de Numero de Sala");
 				$("#NumeroSala").focus();
 				
-			}else if($(".NumeroSala").length) {
-				alert("La sala ya existe");
-				$("#NumeroSala").focus();
+
 			}else{
 				var bool = confirm("Desea guardar la Sala numero " + NumeroSala + " ?");
 				if (bool) {
