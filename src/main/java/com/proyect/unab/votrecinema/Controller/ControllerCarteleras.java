@@ -54,8 +54,6 @@ public class ControllerCarteleras extends HttpServlet {
 			// TODO: handle exception
 		}
 
-		
-System.out.println( fecha);
 		if (fecha!=null) {
 			ClsCarteleras cartelera = new ClsCarteleras();
 			Gson json = new Gson();

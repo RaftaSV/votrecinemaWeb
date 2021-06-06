@@ -85,6 +85,18 @@
 		<description></description>
 		<servlet-class>com.proyect.unab.votrecinema.Controller.ControllerClientes</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>ControllerPrecios</servlet-name>
+		<display-name>ControllerPrecios</display-name>
+		<description></description>
+		<servlet-class>com.proyect.unab.votrecinema.Controller.ControllerPrecios</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>ControllerAsientos</servlet-name>
+		<display-name>ControllerAsientos</display-name>
+		<description></description>
+		<servlet-class>com.proyect.unab.votrecinema.Controller.ControllerAsientos</servlet-class>
+	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>controllerProveedores</servlet-name>
@@ -141,6 +153,14 @@
 <servlet-mapping>
 	<servlet-name>ControllerClientes</servlet-name>
 	<url-pattern>/ControllerClientes</url-pattern>
+</servlet-mapping>
+<servlet-mapping>
+	<servlet-name>ControllerPrecios</servlet-name>
+	<url-pattern>/ControllerPrecios</url-pattern>
+</servlet-mapping>
+<servlet-mapping>
+	<servlet-name>ControllerAsientos</servlet-name>
+	<url-pattern>/ControllerAsientos</url-pattern>
 </servlet-mapping>
 
 </web-app>

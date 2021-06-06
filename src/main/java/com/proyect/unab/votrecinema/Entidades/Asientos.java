@@ -12,12 +12,14 @@ import lombok.Data;
  * @author Rafael
  */
 @Data
-public class Asientos extends Carteleras{
+public class Asientos {
     private int Id_Asiento;
     private int Numero;
     private int Id_Sala;
+    private int Idcartelera; 
     
     
+
 	public int getId_Asiento() {
 		return Id_Asiento;
 	}
@@ -35,6 +37,12 @@ public class Asientos extends Carteleras{
 	}
 	public void setId_Sala(int id_Sala) {
 		Id_Sala = id_Sala;
+	}
+	public int getIdcartelera() {
+		return Idcartelera;
+	}
+	public void setIdcartelera(int idcartelera) {
+		Idcartelera = idcartelera;
 	}
     
     

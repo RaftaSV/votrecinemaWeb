@@ -11,8 +11,9 @@
 }
 
 #cliente {
+    font-weight: bold;
     display: inline-block;
-    margin-left: 80%;
+    margin-left: 82%;
 }
 
 #tablacartelera {
@@ -41,6 +42,59 @@
 #buscar {
     margin-top: -4%;
     margin-left: 73%;
+    display: inline-block;
+    position: absolute;
+}
+
+.precio {
+    display: inline-block;
+    position: absolute;
+    margin-left: 35%;
+    margin-top: -7%;
+}
+
+.precios {
+    display: inline-block;
+    position: absolute;
+    margin-top: -7.5%;
+    margin-left: 37%;
+}
+
+#Asientos {
+    display: inline-block;
+    position: absolute;
+    margin-left: 61%;
+    margin-top: -3%;
+}
+
+#lblAsientos {
+    font-weight: bold;
+    display: inline-block;
+    position: absolute;
+    margin-left: 60%;
+    margin-top: -4%;
+}
+
+#lblprecio {
+    font-weight: bold;
+    margin-top: -8%;
+}
+
+#agregar {
+    color: white;
+    background-color: teal;
+    border-radius: 20px;
+    font-weight: bold;
+    display: inline-block;
+    position: absolute;
+    margin-left: 50%;
+    margin-top: -4%;
+}
+
+#tabladetalles {
+    width: 60%;
+    height: 40%;
+    overflow: scroll;
     display: inline-block;
     position: absolute;
 }
