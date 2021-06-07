@@ -28,6 +28,7 @@
 
 
     <script type="text/javascript">
+    
         function MOSTRARCRUD() {
             var CRUD = document.getElementById("PANELCRUD"),
                 tabladiv = document.getElementById('tabladiv');
@@ -48,7 +49,13 @@
                 tabladiv.style.width = "98%";
             }
         }
-
+        
+      //Cuando la página esté cargada completamente
+  	  $(document).ready(function(){
+  	    //Cada 1 segundos (1000 milisegundos) se ejecutará la función refrescar y cargara la imagen insertada 
+  	    setTimeout(cargardatos, 1000);
+  	  });
+ 
         //funcion para cargar datos
         function cargardatos() {
 
@@ -78,69 +85,21 @@
             })
         }
 
-        function seleccionar() {
+        //leerdatos
+        $(document).on("click", "#tablaDatos tr", function() {
+            var idPersona, Nombres, Apellidos, DUI;
 
-            var index,
-                table = document.getElementById('tablaDatos');
+            idPersona = $(this).find('td:first-child').html();
+            Nombres = $(this).find('td:nth-child(2)').html();
+            Apellidos = $(this).find('td:nth-child(3)').html();
+            DUI = $(this).find('td:nth-child(4)').html();
 
-            for (var i = 1; i < table.rows.length; i++) {
-                table.rows[i].onclick = function() {
-                    // quitar el color anterior
-                    if (typeof index !== "undefined") {
-                        table.rows[index].classList.toggle("selected");
-                    }
-                    console.log(typeof index);
-
-                    index = this.rowIndex;
-
-                    this.classList.toggle("selected");
-                    console.log(typeof index);
-                };
-            }
-
-        }
-
-        function leerdatos() {
-            var rowIdx;
-
-            var id, nombre, apellido, dui;
-            var tabla = document.getElementById('tablaDatos');
-            var rows = tabla.getElementsByTagName('tr');
-            var selectedRow;
-            var rowCellValue;
-            for (i = 0; i < rows.length; i++) {
-                rows[i].onclick = function() {
-                    rowIdx = this.rowIndex;
-                    selectedRow = this.cells;
-                    var contador = 1;
-                    for (j = 0; j < selectedRow.length; j++) {
-
-                        if (contador == 1) {
-                            id = selectedRow[j].innerText;
-                            contador++;
-                        } else if (contador == 2) {
-                            nombre = selectedRow[j].innerText;
-                            contador++;
-                        } else if (contador == 3) {
-                            apellido = selectedRow[j].innerText;
-                            contador++;
-                        } else if (contador == 4) {
-                            dui = selectedRow[j].innerText;
-                            contador++;
-                        }
-
-                    }
-                    if (id > 0) {
-
-                        document.getElementById('nombre').value = nombre;
-                        document.getElementById('apellido').value = apellido;
-                        document.getElementById('dui').value = dui;
-                        document.getElementById('idper').value = id;
-
-                    }
-                }
-            }
-        }
+                document.getElementById('idper').value = idPersona;
+                document.getElementById('nombre').value = Nombres;
+                document.getElementById('apellido').value = Apellidos;
+                document.getElementById('dui').value = DUI;
+        });
+        
         //funcion para el metodo guardar 
         function Guardar() {
 
@@ -190,9 +149,6 @@
                     window.location.reload();
                 }
             })
-
-
-
         }
         window.onload = cargardatos;
     </script>
@@ -200,7 +156,7 @@
     <div>
 
         <div class="tabla" id="tabladiv">
-            <table id="tablaDatos" onclick="leerdatos() " class="table table-sm table-dark">
+            <table id="tablaDatos" class="table table-sm table-dark">
                 <thead>
                     <th style="display:none;">ID</th>
                     <th>NOMBRE</th>

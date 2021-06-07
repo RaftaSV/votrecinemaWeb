@@ -87,10 +87,7 @@
 
 
             $(document).on("click", "#tablaproductos tr", function() {
-
-
                 var idProducto, producto, precio, cantidad, proveedor;
-
 
                 idProducto = $(this).find('td:first-child').html();
                 producto = $(this).find('td:nth-child(2)').html();
@@ -112,10 +109,8 @@
                             document.getElementById('Cantidad').value = cantidad;
                             break
                         } else {
-
                             //si ninguno coincide selecionamos el valor que esta en la posicion 0
                             select.selectedIndex = 0;
-
                         }
                     }
 
