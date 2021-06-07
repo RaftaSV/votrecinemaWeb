@@ -46,7 +46,10 @@
                 }
             }
 
-
+            $(document).ready(function(){
+        	    //Cada 6 segundos (6000 milisegundos) se ejecutará la función refrescar y cargara la imagen insertada 
+        	    setTimeout(cargardatos, 1000);
+        	  });
             function cargardatos() {
 
                 $(document).ready(function() {
