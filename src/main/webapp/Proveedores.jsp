@@ -46,7 +46,12 @@
 
             }
         }
-
+        
+      //Cuando la página esté cargada completamente
+    	  $(document).ready(function(){
+    	    //Cada 1 segundos (1000 milisegundos) se ejecutará la función refrescar y cargara la imagen insertada 
+    	    setTimeout(cargardatos, 1000);
+    	  });
 
         function cargardatos() {
 
