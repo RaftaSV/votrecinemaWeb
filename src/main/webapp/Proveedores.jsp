@@ -95,6 +95,28 @@
                 document.getElementById('direccion').value = Direccion;
         });
 
+      
+        function solonumeros(e) {
+
+            key = e.keyCode || e.which;
+            teclado = String.fromCharCode(key);
+            numero = "0123456789";
+            especiales = "8-37-38-46";
+            tecladoEspecial = false;
+            for (var i in especiales) {
+
+                if (key == especiales[i]) {
+
+                    tecladoEspecial = true;
+                }
+            }
+
+            if (numero.indexOf(teclado) == -1 && !tecladoEspecial) {
+                return false;
+            }
+            if(this.value.length<=9) {return true;}
+        }
+      
         function Guardar() {
 
             $(document).ready(function() {
@@ -164,9 +186,12 @@
 
         <div class="crud" id="PANELCRUD" style="display: none;">
             <center>
-                <input type="hidden" id="idpro"> <br> <label>Nombre</label>
-                <br> <input type="text" id="nombre"> <br> <label>Telefono</label>
-                <br> <input type="number" id="telefono" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==9) return false;"> <br> <label>Direccion</label>
+                <input type="hidden" id="idpro"> <br>
+                 <label>Nombre</label>
+                <br> <input type="text" id="nombre"> <br>
+                 <label>Telefono</label>
+                <br> <input type="text" id="telefono" onkeypress="return solonumeros(event)"> <br> 
+                <label>Direccion</label>
                 <br> <input type="text" id="direccion"> <br> <br>
 
                 <button onclick="Guardar()">Guardar</button>

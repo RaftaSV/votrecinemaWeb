@@ -100,6 +100,27 @@
                 document.getElementById('dui').value = DUI;
         });
         
+        function solonumeros(e) {
+
+            key = e.keyCode || e.which;
+            teclado = String.fromCharCode(key);
+            numero = "0123456789";
+            especiales = "8-37-38-46";
+            tecladoEspecial = false;
+            for (var i in especiales) {
+
+                if (key == especiales[i]) {
+
+                    tecladoEspecial = true;
+                }
+            }
+
+            if (numero.indexOf(teclado) == -1 && !tecladoEspecial) {
+                return false;
+            }
+            if(this.value.length<=9) {return true;}
+        }
+        
         //funcion para el metodo guardar 
         function Guardar() {
 
@@ -140,11 +161,10 @@
                             Eliminar
 
                         });
-
+                        document.getElementById('idper').value = "";
                         document.getElementById('nombre').value = "";
                         document.getElementById('apellido').value = "";
                         document.getElementById('dui').value = "";
-                        document.getElementById('idper').value = "";
                     }
                     window.location.reload();
                 }
@@ -170,12 +190,14 @@
 
         <div class="crud" id="PANELCRUD" style="display: none;">
             <center>
-                <input type="hidden" id="idper"> <br> <label>Nombre</label>
-                <br> <input type="text" id="nombre"> <br> <label>Apellido</label>
-                <br> <input type="tel" id="apellido"> <br> <label>DUI</label>
-                <br><input type="number" id="dui" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==9) return false;">
-                <br> <br>
-
+                <input type="hidden" id="idper"> <br>
+                <label>Nombre</label>
+                <br> <input type="text" id="nombre"> <br> 
+                <label>Apellido</label>
+                <br> <input type="text" id="apellido"> <br> 
+                <label>DUI</label>
+                <br> <input type="text" id="dui" onkeypress="return solonumeros(event)" > <br> 
+                <br>
                 <button onclick="Guardar()">Guardar</button>
 
             </center>
