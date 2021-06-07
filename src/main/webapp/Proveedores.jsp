@@ -80,70 +80,20 @@
             })
         }
 
+      //leerdatos
+        $(document).on("click", "#tablaDatos tr", function() {
+            var idProveedor, Nombre, Telefono, Direccion;
 
-        function seleccionar() {
+            idProveedor = $(this).find('td:first-child').html();
+            Nombre = $(this).find('td:nth-child(2)').html();
+            Telefono = $(this).find('td:nth-child(3)').html();
+            Direccion = $(this).find('td:nth-child(4)').html();
 
-            var index,
-                table = document.getElementById('tablaDatos');
-
-            for (var i = 1; i < table.rows.length; i++) {
-                table.rows[i].onclick = function() {
-                    // remove the background from the previous selected row
-                    if (typeof index !== "undefined") {
-                        table.rows[index].classList.toggle("selected");
-                    }
-                    console.log(typeof index);
-                    // get the selected row index
-                    index = this.rowIndex;
-                    // add class selected to the row
-                    this.classList.toggle("selected");
-                    console.log(typeof index);
-                };
-            }
-
-        }
-
-        function leerdatos() {
-            var rowIdx;
-
-            var id, nombre, direccion, telefono;
-            var tabla = document.getElementById('tablaDatos');
-            var rows = tabla.getElementsByTagName('tr');
-            var selectedRow;
-            var rowCellValue;
-            for (i = 0; i < rows.length; i++) {
-                rows[i].onclick = function() {
-                    rowIdx = this.rowIndex;
-                    selectedRow = this.cells;
-                    var contador = 1;
-                    for (j = 0; j < selectedRow.length; j++) {
-
-                        if (contador == 1) {
-                            id = selectedRow[j].innerText;
-                            contador++;
-                        } else if (contador == 2) {
-                            nombre = selectedRow[j].innerText;
-                            contador++;
-                        } else if (contador == 3) {
-                            telefono = selectedRow[j].innerText;
-                            contador++;
-                        } else if (contador == 4) {
-                            direccion = selectedRow[j].innerText;
-                            contador++;
-                        }
-
-                    }
-                    if (id > 0) {
-
-                        document.getElementById('nombre').value = nombre;
-                        document.getElementById('telefono').value = telefono;
-                        document.getElementById('direccion').value = direccion;
-                        document.getElementById('idpro').value = id;
-
-                    }
-                }
-            }
-        }
+                document.getElementById('idpro').value = idProveedor;
+                document.getElementById('nombre').value = Nombre;
+                document.getElementById('telefono').value = Telefono;
+                document.getElementById('direccion').value = Direccion;
+        });
 
         function Guardar() {
 
@@ -199,7 +149,7 @@
     <div>
 
         <div class="tabla" id="tabladiv">
-            <table id="tablaDatos" onclick="leerdatos() " class="table table-sm table-dark">
+            <table id="tablaDatos" class="table table-sm table-dark">
                 <thead>
                     <th style="display:none;">ID</th>
                     <th>NOMBRE</th>
