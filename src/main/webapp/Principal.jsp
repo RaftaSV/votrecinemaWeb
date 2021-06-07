@@ -89,7 +89,7 @@
 		var iframe = document.createElement('iframe');
 	
 		function proveedores() {
-			var link = "http://localhost:5052/Votre/Proveedores.jsp"
+			var link = "http://localhost:8080/Votre/Proveedores.jsp"
 			iframe.remove();
 			iframe.frameBorder = 0;
 			iframe.width = "100%";
@@ -99,7 +99,7 @@
 
 		}
 		function Facturar() {
-			var link = "http://localhost:5052/Votre/Facturar.jsp"
+			var link = "http://localhost:8080/Votre/Facturar.jsp"
 			iframe.remove();
 			iframe.frameBorder = 0;
 			iframe.width = "100%";
@@ -109,7 +109,7 @@
 
 		}
 		function peliculas() {
-			var link = "http://localhost:5052/Votre/Peliculas.jsp"
+			var link = "http://localhost:8080/Votre/Peliculas.jsp"
 			iframe.remove();
 			iframe.frameBorder = 0;
 			iframe.width = "100%";
@@ -119,7 +119,7 @@
 
 		}
 		function productos() {
-			var link = "http://localhost:5052/Votre/Productos.jsp"
+			var link = "http://localhost:8080/Votre/Productos.jsp"
 			iframe.remove();
 			iframe.frameBorder = 0;
 			iframe.width = "100%";
@@ -128,7 +128,7 @@
 			document.getElementById("contenedor").appendChild(iframe);
 		}
 		function salas() {
-			var link = "http://localhost:5052/Votre/Salas.jsp"
+			var link = "http://localhost:8080/Votre/Salas.jsp"
 				iframe.remove();
 			iframe.frameBorder = 0;
 			iframe.width = "100%";
@@ -139,7 +139,7 @@
 			
 		}
 		function personas() {
-			var link = "http://localhost:5052/Votre/personas.jsp"
+			var link = "http://localhost:8080/Votre/personas.jsp"
 				iframe.remove();
 			iframe.frameBorder = 0;
 			iframe.width = "100%";
@@ -151,7 +151,7 @@
 		}
 	
 	function Horerios() {
-		var link = "http://localhost:5052/Votre/Horarios.jsp"
+		var link = "http://localhost:8080/Votre/Horarios.jsp"
 		iframe.remove();
 		iframe.frameBorder = 0;
 		iframe.width = "100%";
@@ -163,7 +163,7 @@
 	}
 	
 	function Roles() {
-		var link = "http://localhost:5052/Votre/rol.jsp"
+		var link = "http://localhost:8080/Votre/rol.jsp"
 		iframe.remove();
 		iframe.frameBorder = 0;
 		iframe.width = "100%";
@@ -174,7 +174,7 @@
 		
 	}
 	function Carteleras() {
-		var link = "http://localhost:5052/Votre/Carteleras.jsp"
+		var link = "http://localhost:8080/Votre/Carteleras.jsp"
 		iframe.remove();
 		iframe.frameBorder = 0;
 		iframe.width = "100%";
