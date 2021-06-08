@@ -87,11 +87,6 @@
             });
         }
 
-
-
-
-
-
             $(document).on("click", "#tablaproductos tr", function() {
                 var idProducto, producto, precio, cantidad, proveedor;
 
@@ -246,7 +241,7 @@
                     <br> <input type="text" id="Cantidad"> <br> <label>Proveerdor</label>
                     <br> <select class="" id="combo" required>
 				</select> <br> <br>
-                    <button onclick="Guardar()">Guardar</button>
+                    <button class="Confirmar" onclick="Guardar()">Guardar</button>
                 </center>
             </div>
         </div>

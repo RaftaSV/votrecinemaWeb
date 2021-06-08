@@ -198,7 +198,7 @@
                 <label>DUI</label>
                 <br> <input type="text" id="dui" onkeypress="return solonumeros(event)" > <br> 
                 <br>
-                <button onclick="Guardar()">Guardar</button>
+                <button  class="Confirmar" onclick="Guardar()" >Guardar</button>
 
             </center>
         </div>
