@@ -39,7 +39,7 @@
 			<select id="sala"> </select> <br>
 			<label> Hora </label> <br>
 			<select id="hora"></select> <br> <br>
-			<button onclick="Guardar()">Guardar</button>
+			<button class="Confirmar" onclick="Guardar()">Guardar</button>
 		</div>
 		<script type="text/javascript">
 
@@ -147,10 +147,6 @@
 				});
 
 
-
-
-
-
 				document.getElementById('id').value = id;
 				document.getElementById('pelicula').value = datos.get('nombre');
 				document.getElementById('fecha').value = formatofecha(datos.get('fecha'));
@@ -159,10 +155,6 @@
 
 
 			}
-
-
-
-
 
 
 
@@ -179,11 +171,6 @@
 
 				return [year, month, day].join('-');
 			}
-
-
-
-
-
 
 
 			function cargarhora() {

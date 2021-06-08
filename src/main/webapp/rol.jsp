@@ -187,8 +187,6 @@
             })
         }
 
-
-
         function Guardar() {
 
             $(document).ready(function() {
@@ -258,7 +256,7 @@
                 <label>Persona</label>
                 <br> <select id="combo" required>
 				</select> <br> <br>
-                <button onclick="Guardar()">Guardar</button>
+                <button class="Confirmar" onclick="Guardar()">Guardar</button>
             </center>
         </div>
     </div>

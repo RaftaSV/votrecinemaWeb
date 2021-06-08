@@ -40,10 +40,6 @@
                     CRUD.style.display = "none";
                     tabladiv.style.width = "98%";
 
-
-
-
-
                 }
             }
 
@@ -183,7 +179,7 @@
                     <br> <input type="time" id="Horario" name="hora" max="17:00" step="900" />
                     <br>
                     <br>
-                    <button onclick="Guardar()">Guardar</button>
+                    <button class="Confirmar" onclick="Guardar()">Guardar</button>
                 </center>
             </div>
         </div>

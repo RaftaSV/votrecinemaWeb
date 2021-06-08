@@ -204,7 +204,7 @@
                     <br> <input type="text" id="NumeroSala" onkeypress="return solonumeros(event)"> <br>
                     <br>
 
-                    <button onclick="Guardar()">Guardar</button>
+                    <button class="Confirmar" onclick="Guardar()">Guardar</button>
                 </center>
             </div>
         </div>

@@ -204,9 +204,6 @@
                     }
 
 
-
-
-
                 } catch (error) {
 
                 }
@@ -407,10 +404,6 @@
             });
 
 
-
-
-
-
             function cargarCarteleras() {
 
 
@@ -488,11 +481,6 @@
 
             window.onload = cargarCarteleras;
         </script>
-
-
-
-
-
 
     </body>
 

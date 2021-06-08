@@ -199,7 +199,7 @@
                 <label>Direccion</label>
                 <br> <input type="text" id="direccion"> <br> <br>
 
-                <button onclick="Guardar()">Guardar</button>
+                <button class="Confirmar" onclick="Guardar()">Guardar</button>
             </center>
         </div>
     </div>
