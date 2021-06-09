@@ -263,16 +263,16 @@
             </div>
 
 
-            <div class="crudProductos" id="PANELCRUD" style="display: none;">
-                <center>
-                    <input type="hidden" id="id"> <br> <label>Producto</label>
-                    <br> <input type="text" id="Producto"> <br> <label>Precio</label>
-                    <br> <input type="text" id="Precio"> <br> <label>Cantidad</label>
-                    <br> <input type="text" id="Cantidad"> <br> <label>Proveerdor</label>
-                    <br> <select class="" id="combo" required>
+            <div class="crudProductos" id="PANELCRUD" style="display: none;" aling="center">
+
+                <input type="hidden" id="id"> <br> <label>Producto</label>
+                <br> <input type="text" id="Producto"> <br> <label>Precio</label>
+                <br> <input type="number" id="Precio"> <br> <label>Cantidad</label>
+                <br> <input type="number" id="Cantidad"> <br> <label>Proveerdor</label>
+                <br> <select class="" id="combo" required>
 				</select> <br> <br>
-                    <button class="Confirmar" onclick="Guardar()">Guardar</button>
-                </center>
+                <button class="Confirmar" onclick="Guardar()">Guardar</button>
+
             </div>
         </div>
 

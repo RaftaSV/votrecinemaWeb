@@ -169,7 +169,7 @@
                                         document.getElementById('telefono').value = "";
                                         document.getElementById('direccion').value = "";
                                         document.getElementById('idpro').value = "";
-                                        cargardatos();
+                                        window.location.reload();
 
                                 }
                             })
