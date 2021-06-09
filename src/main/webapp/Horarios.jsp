@@ -8,6 +8,7 @@
 
         <title>VOTRECINEMA</title>
         <script src="http://code.jquery.com/jquery-latest.js"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <LINK REL=StyleSheet HREF="CCS/Diseno.css" TYPE="text/css" />
         <!-- Required meta tags -->
         <meta charset="utf-8">
@@ -121,7 +122,7 @@
             }
 
             function Guardar() {
-                $(document).ready(function() {
+            	$(document).ready(function() {
                     var id, hora, Eliminar, evaluar;
                     hora = $("#Horario").val();
                     evaluar = $("#Horario").val().substr(0, 2);
@@ -129,33 +130,57 @@
                     Eliminar = "no";
 
                     if (evaluar < 9) {
-                        alert("No es un horario laboral");
+                        swal({
+                        	title: "No es un horario laboral",
+                        	text: "Porfavor, seleccione una hora entre las 9 am y las 10 pm",
+                        	icon: "warning",
+                        });
                         $("#Hora").focus();
 
                     } else if (evaluar > 22) {
-                        alert("No es un horario laboral");
+                    	 swal({
+                         	title: "No es un horario laboral",
+                         	text: "Porfavor, seleccione una hora entre las 9 am y las 10 pm",
+                         	icon: "warning",
+                         });
                         $("#Hora").focus();
 
                     } else {
+                    	swal("Alerta", "¿Desea guardar la hora " + hora + "?", "info",{
+                    		buttons: {
+                  			  Guardar: {
+                  				  text: "Guardar"
+                  			  },
+                  			  Cancelar: {
+                  				  text: "Cancelar"
+                  			  },
+                  		  } 
+                    	}).then((value) =>{
+                    		switch (value)
+                    		{
+                    		
+                    		 case "Cancelar": 
+                    			 swal({
+                    				 title: "Cancelado",
+                    				 icon: "error"
+                    			 })
+                   			  break;
+                   		  
+                   		  case "Guardar": 
 
-                        var bool = confirm("Desea guardar?");
-                        if (bool) {
+                              $.get('controllerHorarios', {
 
-
-                            $.get('controllerHorarios', {
-
-                                Eliminar,
-                                id,
-                                hora
-
-                            });
-                            window.location.reload();
-                        }
-
-                    }
-                })
-
-            }
+                                  Eliminar,
+                                  id,
+                                  hora
+                              });
+                              window.location.reload();
+                    		}
+                    	}
+                    	)
+                    }//CierreElse
+                })//CierreDocument
+            }//CierreFunction
         </script>
         <button id="EDITAR" onclick="MOSTRARCRUD()" class="far fa-edit fa-2x"></button>
         <div>

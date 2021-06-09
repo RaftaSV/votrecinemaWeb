@@ -3,7 +3,7 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script>
-
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <LINK REL=StyleSheet HREF="CCS/Diseno.css" TYPE="text/css" />
 
 <head>
@@ -199,45 +199,79 @@
                 Eliminar = "no";
 
                 if (usuario == "") {
-                    alert("Es necesario agregar un usuario");
+                    swal({
+                    	title: "Alerta",
+                    	text: "El usuario no puede ir vacio",
+                    	icon: "warning"
+                    });
                     $("#usuario").focus();
 
 
                 } else if (password == "") {
-                    alert("Es necesario agregar una contraseï¿½a");
+                	swal({
+                    	title: "Alerta",
+                    	text: "Es necesario agregar una contraseña",
+                    	icon: "warning",
+                    });
                     $("#password").focus();
 
 
                 } else {
-                    var bool = confirm("Desea guardar el rol del usuario " + usuario + " ?");
-                    if (bool) {
+                   swal("Alert", "¿Desea guardar al usuario " + usuario + "?", "info", {
+                	   buttons: {
+                		   Guardar: {
+                			   text: "Guardar"
+                		   },
+                           Cancelar: {
+                        	   text: "Cancelar"
+                           },
+                	   }
+                   })
+                   .then((value) =>{
+                	   switch (value) {
+                	   
+                	   case "Cancelar":
+                		   swal({
+              				 title: "Cancelado",
+              				 icon: "error"
+              			 })
+              			 break;
+                		   
+                	   case "Guardar":
+                		   document.getElementById('id').value = "#id";
+                           document.getElementById('usuario').value = "#usuario";
+                           document.getElementById('password').value = "#password";
 
-                        document.getElementById('id').value = "#id";
-                        document.getElementById('usuario').value = "#usuario";
-                        document.getElementById('password').value = "#password";
+                           $.get('controllerRoles', {
 
-                        $.get('controllerRoles', {
-
-                            id,
-                            usuario,
-                            password,
-                            tiporol,
-                            idpersona,
-                            Eliminar
+                               id,
+                               usuario,
+                               password,
+                               tiporol,
+                               idpersona,
+                               Eliminar
 
 
-                        });
-                        document.getElementById('id').value = "";
-                        document.getElementById('usuario').value = "";
-                        document.getElementById('password').value = "";
+                           });
+                           document.getElementById('id').value = "";
+                           document.getElementById('usuario').value = "";
+                           document.getElementById('password').value = "";
 
-                        window.location.reload();
-                    }
-                }
-            })
+                           window.location.reload();
+              			 swal({
+              				 title: "Guardado",
+              				 text: "Guardado con exito",
+              				 icon: "success"
+              			 })
+              			 break;
+                	   }
+                   }
+                	)
+                }//CierreElse
+            })//CierreDocument
 
 
-        }
+        }//CierreGuardar
 
         window.onload = cargarcombo();
     </script>

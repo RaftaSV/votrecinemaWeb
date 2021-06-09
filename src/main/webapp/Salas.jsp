@@ -3,6 +3,7 @@
     <!DOCTYPE html>
     <html>
     <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <LINK REL=StyleSheet HREF="CCS/Diseno.css" TYPE="text/css" />
 
     <head>
@@ -135,46 +136,74 @@
 
 
                     if (capacidad == "") {
-                        alert("Es necesario llenar el campo de Capacidad");
+                        swal({
+                        	title: "Alerta",
+                        	text: "Ingrese una capacidad valida",
+                        	icon: "warning",
+                        });
                         $("#capacidad").focus();
 
 
                     } else if (NumeroSala == "") {
-                        alert("Es necesario llenar el campo de Numero de Sala");
+                        swal({
+                        	title: "Alerta",
+                        	text: "El numero de la sala es obligatorio",
+                        	icon: "warning",
+                        });
                         $("#NumeroSala").focus();
 
 
                     } else {
-                        var bool = confirm("Desea guardar la Sala numero " + NumeroSala + " ?");
-                        if (bool) {
-                            document.getElementById('capacidad').value = "#capacidad";
-                            document.getElementById('NumeroSala').value = "#NumeroSala";
-                            document.getElementById('idsala').value = "#idsala";
-                            $.get('controllerSalas', {
+                        swal("Alerta", "¿Desea guardar la sala numero " + NumeroSala + "?", "info",  {
+                        	buttons: {
+                        		Guardar: {
+                        			text: "Guardar"
+                        		},
+                                Cancelar: {
+                                	text: "Cancelar"
+                                },
+                        	}
+                        })
+                        .then((value) =>{
+                        	switch (value){
 
-                                id,
-                                capacidad,
-                                NumeroSala,
-                                Eliminar
+                     	   case "Cancelar":
+                     		   swal({
+                   				 title: "Cancelado",
+                   				 icon: "error"
+                   			 })
+                   			 break;
+                     		   
+                     	   case "Guardar":
+                     		  document.getElementById('capacidad').value = "#capacidad";
+                              document.getElementById('NumeroSala').value = "#NumeroSala";
+                              document.getElementById('idsala').value = "#idsala";
+                              $.get('controllerSalas', {
+
+                                  id,
+                                  capacidad,
+                                  NumeroSala,
+                                  Eliminar
 
 
-                            });
+                              });
 
-                            document.getElementById('capacidad').value = "";
-                            document.getElementById('NumeroSala').value = "";
-                            document.getElementById('idsala').value = "";
-                            window.location.reload();
+                              document.getElementById('capacidad').value = "";
+                              document.getElementById('NumeroSala').value = "";
+                              document.getElementById('idsala').value = "";
+                              window.location.reload();
+                              swal({
+                            	  title: "Guardado",
+                            	  text: "Guardado con exito",
+                            	  icon: "success",
+                              })
+                              break;
+                          }
                         }
-                    }
-
-
-
-
-
-                })
-
-
-            }
+                        	)
+                    }//CierreElse
+                })//CierreDocument
+            }//CierreGuardar
 
             window.onload = cargardatos;
         </script>

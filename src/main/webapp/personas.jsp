@@ -4,6 +4,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <LINK REL=StyleSheet HREF="CCS/Diseno.css" TYPE="text/css" />
 
 <head>
@@ -121,7 +122,7 @@
                 return true;
             }
         }
-
+        
         //funcion para el metodo guardar 
         function Guardar() {
 
@@ -134,44 +135,86 @@
                 Eliminar = "no";
 
                 if (nombre == "") {
-                    alert("Debe rellenar un nombre");
+                    swal({
+                    	title: "Alerta",
+                    	text: "Debe rellenar un nombre",
+                    	icon: "warning"
+                    });
                     $("#nombre").focus();
 
 
                 } else if (apellido == "") {
-                    alert("Debe rellenar un apellido");
+                	  swal({
+                      	title: "Alerta",
+                      	text: "Debe rellenar un apellido",
+                      	icon: "warning"
+                      });
                     $("#apellido").focus();
 
 
                 } else if (dui == "") {
-                    alert("Por favor, ingrese su dui");
+                	  swal({
+                      	title: "Alerta",
+                      	text: "Porfavor, ingrese un numero de DUI",
+                      	icon: "warning"
+                      });
                     $("#dui").focus();
 
                 } else {
-                    var bool = confirm("Desea guardar la persona " + nombre + " ?");
-                    if (bool) {
-                        document.getElementById('nombre').value = "#nombre";
-                        document.getElementById('apellido').value = "#apellido";
-                        document.getElementById('dui').value = "#dui";
-                        $.get('controllerPersonas', {
-
-                            id,
-                            nombre,
-                            apellido,
-                            dui,
-                            Eliminar
-
-                        });
-                        document.getElementById('idper').value = "";
-                        document.getElementById('nombre').value = "";
-                        document.getElementById('apellido').value = "";
-                        document.getElementById('dui').value = "";
-                    }
-                    window.location.reload();
-                }
-            })
-        }
-        window.onload = cargardatos;
+                	  swal("Alerta" , "¿Desea guardar a " + nombre +"?", "info",  {
+                		  buttons: {
+                			  Guardar: {
+                				  text: "Guardar"
+                			  },
+                			  Cancelar: {
+                				  text: "Cancelar"
+                			  },
+                		  } 
+                	  })
+                	  .then((value) =>{
+                		  switch (value) {
+                		  
+                		  case "Cancelar": 
+                				 swal({
+                    				 title: "Cancelado",
+                    				 icon: "error"
+                    			 })
+                			  break;
+                		  
+                		  case "Guardar": 
+                			 
+                			  document.getElementById('nombre').value = "#nombre";
+                              document.getElementById('apellido').value = "#apellido";
+                              document.getElementById('dui').value = "#dui";
+                              $.get('controllerPersonas', {
+                                  id,
+                                  nombre,
+                                  apellido,
+                                  dui,
+                                  Eliminar
+                              });
+                              document.getElementById('idper').value = "";
+                              document.getElementById('nombre').value = "";
+                              document.getElementById('apellido').value = "";
+                              document.getElementById('dui').value = "";
+                              window.location.reload();
+                              
+                              swal({
+                				  title: "Guardado",
+                				  text: "Guardado con exito",
+                				  icon: "success",
+                			  })
+                		  break;
+                		  
+                		  }//CierreSwitch
+                	  }//CierreValue
+                	  )//CierreThen
+                       
+                   }//CierreElse
+               })//CierreDocument
+               
+           }//CierreFunction
+           window.onload = cargardatos;
     </script>
     <button id="EDITAR" onclick="MOSTRARCRUD()" class="far fa-edit fa-2x"></button>
     <div>
