@@ -161,9 +161,7 @@
                                         break;
 
                                     case "Agregar":
-                                        document.getElementById('nombre').value = "#nombre";
-                                        document.getElementById('telefono').value = "#telefono";
-                                        document.getElementById('direccion').value = "#direccion";
+
                                         $.get('controllerProveedores', {
 
                                             id,
