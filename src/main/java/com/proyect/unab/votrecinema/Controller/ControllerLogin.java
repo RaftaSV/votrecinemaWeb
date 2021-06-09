@@ -47,8 +47,6 @@ public class ControllerLogin extends HttpServlet {
 
 		if (btncerrar != null) {
 
-			response.sendRedirect("Index.jsp");
-
 			session.invalidate();
 		} else {
 
@@ -79,7 +77,7 @@ public class ControllerLogin extends HttpServlet {
 					response.sendRedirect("Principal.jsp");
 				}
 			} else {
-
+		
 				response.sendRedirect("Index.jsp");
 			}
 		}
