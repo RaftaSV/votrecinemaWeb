@@ -663,13 +663,26 @@ HttpSession sesion = (HttpSession) request.getSession();
 
                             })
 
-                            alert(identificador + "   " + asiento + "  " + idprecio + "   " + idproducto + "  " + Idcartelera);
+
                         });
 
+                        swal({
+                            title: "Alerta",
+                            text: ("Su cambio es " + parseFloat(efectivo - total)),
+                            icon: "warning",
 
-                        // alert("Su cambio es " + parseFloat(efectivo - total));
+                        });
+                        Limpiar();
+                        document.getElementById('efectivo').value = "";
+                        $('#tabladetalles tbody tr').remove();
+                        document.getElementById('totallabel').innerHTML = "$";
                     } else {
+                        swal({
+                            title: "Alerta",
+                            text: (" El efectivo ingresado es mejor al total "),
+                            icon: "warning",
 
+                        });
 
                     }
 
