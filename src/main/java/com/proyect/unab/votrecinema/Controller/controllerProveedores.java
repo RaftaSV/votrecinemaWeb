@@ -48,7 +48,7 @@ public class controllerProveedores extends HttpServlet {
 		try {
 
 			nombre = request.getParameter("nombre");
-			telefono = request.getParameter("telefono");
+			telefono = request.getParameter("telefono").replace(" ", "");
 			direccion = request.getParameter("direccion");
 			
 		} catch (Exception e) {

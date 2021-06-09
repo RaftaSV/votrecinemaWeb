@@ -52,7 +52,7 @@ public class ClsProveedores {
 			call.setString("pDireccion", pro.getDireccion());
 			call.execute();
 			conectar.close();
-			JOptionPane.showMessageDialog(null, "Guardado exitosamente");
+			System.out.println("Guardado exitosa");
 		} catch (Exception e) {
 			System.out.println("Error" + e);
 		}
