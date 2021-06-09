@@ -204,6 +204,10 @@
                                 switch (value) {
 
                                     case "cancelar":
+                                        swal({
+                                            title: "Cancelado",
+                                            icon: "error"
+                                        })
 
                                         break;
 
