@@ -626,64 +626,66 @@ HttpSession sesion = (HttpSession) request.getSession();
                     var cajero = "<%=cajero%>";
                     var efectivo = parseFloat($('#efectivo').val());
                     var cliente = $('#clientes').val();
-                    if (efectivo >= total) {
-                        $(document).ready(function() {
-
-                            $.get('controllerfacturas', {
-                                cajero,
-                                cliente,
-                                total
-
-
-                            });
-                        })
-
-
-
-
-                        $('#tabladetalles tbody tr').each(function() {
-                            var costo = parseFloat(($(this).find('td:nth-child(2)').html().replace("$", "")));
-                            var identificador = $(this).find('td:nth-child(3)').html();
-                            var asiento = $(this).find('td:nth-child(4)').html();
-                            var idprecio = $(this).find('td:nth-child(5)').html();
-                            var idproducto = $(this).find('td:nth-child(6)').html();
-                            var Idcartelera = $(this).find('td:nth-child(7)').html();
+                    if ($('#efectivo').val() == 0) {
+                        if (efectivo >= total) {
                             $(document).ready(function() {
 
+                                $.get('controllerfacturas', {
+                                    cajero,
+                                    cliente,
+                                    total
 
 
-                                $.post('controllerfacturas', {
-                                    costo,
-                                    identificador,
-                                    asiento,
-                                    idprecio,
-                                    idproducto,
-                                    Idcartelera
                                 });
-
                             })
 
 
-                        });
 
-                        swal({
-                            title: "Alerta",
-                            text: ("Su cambio es " + parseFloat(efectivo - total)),
-                            icon: "warning",
 
-                        });
-                        Limpiar();
-                        document.getElementById('efectivo').value = "";
-                        $('#tabladetalles tbody tr').remove();
-                        document.getElementById('totallabel').innerHTML = "$";
-                    } else {
-                        swal({
-                            title: "Alerta",
-                            text: (" El efectivo ingresado es mejor al total "),
-                            icon: "warning",
+                            $('#tabladetalles tbody tr').each(function() {
+                                var costo = parseFloat(($(this).find('td:nth-child(2)').html().replace("$", "")));
+                                var identificador = $(this).find('td:nth-child(3)').html();
+                                var asiento = $(this).find('td:nth-child(4)').html();
+                                var idprecio = $(this).find('td:nth-child(5)').html();
+                                var idproducto = $(this).find('td:nth-child(6)').html();
+                                var Idcartelera = $(this).find('td:nth-child(7)').html();
+                                $(document).ready(function() {
 
-                        });
 
+
+                                    $.post('controllerfacturas', {
+                                        costo,
+                                        identificador,
+                                        asiento,
+                                        idprecio,
+                                        idproducto,
+                                        Idcartelera
+                                    });
+
+                                })
+
+
+                            });
+
+                            swal({
+                                title: "Alerta",
+                                text: ("Su cambio es " + parseFloat(efectivo - total)),
+                                icon: "warning",
+
+                            });
+                            Limpiar();
+                            document.getElementById('efectivo').value = "";
+                            $('#tabladetalles tbody tr').remove();
+                            document.getElementById('totallabel').innerHTML = "$";
+                        } else {
+                            swal({
+                                title: "Alerta",
+                                text: (" El efectivo ingresado es mejor al total "),
+                                icon: "warning",
+
+                            });
+
+                        }
                     }
 
 
