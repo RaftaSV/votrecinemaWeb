@@ -26,6 +26,7 @@ public class ClsDetallesFactura {
             call.setInt("Pdiferenciador", detalle.getDiferenciador());
             call.executeQuery();
             conectar.close();
+            System.out.println("Guardado exitoso detalle");
         } catch (Exception e) {
             System.out.println("error" + e);
         }

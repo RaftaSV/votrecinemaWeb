@@ -51,9 +51,7 @@ public class ControllerAsientos extends HttpServlet {
 		} catch (Exception e) {
 			idcartelera=0;
 			
-		}
-		System.out.println(request.getParameter("Idcartelera").replace(" ", ""));
-		
+		}		
 		ClsAsientos asientos = new ClsAsientos();
 		Asientos asiento = new Asientos();
 		asiento.setIdcartelera(idcartelera);

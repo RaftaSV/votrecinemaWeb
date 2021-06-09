@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import com.proyect.unab.votrecinema.Entidades.Roles;
 import com.proyect.unab.votrecinema.DAO.*;
+
 /**
  * Servlet implementation class ControllerLogin
  */
@@ -62,21 +63,24 @@ public class ControllerLogin extends HttpServlet {
 			clsLoguin cls = new clsLoguin();
 
 			boolean resultado = cls.Loguin(user, pass);
+			
+			
 
 			if (resultado == true) {
 
 				session.setAttribute("usuario", resultado);
 				int tipo = cls.rol;
-				
-				if (tipo == 2) {
+				int id = cls.id;
+				if (tipo == 0) {
 					String usuario = cls.usuario;
-					
+
 					request.getSession().setAttribute("usu", usuario.toUpperCase());
+					request.getSession().setAttribute("id", id);
 					response.sendRedirect("Principal.jsp");
 				}
-			}else {
-				
-				response.sendRedirect("Index .jsp");
+			} else {
+
+				response.sendRedirect("Index.jsp");
 			}
 		}
 	}

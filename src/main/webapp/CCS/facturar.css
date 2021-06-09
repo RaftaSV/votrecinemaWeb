@@ -98,3 +98,15 @@
     display: inline-block;
     position: absolute;
 }
+
+.cobro {
+    font-weight: bold;
+    display: inline-block;
+    position: absolute;
+    margin-left: 74%;
+    margin-top: 3%;
+}
+
+#efectivo {
+    width: 8%;
+}

@@ -24,6 +24,7 @@ public class ClsFacturas {
             call.setDouble("pTotal", factura.getTotal());
             call.executeQuery();
             conectar.close();
+            System.out.println("Guardado exitoso");
         } catch (Exception e) {
             System.out.println("error"+e);
         } 
