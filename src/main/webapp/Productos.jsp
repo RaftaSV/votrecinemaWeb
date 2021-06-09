@@ -96,8 +96,8 @@
 
                 idProducto = $(this).find('td:first-child').html();
                 producto = $(this).find('td:nth-child(2)').html();
-                precio = $(this).find('td:nth-child(3)').html();
-                cantidad = $(this).find('td:nth-child(4)').html();
+                precio = $(this).find('td:nth-child(3)').html().replace(" ", "");
+                cantidad = $(this).find('td:nth-child(4)').html().replace(" ", "");
                 proveedor = $(this).find('td:nth-child(5)').html();
 
                 if (idProducto > 0) {
@@ -263,16 +263,16 @@
             </div>
 
 
-            <div class="crudProductos" id="PANELCRUD" style="display: none;" aling="center">
-
-                <input type="hidden" id="id"> <br> <label>Producto</label>
-                <br> <input type="text" id="Producto"> <br> <label>Precio</label>
-                <br> <input type="number" id="Precio"> <br> <label>Cantidad</label>
-                <br> <input type="number" id="Cantidad"> <br> <label>Proveerdor</label>
-                <br> <select class="" id="combo" required>
+            <div class="crudProductos" id="PANELCRUD" style="display: none;">
+                <center>
+                    <input type="hidden" id="id"> <br> <label>Producto</label>
+                    <br> <input type="text" id="Producto"> <br> <label>Precio</label>
+                    <br> <input type="number" id="Precio"> <br> <label>Cantidad</label>
+                    <br> <input type="number" id="Cantidad"> <br> <label>Proveerdor</label>
+                    <br> <select class="" id="combo" required>
 				</select> <br> <br>
-                <button class="Confirmar" onclick="Guardar()">Guardar</button>
-
+                    <button class="Confirmar" onclick="Guardar()">Guardar</button>
+                </center>
             </div>
         </div>
 
