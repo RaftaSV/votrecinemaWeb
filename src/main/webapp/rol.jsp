@@ -266,7 +266,7 @@
                 <label>Usuario</label>
                 <br> <input type="text" id="usuario"> <br>
                 <label>Password</label>
-                <br> <input type="text" id="password"> <br>
+                <br> <input type="password" id="password"> <br>
                 <label>Tipo Rol</label> <br>
                 <select id="comborol" required>
 				</select> <br>

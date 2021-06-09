@@ -110,3 +110,10 @@
 #efectivo {
     width: 8%;
 }
+
+#facturar {
+    color: white;
+    background-color: teal;
+    border-radius: 20px;
+    font-weight: bold;
+}
