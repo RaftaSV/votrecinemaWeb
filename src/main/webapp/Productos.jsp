@@ -7,13 +7,16 @@
     <head>
         <meta charset="ISO-8859-1">
         <title>VOTRECINEMA</title>
-        <!-- Required meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--- font awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+        <!-- CSS -->
         <LINK REL=StyleSheet HREF="CCS/Diseno.css" TYPE="text/css" />
+        <!--- ajax -->
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <!-- Bootstrap CSS -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+        <!--sweetalert -->
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     </head>
 
     <body>
@@ -45,29 +48,30 @@
                 }
 
             }
-          //Cuando la página esté cargada completamente
-        	  $(document).ready(function(){
-        	    //Cada 1 segundos (1000 milisegundos) se ejecutará la función refrescar y cargara la imagen insertada 
-        	    setTimeout(cargardatos, 1000);
-        	  });
-          
-        	  function cargardatos() {
 
             $(document).ready(function() {
 
-                $.post('controllerProductos', {
-                    //Enviar informacion
+                setTimeout(cargardatos, 1000);
+            });
 
-                }, function(response) {
-                    //Recibir informacion
+            function cargardatos() {
 
-                    let datos = JSON.parse(response);
-                    //console.log(datos);
+                $(document).ready(function() {
 
-                    var tabla = document.getElementById('tablaproductos');
-                    for (let item of datos) {
+                    $.post('controllerProductos', {
+                        //Enviar informacion
 
-                        tabla.innerHTML += `
+                    }, function(response) {
+                        //Recibir informacion
+
+                        let datos = JSON.parse(response);
+                        //console.log(datos);
+
+                        var tabla = document.getElementById('tablaproductos');
+                        $('#tablaproductos tbody tr').remove();
+                        for (let item of datos) {
+
+                            tabla.innerHTML += `
 				 <tr>
 					<td style="display:none;"> ${item.idProducto} </td>
 				    <td> ${item.Producto} </td>
@@ -82,10 +86,10 @@
 				`
 
 
-                    }
+                        }
+                    });
                 });
-            });
-        }
+            }
 
             $(document).on("click", "#tablaproductos tr", function() {
                 var idProducto, producto, precio, cantidad, proveedor;
@@ -158,49 +162,74 @@
 
 
                     if (producto == "") {
-                        alert("Es necesario llenar el campo de producto");
+
+
+                        swal({
+                            title: "Alerta",
+                            text: "Es necesario llenar el campo de producto",
+                            icon: "warning",
+                        });
                         $("#Producto").focus();
 
                     } else if (precio == "") {
-                        alert("Es necesario agregar precio");
+                        swal({
+                            title: "Alerta",
+                            text: "Es necesario agregar precio",
+                            icon: "warning",
+                        });
+
                         $("#Precio").focus();
 
                     } else if (cantidad == "") {
-                        alert("Es necesario agregar la cantidad");
+
+                        swal({
+                            title: "Alerta",
+                            text: "Es necesario agregar la cantidad",
+                            icon: "warning",
+                        });
                         $("#Cantidad").focus();
 
                     } else {
+                        swal("Alerta", "Desea guardar el producto " + producto + " ?", "info", {
+                                buttons: {
+                                    cancelar: {
+                                        text: "Cancelar"
+                                    },
+                                    Agregar: {
+                                        text: "Agregar"
+                                    },
+                                },
+                            })
+                            .then((value) => {
+                                switch (value) {
 
-                        var bool = confirm("Desea guardar el producto " + producto + " ?");
-                        if (bool) {
+                                    case "cancelar":
 
-                            document.getElementById('id').value = "id";
-                            document.getElementById('Producto').value = "Producto";
-                            document.getElementById('Precio').value = "Precio";
-                            document.getElementById('Cantidad').value = "Cantidad";
+                                        break;
 
+                                    case "Agregar":
+                                        $.get('controllerProductos', {
 
-                            $.get('controllerProductos', {
-
-                                id,
-                                producto,
-                                precio,
-                                cantidad,
-                                idpro,
-                                Eliminar
-
-
-                            });
-
-                            document.getElementById('id').value = "";
-                            document.getElementById('Producto').value = "";
-                            document.getElementById('Precio').value = "";
-                            document.getElementById('Cantidad').value = "";
-                            window.location.reload();
-
+                                            id,
+                                            producto,
+                                            precio,
+                                            cantidad,
+                                            idpro,
+                                            Eliminar
 
 
-                        }
+                                        });
+
+                                        document.getElementById('id').value = "";
+                                        document.getElementById('Producto').value = "";
+                                        document.getElementById('Precio').value = "";
+                                        document.getElementById('Cantidad').value = "";
+
+                                        window.location.reload();
+
+                                }
+                            })
+
                     }
 
                 })
@@ -208,6 +237,7 @@
             }
 
             window.onload = cargarcombo();
+            window.onload = cargardatos();
         </script>
 
 

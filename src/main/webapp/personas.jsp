@@ -28,7 +28,6 @@
 
 
     <script type="text/javascript">
-    
         function MOSTRARCRUD() {
             var CRUD = document.getElementById("PANELCRUD"),
                 tabladiv = document.getElementById('tabladiv');
@@ -49,13 +48,13 @@
                 tabladiv.style.width = "98%";
             }
         }
-        
-      //Cuando la página esté cargada completamente
-  	  $(document).ready(function(){
-  	    //Cada 1 segundos (1000 milisegundos) se ejecutará la función refrescar y cargara la imagen insertada 
-  	    setTimeout(cargardatos, 1000);
-  	  });
- 
+
+        //Cuando la pï¿½gina estï¿½ cargada completamente
+        $(document).ready(function() {
+
+            setTimeout(cargardatos, 1000);
+        });
+
         //funcion para cargar datos
         function cargardatos() {
 
@@ -94,12 +93,12 @@
             Apellidos = $(this).find('td:nth-child(3)').html();
             DUI = $(this).find('td:nth-child(4)').html();
 
-                document.getElementById('idper').value = idPersona;
-                document.getElementById('nombre').value = Nombres;
-                document.getElementById('apellido').value = Apellidos;
-                document.getElementById('dui').value = DUI;
+            document.getElementById('idper').value = idPersona;
+            document.getElementById('nombre').value = Nombres;
+            document.getElementById('apellido').value = Apellidos;
+            document.getElementById('dui').value = DUI;
         });
-        
+
         function solonumeros(e) {
 
             key = e.keyCode || e.which;
@@ -118,9 +117,11 @@
             if (numero.indexOf(teclado) == -1 && !tecladoEspecial) {
                 return false;
             }
-            if(this.value.length<=9) {return true;}
+            if (this.value.length <= 9) {
+                return true;
+            }
         }
-        
+
         //funcion para el metodo guardar 
         function Guardar() {
 
@@ -192,13 +193,13 @@
             <center>
                 <input type="hidden" id="idper"> <br>
                 <label>Nombre</label>
-                <br> <input type="text" id="nombre"> <br> 
+                <br> <input type="text" id="nombre"> <br>
                 <label>Apellido</label>
-                <br> <input type="text" id="apellido"> <br> 
+                <br> <input type="text" id="apellido"> <br>
                 <label>DUI</label>
-                <br> <input type="text" id="dui" onkeypress="return solonumeros(event)" > <br> 
+                <br> <input type="text" id="dui" onkeypress="return solonumeros(event)"> <br>
                 <br>
-                <button  class="Confirmar" onclick="Guardar()" >Guardar</button>
+                <button class="Confirmar" onclick="Guardar()">Guardar</button>
 
             </center>
         </div>
