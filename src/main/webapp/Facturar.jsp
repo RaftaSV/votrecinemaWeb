@@ -213,11 +213,7 @@ HttpSession sesion = (HttpSession) request.getSession();
 
                     } catch (error) {
 
-<<<<<<< Updated upstream
-                } catch (error) {
-=======
                     }
->>>>>>> Stashed changes
 
                 }
 
@@ -466,9 +462,6 @@ HttpSession sesion = (HttpSession) request.getSession();
                             try {
                                 var combo = document.getElementById('Asientos');
 
-<<<<<<< Updated upstream
-            function cargarCarteleras() {
-=======
                                 $('#Asientos').empty();
                                 datos.forEach(function(item) {
 
@@ -505,7 +498,6 @@ HttpSession sesion = (HttpSession) request.getSession();
                         })
                         .then((value) => {
                             switch (value) {
->>>>>>> Stashed changes
 
                                 case "cancelar":
 
@@ -659,8 +651,6 @@ HttpSession sesion = (HttpSession) request.getSession();
                             $(document).ready(function() {
 
 
-<<<<<<< Updated upstream
-=======
 
                                 $.post('controllerfacturas', {
                                     costo,
@@ -673,10 +663,11 @@ HttpSession sesion = (HttpSession) request.getSession();
 
                             })
 
+                            alert(identificador + "   " + asiento + "  " + idprecio + "   " + idproducto + "  " + Idcartelera);
                         });
 
 
-
+                        // alert("Su cambio es " + parseFloat(efectivo - total));
                     } else {
 
 
@@ -688,7 +679,6 @@ HttpSession sesion = (HttpSession) request.getSession();
                 window.onload = cargarCarteleras;
             </script>
 
->>>>>>> Stashed changes
     </body>
 
     </html>
