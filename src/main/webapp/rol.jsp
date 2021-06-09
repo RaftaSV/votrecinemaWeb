@@ -190,35 +190,52 @@
         function Guardar() {
 
             $(document).ready(function() {
-                    var idRol, usuario, password, tiporol, idpersona;
-                    id = $("#id").val();
-                    usuario = $("#usuario").val();
-                    password = $("#password").val();
-                    tiporol = $("#comborol").val();
-                    idpersona = $("#combo").val();
-                    Eliminar = "no";
+                var idRol, usuario, password, tiporol, idpersona;
+                id = $("#id").val();
+                usuario = $("#usuario").val();
+                password = $("#password").val();
+                tiporol = $("#comborol").val();
+                idpersona = $("#combo").val();
+                Eliminar = "no";
+
+                if (usuario == "") {
+                    alert("Es necesario agregar un usuario");
+                    $("#usuario").focus();
 
 
-                    $.get('controllerRoles', {
-
-                        id,
-                        usuario,
-                        password,
-                        tiporol,
-                        idpersona,
-                        Eliminar
+                } else if (password == "") {
+                    alert("Es necesario agregar una contrase�a");
+                    $("#password").focus();
 
 
-                    });
+                } else {
+                    var bool = confirm("Desea guardar el rol del usuario " + usuario + " ?");
+                    if (bool) {
+
+                        document.getElementById('id').value = "#id";
+                        document.getElementById('usuario').value = "#usuario";
+                        document.getElementById('password').value = "#password";
+
+                        $.get('controllerRoles', {
+
+                            id,
+                            usuario,
+                            password,
+                            tiporol,
+                            idpersona,
+                            Eliminar
+
+
+                        });
+                        document.getElementById('id').value = "";
+                        document.getElementById('usuario').value = "";
+                        document.getElementById('password').value = "";
+
+                        window.location.reload();
+                    }
                 }
+            })
 
-
-            )
-            document.getElementById('id').value = "";
-            document.getElementById('usuario').value = "";
-            document.getElementById('password').value = "";
-
-            window.location.reload();
 
         }
 
