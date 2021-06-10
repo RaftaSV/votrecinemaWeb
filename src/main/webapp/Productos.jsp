@@ -20,6 +20,13 @@
     </head>
 
     <body>
+    
+    <% HttpSession sesion = (HttpSession) request.getSession();
+        String id = String.valueOf(sesion.getAttribute("id"));
+        if (id.equals(null) || id.equals("null") || id.equals("Error")) {
+               response.sendRedirect("Index.jsp");
+           }
+        %>
 
         <h1 class="text-center display-1" style="font-family: 'Old Standard TT', serif;">
             <font COLOR="black"> PRODUCTOS</font>

@@ -25,6 +25,15 @@
     </h1>
 
     <body>
+       <% HttpSession sesion = (HttpSession) request.getSession();
+	 String id = String.valueOf(sesion.getAttribute("id"));
+	 if (id.equals(null) || id.equals("null") || id.equals("Error")) {
+
+			response.sendRedirect("Index.jsp");
+
+		}
+	 
+	 %>
         <label> BUSCAR </label>
         <input type="text" id="buscar" onkeyup="buscar() " />
         <br>

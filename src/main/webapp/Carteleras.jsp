@@ -26,7 +26,13 @@
 </h1>
 <body>
 
-
+ <% HttpSession sesion = (HttpSession) request.getSession();
+	 String tipo = String.valueOf(sesion.getAttribute("tipo"));
+	 String id = String.valueOf(sesion.getAttribute("id"));
+	 if (id.equals(null) || id.equals("null") || id.equals("Error")) {
+			response.sendRedirect("Index.jsp");
+		}
+	 %>
 	<script type="text/javascript">
 		$(document).ready(function() {
 

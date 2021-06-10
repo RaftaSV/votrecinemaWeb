@@ -31,7 +31,12 @@
 </head>
 <body>
 	<% HttpSession sesion = (HttpSession) request.getSession();
-	 String usu = String.valueOf(sesion.getAttribute("usu")); %>
+	 String usu = String.valueOf(sesion.getAttribute("usu")); 
+	   String id = String.valueOf(sesion.getAttribute("id"));
+        if (id.equals(null) || id.equals("null") || id.equals("Error")) {
+               response.sendRedirect("Index.jsp");
+           }
+        %>
 	<div class="wrapper">
 		<nav id="sidebar">
 			<div class="sidebar-header" id="menu">

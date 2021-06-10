@@ -1,9 +1,5 @@
 Manifest-Version: 1.0
-<<<<<<< Updated upstream
 Built-By: rafap
-=======
-Built-By: 50379
->>>>>>> Stashed changes
 Build-Jdk: 15.0.2
 Created-By: Maven Integration for Eclipse
 

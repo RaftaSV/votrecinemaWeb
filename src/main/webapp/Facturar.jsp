@@ -79,10 +79,15 @@
         <input type="number" class="cobro" id="efectivo" value="0"><br><br>
         <button class="cobro" id="facturar">FACTURAR</button>
 
-        <%
-HttpSession sesion = (HttpSession) request.getSession();
-		 String cajero = String.valueOf(sesion.getAttribute("id"));
-%>
+
+        <% HttpSession sesion = (HttpSession) request.getSession();
+    
+        String cajero = String.valueOf(sesion.getAttribute("id"));
+        if (cajero.equals(null) || cajero.equals("null") || cajero.equals("Error")) {
+               response.sendRedirect("Index.jsp");
+           }
+        %>
+
             <script type="text/javascript">
                 var fecha = new Date();
                 var fechaactual = fecha.getFullYear() + "/" + (fecha.getMonth() + 1) + "/" + fecha.getDate();
@@ -91,7 +96,8 @@ HttpSession sesion = (HttpSession) request.getSession();
                 document.getElementById('fecha').min = formatofecha(fechaactual);
                 document.getElementById('fecha').max = formatofecha(fechamaxima);
                 document.getElementById("adultos").checked = true;
-                var precioadulto, precionino, precioadultoma, precioestudiante, horaInicio, nombrepelicula, sala, total, Idcartelera;
+                var precioadulto, precionino, precioadultoma, precioestudiante, horaInicio, nombrepelicula, sala, total = 0,
+                    Idcartelera;
 
                 function formatofecha(date) {
                     var d = new Date(date),
@@ -627,7 +633,7 @@ HttpSession sesion = (HttpSession) request.getSession();
                     var cajero = "<%=cajero%>";
                     var efectivo = parseFloat($('#efectivo').val());
                     var cliente = $('#clientes').val();
-                    if ($('#efectivo').val() == 0) {
+                    if (total != 0) {
                         if (efectivo >= total) {
                             $(document).ready(function() {
 
