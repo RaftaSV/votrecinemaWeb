@@ -1,4 +1,9 @@
 @charset "ISO-8859-1";
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+table {
+    font-family: 'Dancing Script', cursive;
+}
+
 .tabla {
     overflow: scroll;
     background: white;
