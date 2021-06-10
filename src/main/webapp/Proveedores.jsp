@@ -21,7 +21,7 @@
     </head>
 
     <body>
-        <h1 class="text-center display-1" style="font-family: Brush Script MT, arial">
+        <h1 class="text-center display-1" style="font-family: 'Old Standard TT', serif;">
             <font COLOR="black"> PROVEEDORES</font>
         </h1>
 

@@ -4,7 +4,8 @@
 
     <head>
         <meta charset="ISO-8859-1">
-        <title>Insert title here</title>
+        <title>Facturación</title>
+        
     </head>
     <!-- css -->
     <LINK REL=StyleSheet HREF="CCS/facturar.css" TYPE="text/css" />

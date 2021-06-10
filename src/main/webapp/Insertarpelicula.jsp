@@ -21,7 +21,7 @@
 
     <body>
 
-        <h1 style="font-family: Brush Script MT, arial" align="center">PELICULAS</h1>
+        <h1 style="font-family: 'Old Standard TT', serif;" align="center">PELICULAS</h1>
 
         <div id="imagen">
             <img alt="" src="Imagenes/fondonegro.jpg" id="portada" width="100%" height="100%">

@@ -22,7 +22,7 @@
 
 
 	<body>
-		<h1 class="text-center display-1" style="font-family: Brush Script MT, arial" align="center">
+		<h1 class="text-center display-1" style="font-family: 'Old Standard TT', serif;" align="center">
 			<font COLOR="black"> CARTELERAS </font>
 		</h1>
 		<div id="imagen">

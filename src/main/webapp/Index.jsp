@@ -1,10 +1,11 @@
 
 <!DOCTYPE html>
 <html>
+<link rel="shortcut icon" type="Logo/png" href="CCS/Logo.png">
 <LINK REL=StyleSheet HREF="CCS/estilo.css" TYPE="text/css"/>
 <head>
 <meta charset="ISO-8859-1">
-<title>LOGUIN</title>
+<title>HOME</title>
 </head>
 <body >
 

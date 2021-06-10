@@ -17,7 +17,7 @@
 
 
 <h1 class="text-center display-1"
-	style="font-family: Brush Script MT, arial">
+	style="font-family: 'Old Standard TT', serif;">
 	<font COLOR="black"> PELICULAS</font>
 </h1>
 

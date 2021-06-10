@@ -21,7 +21,7 @@
 
 
 <h1 class="text-center display-1"
-	style="font-family: Brush Script MT, arial">
+	style="font-family: 'Old Standard TT', serif;">
 	<font COLOR="black"> CARTELERAS</font>
 </h1>
 <body>
@@ -144,7 +144,5 @@
 
 		</thead>
 	</table>
-
-
 </body>
 </html>
