@@ -183,10 +183,11 @@
                     document.getElementById("contenedor").appendChild(iframe);
 
                 }
-                var perfEntries = performance.getEntriesByType("navigation");
 
-                if (perfEntries[0].type === "back_forward") {
+                if (performance.navigation.type == 2) {
+
                     location.reload(true);
+
                 }
             </script>
 

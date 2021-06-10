@@ -44,6 +44,7 @@ public class controllerCerrar extends HttpServlet {
 			response.sendRedirect("Index.jsp");
 			session.invalidate();
 		}
+		
 	}
 
 }
