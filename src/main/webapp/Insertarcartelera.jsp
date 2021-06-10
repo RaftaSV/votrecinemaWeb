@@ -2,6 +2,7 @@
 	<!DOCTYPE html>
 	<html>
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<LINK REL=StyleSheet HREF="CCS/pelicula.css" TYPE="text/css" />
 
 	<head>
@@ -250,19 +251,52 @@
 					idHorario = $("#hora").val();
 					fecha = $("#fecha").val();
 					sala = $("#sala").val();
+					
+					
+					if(idpelicula == "")
+					{
+						swal({
+                        	title: "Alerta",
+                        	text: "Debe seleccionar una pelicula existente",
+                        	icon: "warning",
+                        });
+                        $("#idpelicula").focus();
+                        
+					}else{
+						swal("Alerta", "¿Desea guardar la cartelera?", "info", {
+							buttons: {
+                        		Guardar: {
+                        			text: "Guardar"
+                        		},
+                                Cancelar: {
+                                	text: "Cancelar"
+                                },
+                        	}
+						})
+						.then((value) =>{
+							switch (value){
 
-					$.post('controllerCRUDcarteleras', {
+	                     	   case "Cancelar":
+	                     		   swal({
+	                   				 title: "Cancelado",
+	                   				 icon: "error",
+	                   			 })
+	                   			 break;
+	                     		   
+	                     	   case "Guardar":
+	                     		  $.post('controllerCRUDcarteleras', {
 
-						id, idpelicula, idHorario, fecha, sala
-
-
-
-					});
+	          						id, idpelicula, idHorario, fecha, sala
+	          					});
+	                     		 window.location.href = "http://localhost:8080/Votre/Carteleras.jsp";
+	                     		  break;
+						}
+					})
 				}
-				)
+			})//CierreDocument
 
-				window.location.href = "http://localhost:8080/Votre/Carteleras.jsp";
-			}
+
+		}//CierreGuardar
 
 
 		</script>
