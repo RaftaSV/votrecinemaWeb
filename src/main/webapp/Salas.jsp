@@ -31,9 +31,53 @@
                response.sendRedirect("Index.jsp");
            }
         %>
+            <button id="EDITAR" onclick="MOSTRARCRUD()" class="far fa-edit fa-2x"></button>
+            <div>
+
+                <div class="tabla" id="tabladiv">
+                    <table id="tablaDatos" onclick="leerdatos() " class="table table-sm table-dark">
+                        <thead>
+                            <th style="display:none;">ID</th>
+                            <th>CAPACIDAD</th>
+                            <th>NUMERO DE SALA</th>
+                            <th> ACCIONES </th>
+                        </thead>
+                    </table>
+
+                </div>
+
+
+                <div class="crud" id="PANELCRUD" style="display: none;">
+                    <center>
+                        <input type="hidden" id="idsala"> <br>
+                        <label>Capacidad</label>
+                        <br> <input type="number" id="capacidad" min="1"> <br>
+                        <label>Numero de Sala</label>
+                        <br> <input type="number" id="NumeroSala" min="1"> <br>
+                        <br>
+
+                        <button class="Confirmar" onclick="Guardar()">Guardar</button>
+                    </center>
+                </div>
+            </div>
+
 
 
             <script type="text/javascript">
+                // validacion solo numeros enteros 
+
+                $('#capacidad').on(
+                    'input',
+                    function() {
+                        this.value = this.value.replace('-', '').replace('.', '');
+                    });
+
+                $('#NumeroSala').on(
+                    'input',
+                    function() {
+                        this.value = this.value.replace('-', '').replace('.', '');
+                    });
+
                 function MOSTRARCRUD() {
                     var CRUD = document.getElementById("PANELCRUD"),
                         tabladiv = document.getElementById('tabladiv');
@@ -54,11 +98,7 @@
                     }
                 }
 
-                $(document).ready(function() {
-                    //Cada 6 segundos (6000 milisegundos) se ejecutarï¿½ la funciï¿½n refrescar y cargara la imagen insertada 
-                    setTimeout(cargardatos, 1000);
-                });
-
+               
                 function cargardatos() {
 
                     $(document).ready(function() {
@@ -111,36 +151,33 @@
 
 
 
-                function solonumeros(e) {
 
-                    key = e.keyCode || e.which;
-                    teclado = String.fromCharCode(key);
-                    numero = "0123456789";
-                    especiales = "8-37-38-46";
-                    tecladoEspecial = false;
-                    for (var i in especiales) {
-
-                        if (key == especiales[i]) {
-
-                            tecladoEspecial = true;
-                        }
-                    }
-
-                    if (numero.indexOf(teclado) == -1 && !tecladoEspecial) {
-                        return false;
-                    }
-                }
 
 
 
                 function Guardar() {
 
                     $(document).ready(function() {
-                            var id, capacidad, NumeroSala, Eliminar;
+                            var id, capacidad, NumeroSala, Eliminar, contador = 0,
+                                contador2 = 0;
                             id = $("#idsala").val();
                             capacidad = $("#capacidad").val();
                             NumeroSala = $("#NumeroSala").val();
                             Eliminar = "no";
+
+                            $('#tablaDatos tr').each(function() {
+
+                                $(this).find('td:nth-child(3)').each(function() {
+                                    if (parseInt($(this).html()) == parseInt(NumeroSala)) {
+
+                                        contador++
+                                    } else {
+                                        contador++;
+                                        contador2++;
+                                    }
+
+                                })
+                            })
 
 
                             if (capacidad == "") {
@@ -161,8 +198,16 @@
                                 $("#NumeroSala").focus();
 
 
+                            } else if (contador != contador2) {
+                                swal({
+                                    title: "Alerta",
+                                    text: "El numero de la sala ya asido asignado",
+                                    icon: "warning",
+                                });
+                                $("#NumeroSala").focus();
+
                             } else {
-                                swal("Alerta", "ï¿½Desea guardar la sala numero " + NumeroSala + "?", "info", {
+                                swal("Alerta", "¿Desea guardar la sala numero " + NumeroSala + "?", "info", {
                                         buttons: {
                                             Guardar: {
                                                 text: "Guardar"
@@ -200,11 +245,6 @@
                                                 document.getElementById('NumeroSala').value = "";
                                                 document.getElementById('idsala').value = "";
                                                 window.location.reload();
-                                                swal({
-                                                    title: "Guardado",
-                                                    text: "Guardado con exito",
-                                                    icon: "success",
-                                                })
                                                 break;
                                         }
                                     })
@@ -215,35 +255,6 @@
                 window.onload = cargardatos;
             </script>
 
-            <button id="EDITAR" onclick="MOSTRARCRUD()" class="far fa-edit fa-2x"></button>
-            <div>
-
-                <div class="tabla" id="tabladiv">
-                    <table id="tablaDatos" onclick="leerdatos() " class="table table-sm table-dark">
-                        <thead>
-                            <th style="display:none;">ID</th>
-                            <th>CAPACIDAD</th>
-                            <th>NUMERO DE SALA</th>
-                            <th> ACCIONES </th>
-                        </thead>
-                    </table>
-
-                </div>
-
-
-                <div class="crud" id="PANELCRUD" style="display: none;">
-                    <center>
-                        <input type="hidden" id="idsala"> <br>
-                        <label>Capacidad</label>
-                        <br> <input type="text" id="capacidad" onkeypress="return solonumeros(event)"> <br>
-                        <label>Numero de Sala</label>
-                        <br> <input type="text" id="NumeroSala" onkeypress="return solonumeros(event)"> <br>
-                        <br>
-
-                        <button class="Confirmar" onclick="Guardar()">Guardar</button>
-                    </center>
-                </div>
-            </div>
 
 
     </body>

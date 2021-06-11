@@ -105,10 +105,10 @@
 
                             } else if (clasificacion == 1) {
 
-                                clasificacion = "Para mayores de 15 aï¿½os";
+                                clasificacion = "Para mayores de 15 años";
                             } else {
 
-                                clasificacion = "Para mayores de 18 aï¿½os";
+                                clasificacion = "Para mayores de 18 años";
 
                             }
 

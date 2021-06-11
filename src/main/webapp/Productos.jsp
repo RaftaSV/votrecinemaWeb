@@ -34,7 +34,56 @@
                 <font COLOR="black"> PRODUCTOS</font>
             </h1>
 
+
+
+            <button id="EDITAR" onclick="MOSTRARCRUD()" class="far fa-edit fa-2x"></button>
+            <div>
+
+                <div class="tabla" id="tabladiv">
+                    <table id="tablaproductos" class="table table-sm table-dark">
+                        <thead>
+                            <th style="display: none;">IDPRODUCTO</th>
+                            <th>PRODUCTO</th>
+                            <th>PRECIO</th>
+                            <th>CANTIDAD</th>
+                            <th style="display: none;">IDPROVE</th>
+                            <th>PROVEEDOR</th>
+                            <th>ACCIONES</th>
+                        </thead>
+                    </table>
+                </div>
+
+
+                <div class="crudProductos" id="PANELCRUD" style="display: none;">
+                    <center>
+                        <input type="hidden" id="id" value="0"> <br> <label>Producto</label>
+                        <br> <input type="text" id="Producto"> <br> <label>Precio</label>
+                        <br> <input type="number" id="Precio"> <br> <label>Cantidad</label>
+                        <br> <input type="number" id="Cantidad" min="1" /> <br> <label>Proveerdor</label>
+                        <br> <select class="" id="combo" required>
+				</select> <br> <br>
+                        <button class="Confirmar" onclick="Guardar()">Guardar</button>
+                    </center>
+                </div>
+            </div>
+
+
+
             <script type="text/javascript">
+                //validacion solo numeros enteros
+                $('#Precio').on(
+                    'input',
+                    function() {
+                        this.value = this.value.replace('-', '');
+                    });
+
+                $('#Cantidad').on(
+                    'input',
+                    function() {
+                        this.value = this.value.replace('-', '').replace('.', '');
+                    });
+
+
                 function MOSTRARCRUD() {
                     var CRUD = document.getElementById("PANELCRUD"),
                         tabladiv = document.getElementById('tabladiv');
@@ -252,43 +301,6 @@
                 window.onload = cargarcombo();
                 window.onload = cargardatos();
             </script>
-
-
-
-
-
-
-            <button id="EDITAR" onclick="MOSTRARCRUD()" class="far fa-edit fa-2x"></button>
-            <div>
-
-                <div class="tabla" id="tabladiv">
-                    <table id="tablaproductos" class="table table-sm table-dark">
-                        <thead>
-                            <th style="display: none;">IDPRODUCTO</th>
-                            <th>PRODUCTO</th>
-                            <th>PRECIO</th>
-                            <th>CANTIDAD</th>
-                            <th style="display: none;">IDPROVE</th>
-                            <th>PROVEEDOR</th>
-                            <th>ACCIONES</th>
-                        </thead>
-                    </table>
-                </div>
-
-
-                <div class="crudProductos" id="PANELCRUD" style="display: none;">
-                    <center>
-                        <input type="hidden" id="id" value="0"> <br> <label>Producto</label>
-                        <br> <input type="text" id="Producto"> <br> <label>Precio</label>
-                        <br> <input type="number" id="Precio"> <br> <label>Cantidad</label>
-                        <br> <input type="number" id="Cantidad"> <br> <label>Proveerdor</label>
-                        <br> <select class="" id="combo" required>
-				</select> <br> <br>
-                        <button class="Confirmar" onclick="Guardar()">Guardar</button>
-                    </center>
-                </div>
-            </div>
-
 
     </body>
 

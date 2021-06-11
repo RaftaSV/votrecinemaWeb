@@ -153,7 +153,7 @@
                                 $("#Hora").focus();
 
                             } else {
-                                swal("Alerta", "ï¿½Desea guardar la hora " + hora + "?", "info", {
+                                swal("Alerta", "¿Desea guardar la hora " + hora + "?", "info", {
                                     buttons: {
                                         Guardar: {
                                             text: "Guardar"

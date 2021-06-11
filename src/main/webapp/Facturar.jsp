@@ -92,7 +92,7 @@
             <script type="text/javascript">
                 var fecha = new Date();
                 var fechaactual = fecha.getFullYear() + "/" + (fecha.getMonth() + 1) + "/" + fecha.getDate();
-                var fechamaxima = fecha.getFullYear() + "/" + (fecha.getMonth() + 1) + "/" + (fecha.getDate() + 7);
+                var fechamaxima = fecha.getFullYear() + "/" + (fecha.getMonth() + 1) + "/" + (fecha.getDate() + 7); // fecha actual mas 7 dias y eso sera la fecha maxima
                 document.getElementById('fecha').value = formatofecha(fechaactual);
                 document.getElementById('fecha').min = formatofecha(fechaactual);
                 document.getElementById('fecha').max = formatofecha(fechamaxima);

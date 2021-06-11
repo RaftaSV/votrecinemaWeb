@@ -103,12 +103,12 @@
                             opciontipo.text = "3D";
                             tipo.appendChild(opciontipo);
                             opcionclas.value = 1;
-                            opcionclas.text = "MAYORES 15 Aï¿½OS";
+                            opcionclas.text = "MAYORES 15 AÑOS";
                             clasificacion.appendChild(opcionclas);
                             contador = 2;
                         } else {
                             opcionclas.value = 2;
-                            opcionclas.text = "MAYORES 18 Aï¿½OS";
+                            opcionclas.text = "MAYORES 18 AÑOS";
                             clasificacion.appendChild(opcionclas);
                             contador = 3;
                         }

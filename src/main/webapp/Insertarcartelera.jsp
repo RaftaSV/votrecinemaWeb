@@ -269,7 +269,7 @@
                                 $("#idpelicula").focus();
 
                             } else {
-                                swal("Alerta", "ï¿½Desea guardar la cartelera?", "info", {
+                                swal("Alerta", "¿½Desea guardar la cartelera?", "info", {
                                         buttons: {
                                             Guardar: {
                                                 text: "Guardar"
