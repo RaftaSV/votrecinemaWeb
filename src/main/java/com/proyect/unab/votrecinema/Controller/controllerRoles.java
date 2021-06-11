@@ -68,7 +68,7 @@ public class controllerRoles extends HttpServlet {
 		}
 		
 		
-if (eliminar.equals("btne")) {
+		if (eliminar.equals("btne")) {
 			
 			Roles rol = new Roles();
 			rol.setIdRol(idRol);
@@ -77,10 +77,11 @@ if (eliminar.equals("btne")) {
 			response.sendRedirect("rol.jsp");
 
 		}else {
-			if (idRol==0 || usuario=="null" || usuario=="" || usuario.isEmpty() ||  usuario.isEmpty() || password=="null" 
-					|| password=="" || password.isEmpty() || password.length()==0 || idPersona==0 || tiporol==0) {
+			if (idRol==0 || usuario=="null" || usuario=="" || usuario.isEmpty() ||  usuario.isEmpty() 
+					     || password=="null"|| password=="" || password.isEmpty() || password.length()==0 
+					     || idPersona==0 || tiporol==0) {
 				System.out.println("no se puede registrar con campos vacios");		
-						}else {
+					} else {
 							if(idRol>0) {
 								Roles rol = new Roles();
 								rol.setIdRol(idRol);
@@ -101,12 +102,10 @@ if (eliminar.equals("btne")) {
 								ClsRoles cls = new ClsRoles();
 								cls.AgregarRol(rol);
 					
-					}				
-				}
+				}				
+			}
 		}
-	
-		
-}
+	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

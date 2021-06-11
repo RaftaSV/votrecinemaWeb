@@ -1,7 +1,8 @@
 @charset "ISO-8859-1";
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap');
+
 table {
-    font-family: 'Dancing Script', cursive;
+   font-family: 'Raleway', sans-serif;
 }
 
 .tabla {

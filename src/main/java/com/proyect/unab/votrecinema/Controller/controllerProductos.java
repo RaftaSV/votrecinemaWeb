@@ -65,7 +65,7 @@ public class controllerProductos extends HttpServlet {
 		}
 		
 		
-if (eliminar.equals("btne")) {
+		if (eliminar.equals("btne")) {
 			
 			Producto pro = new Producto();
 			pro.setIdProducto(idProducto);
