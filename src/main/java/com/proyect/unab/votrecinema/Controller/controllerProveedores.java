@@ -62,8 +62,6 @@ public class controllerProveedores extends HttpServlet {
 			
 		}
 
-		
-
 		if (eliminar.equals("btne")) {
 			
 			Proveedor pro = new Proveedor();
@@ -72,8 +70,10 @@ public class controllerProveedores extends HttpServlet {
 			cls.EliminarProveedor(pro);
 			response.sendRedirect("Proveedores.jsp");
 
-		} else {
-			
+		} else{
+			if (id==0 || nombre=="null" ||direccion=="null" || telefono=="null") {
+				System.out.println("No se puede registrar con campos vacios");		
+		}else {
 			if (id > 0) {
 				System.out.println(id);
 				Proveedor pro = new Proveedor();
@@ -92,11 +92,10 @@ public class controllerProveedores extends HttpServlet {
 				ClsProveedores cls = new ClsProveedores();
 				cls.GuardarProveedor(pro);
 
-			}
-			
+			}	
 		}
-
 	}
+}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse

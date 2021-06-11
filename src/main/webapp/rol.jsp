@@ -191,7 +191,7 @@
                         } else if (password == "") {
                             swal({
                                 title: "Alerta",
-                                text: "Es necesario agregar una contraseï¿½a",
+                                text: "Es necesario agregar una contraseña",
                                 icon: "warning",
                             });
                             $("#password").focus();

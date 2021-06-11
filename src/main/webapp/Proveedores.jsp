@@ -106,8 +106,6 @@
                     document.getElementById('direccion').value = Direccion;
                 });
 
-
-
                 function Guardar() {
 
                     $(document).ready(function() {
@@ -214,7 +212,7 @@
 
                 <div class="crud" id="PANELCRUD" style="display: none;">
                     <center>
-                        <input type="hidden" id="idpro"> <br>
+                        <input type="hidden" id="idpro" value="0"> <br>
                         <label>Nombre</label>
                         <br> <input type="text" id="nombre"> <br>
                         <label>Telefono</label>

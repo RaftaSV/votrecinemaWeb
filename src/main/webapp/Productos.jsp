@@ -212,7 +212,7 @@
                                 .then((value) => {
                                     switch (value) {
 
-                                        case "cancelar":
+                                        case "Cancelar":
                                             swal({
                                                 title: "Cancelado",
                                                 icon: "error"
@@ -278,7 +278,7 @@
 
                 <div class="crudProductos" id="PANELCRUD" style="display: none;">
                     <center>
-                        <input type="hidden" id="id"> <br> <label>Producto</label>
+                        <input type="hidden" id="id" value="0"> <br> <label>Producto</label>
                         <br> <input type="text" id="Producto"> <br> <label>Precio</label>
                         <br> <input type="number" id="Precio"> <br> <label>Cantidad</label>
                         <br> <input type="number" id="Cantidad"> <br> <label>Proveerdor</label>

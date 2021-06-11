@@ -74,6 +74,9 @@ if (eliminar.equals("btne")) {
 			response.sendRedirect("Productos.jsp");
 
 		}else {
+			if (idProducto==0 || producto=="null" ||idProveedor==0 || cantidad==0 || precio==0) {
+				System.out.println("No se puede registrar con campos vacios");		
+		}else {
 			if(idProducto>0) {
 				Producto Producto = new Producto();
 				Producto.setIdProducto(idProducto);
@@ -93,11 +96,8 @@ if (eliminar.equals("btne")) {
 			
 			ClsProductos cls = new ClsProductos();
 				cls.GuardarProducto(Producto);
-						
-				
-				
-				
-				
+			
+				}
 			}
 			
 		}

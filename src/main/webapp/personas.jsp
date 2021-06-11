@@ -169,7 +169,7 @@
                             $("#dui").focus();
 
                         } else {
-                            swal("Alerta", "�Desea guardar a " + nombre + "?", "info", {
+                            swal("Alerta", "Desea guardar a " + nombre + "?", "info", {
                                     buttons: {
                                         Guardar: {
                                             text: "Guardar"
@@ -242,7 +242,8 @@
 
             <div class="crud" id="PANELCRUD" style="display: none;">
                 <center>
-                    <input type="hidden" id="idper"> <br>
+                    <input type="hidden" id="idper" value="0"> 
+                    <input type="hidden" id="id" value="0"> <br>
                     <label>Nombre</label>
                     <br> <input type="text" id="nombre"> <br>
                     <label>Apellido</label>

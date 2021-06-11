@@ -63,7 +63,7 @@ public class controllerPersonas extends HttpServlet {
 			
 		}
 		int idper = Integer.parseInt(id.replace(" ",""));
-if (eliminar.equals("btne")) {
+		if (eliminar.equals("btne")) {
 			
 			Personas per = new Personas();
 			per.setIdPersona(idper);
@@ -72,7 +72,9 @@ if (eliminar.equals("btne")) {
 			response.sendRedirect("personas.jsp");
 
 		} else {
-			
+			if (idper==0 || nombre=="null" ||apellido=="null" || dui=="null") {
+			System.out.println("No se puede registrar con campos vacios");		
+		}else {
 			if (idper > 0) {
 				Personas per = new Personas();
 				per.setIdPersona(idper);
@@ -93,7 +95,7 @@ if (eliminar.equals("btne")) {
 			}
 		}
 	}
-
+}
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
