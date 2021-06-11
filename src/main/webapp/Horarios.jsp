@@ -68,7 +68,7 @@
                             tabla.innerHTML += `
 	 <tr>
 		<td style="display:none;"> ${item.idHorario} </td>
-	    <td style="text-align:center;"> <time> ${item.HoraInicio} </time></td>
+	    <td style="text-align:center;"> ${item.HoraInicio} </td>
 	    <td>
 		<a class="btn btn-danger" href="controllerHorarios?id=${item.idHorario}&Eliminar=btne"  style="text-align:center;" > ELIMINAR </a> 
 		</td>
@@ -79,54 +79,41 @@
 
                     });
                 });
+                
+                $(document).on("click", "#tablahorario tr", function() {
+                	var id, horario;
 
-                function leerdatos() {
-                    var rowIdx;
-
-                    var id, horario;
-                    var tabla = document.getElementById('tablahorario');
-                    var rows = tabla.getElementsByTagName('tr');
-                    var selectedRow;
-                    var rowCellValue;
-                    for (i = 0; i < rows.length; i++) {
-                        rows[i].onclick = function() {
-                            rowIdx = this.rowIndex;
-                            selectedRow = this.cells;
-                            var contador = 1;
-                            for (j = 0; j < selectedRow.length; j++) {
-
-                                if (contador == 1) {
-                                    id = selectedRow[j].innerText;
-                                    contador++;
-                                } else if (contador == 2) {
-                                    horario = selectedRow[j].innerText;
-                                    contador++;
-                                }
-
-
-                            }
-                            var hora = horario.substr(0, 2);
-                            var minutos = horario.substr(2, 3);
-                            var indicador = horario.substr(8, 9).replace('p.�m.', '1');
-                            if (indicador == 1) {
-                                hora = hora.replace('0', '');
-                                hora = parseInt(hora);
-                                if (hora < 12) {
-                                    hora = hora + 12;
-                                }
-
-                            }
-
-                            var horacompleta = hora + minutos;
-                            if (id > 0) {
-
-                                document.getElementById('id').value = id;
-                                document.getElementById('Horario').value = horacompleta;
-
-                            }
+                	id = $(this).find('td:first-child').html();
+                	horario = $(this).find('td:nth-child(2)').html();
+                	var hora = horario.substr(0, 3);
+                    var minutos = horario.substr(3, 3);
+                    var indicador = horario.substr(9, 10).replace('p.&nbsp;m', '1');
+                    
+                    if (indicador == 1) {
+                        hora = hora.replace('0', '');
+                        hora = parseInt(hora);
+                        
+                        if (hora < 12) {
+                            hora = hora + 12;
                         }
+
                     }
-                }
+                    
+                    var horacompleta = hora + ":" + minutos.replace(':', '');
+                  
+                    if (id > 0) {
+
+                        document.getElementById('id').value = id;
+                      
+                       document.getElementById('Horario').value = horacompleta.replace(' ', '');
+
+                    }
+           
+                });
+
+                
+                
+                
 
                 function Guardar() {
                     $(document).ready(function() {
@@ -191,7 +178,7 @@
             <div>
 
                 <div class="tabla" id="tabladiv">
-                    <table class="table table-dark" id="tablahorario" onclick="leerdatos()">
+                    <table class="table table-dark" id="tablahorario">
                         <thead>
                             <th style="display:none;">ID HORARIO</th>
                             <th style="text-align:center;">HORA DE INICIO</th>
