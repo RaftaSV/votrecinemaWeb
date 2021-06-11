@@ -26,16 +26,16 @@
     <body>
         <% HttpSession sesion = (HttpSession) request.getSession();
         String id = String.valueOf(sesion.getAttribute("id"));
-		String tipo = String.valueOf(sesion.getAttribute("tipo"));
-        if (id.equals(null) || id.equals("null") || id.equals("Error") || tipo.equals("1") || tipo.equals("2")) {
+        if (id.equals(null) || id.equals("null") || id.equals("Error")) {
                response.sendRedirect("Index.jsp");
            }
         %>
-            <button id="EDITAR" onclick="MOSTRARCRUD()" class="far fa-edit fa-2x"></button>
+        
+         <button id="EDITAR" onclick="MOSTRARCRUD()" class="far fa-edit fa-2x"></button>
             <div>
 
                 <div class="tabla" id="tabladiv">
-                    <table id="tablaDatos" onclick="leerdatos() " class="table table-sm table-dark">
+                    <table id="tablaDatos" class="table table-sm table-dark">
                         <thead>
                             <th style="display:none;">ID</th>
                             <th>CAPACIDAD</th>
@@ -51,33 +51,35 @@
                     <center>
                         <input type="hidden" id="idsala"> <br>
                         <label>Capacidad</label>
-                        <br> <input type="number" id="capacidad" min="1"> <br>
+                        <br> <input type="text" id="capacidad" > <br>
                         <label>Numero de Sala</label>
-                        <br> <input type="number" id="NumeroSala" min="1"> <br>
+                        <br> <input type="text" id="NumeroSala"> <br>
                         <br>
 
                         <button class="Confirmar" onclick="Guardar()">Guardar</button>
                     </center>
                 </div>
             </div>
-
-
+        
+        
 
             <script type="text/javascript">
-                // validacion solo numeros enteros 
+            
+            // validacion solo numeros enteros 
 
-                $('#capacidad').on(
-                    'input',
-                    function() {
-                        this.value = this.value.replace('-', '').replace('.', '');
-                    });
+            $('#capacidad').on(
+                'input',
+                function() {
+                    this.value = this.value.replace('-', '').replace('.', '');
+                });
 
-                $('#NumeroSala').on(
-                    'input',
-                    function() {
-                        this.value = this.value.replace('-', '').replace('.', '');
-                    });
+            $('#NumeroSala').on(
+                'input',
+                function() {
+                    this.value = this.value.replace('-', '').replace('.', '');
+                });
 
+            
                 function MOSTRARCRUD() {
                     var CRUD = document.getElementById("PANELCRUD"),
                         tabladiv = document.getElementById('tabladiv');
@@ -98,7 +100,11 @@
                     }
                 }
 
-               
+                $(document).ready(function() {
+                    //Cada 6 segundos (6000 milisegundos) se ejecutarï¿½ la funciï¿½n refrescar y cargara la imagen insertada 
+                    setTimeout(cargardatos, 1000);
+                });
+
                 function cargardatos() {
 
                     $(document).ready(function() {
@@ -110,7 +116,7 @@
                                 $('#tablaDatos tbody tr').remove();
                                 datos.forEach(function(item) {
                                     tabla.innerHTML += `
-							 <tr onclick="seleccionar()" >
+							 <tr>
 								<td style="display:none;"> ${item.idSala} </td>
 							    <td >  ${item.Capacidad} </td>
 							   <td> ${item.Numero_Sala}</td>
@@ -150,20 +156,15 @@
                 });
 
 
-
-
-
-
-
                 function Guardar() {
 
                     $(document).ready(function() {
                             var id, capacidad, NumeroSala, Eliminar, contador = 0,
                                 contador2 = 0;
-                            id = $("#idsala").val();
-                            capacidad = $("#capacidad").val();
-                            NumeroSala = $("#NumeroSala").val();
-                            Eliminar = "no";
+                            id = $("#idsala ").val();
+                            capacidad = $("#capacidad ").val();
+                            NumeroSala = $("#NumeroSala ").val();
+                            Eliminar = "no ";
 
                             $('#tablaDatos tr').each(function() {
 
@@ -181,33 +182,35 @@
 
 
                             if (capacidad == "") {
-                                swal({
+                            	swal({
                                     title: "Alerta",
                                     text: "Ingrese una capacidad valida",
-                                    icon: "warning",
+                                    icon: "warning"
                                 });
-                                $("#capacidad").focus();
+                               
+                                $("#capacidad ").focus();
 
 
                             } else if (NumeroSala == "") {
-                                swal({
+                            	swal({
                                     title: "Alerta",
                                     text: "El numero de la sala es obligatorio",
-                                    icon: "warning",
+                                    icon: "warning"
                                 });
-                                $("#NumeroSala").focus();
+                          
+                                $("#NumeroSala ").focus();
 
 
                             } else if (contador != contador2) {
                                 swal({
                                     title: "Alerta",
                                     text: "El numero de la sala ya asido asignado",
-                                    icon: "warning",
+                                    icon: "warning"
                                 });
-                                $("#NumeroSala").focus();
+                                $("#NumeroSala ").focus();
 
                             } else {
-                                swal("Alerta", "¿Desea guardar la sala numero " + NumeroSala + "?", "info", {
+                                swal("Alerta ", "Desea guardar la sala " + NumeroSala + "? ", "info", {
                                         buttons: {
                                             Guardar: {
                                                 text: "Guardar"
@@ -222,15 +225,15 @@
 
                                             case "Cancelar":
                                                 swal({
-                                                    title: "Cancelado",
+                                                    title: "Cancelado ",
                                                     icon: "error"
                                                 })
                                                 break;
 
                                             case "Guardar":
-                                                document.getElementById('capacidad').value = "#capacidad";
-                                                document.getElementById('NumeroSala').value = "#NumeroSala";
-                                                document.getElementById('idsala').value = "#idsala";
+                                                document.getElementById('capacidad').value = "#capacidad ";
+                                                document.getElementById('NumeroSala').value = "#NumeroSala ";
+                                                document.getElementById('idsala').value = "#idsala ";
                                                 $.get('controllerSalas', {
 
                                                     id,
@@ -241,20 +244,19 @@
 
                                                 });
 
-                                                document.getElementById('capacidad').value = "";
-                                                document.getElementById('NumeroSala').value = "";
-                                                document.getElementById('idsala').value = "";
+                                                document.getElementById('capacidad').value = " ";
+                                                document.getElementById('NumeroSala').value = " ";
+                                                document.getElementById('idsala').value = " ";
                                                 window.location.reload();
                                                 break;
                                         }
                                     })
                             } //CierreElse
                         }) //CierreDocument
-                } //CierreGuardar
+                } //CierreGuardar //CierreGuardar
 
                 window.onload = cargardatos;
             </script>
-
 
 
     </body>
