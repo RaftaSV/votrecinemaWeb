@@ -71,7 +71,7 @@ public class controllerProveedores extends HttpServlet {
 			response.sendRedirect("Proveedores.jsp");
 
 		} else{
-			if (id==0 || nombre=="null" ||direccion=="null" || telefono=="null") {
+			if ( nombre=="null" ||direccion=="null" || telefono=="null") {
 				System.out.println("No se puede registrar con campos vacios");		
 		}else {
 			if (id > 0) {

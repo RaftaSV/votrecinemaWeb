@@ -77,8 +77,8 @@ public class controllerRoles extends HttpServlet {
 			response.sendRedirect("rol.jsp");
 
 		}else {
-			if (idRol==0 || usuario=="null" || usuario=="" || usuario.isEmpty() ||  usuario.isEmpty() 
-					     || password=="null"|| password=="" || password.isEmpty() || password.length()==0 
+			if (usuario=="null" || usuario=="" || usuario.isEmpty()
+					     || password=="null"|| password=="" || password.isEmpty()
 					     || idPersona==0 || tiporol==0) {
 				System.out.println("no se puede registrar con campos vacios");		
 					} else {

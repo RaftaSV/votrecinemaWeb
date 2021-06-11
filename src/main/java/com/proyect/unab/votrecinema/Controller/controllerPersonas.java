@@ -72,7 +72,7 @@ public class controllerPersonas extends HttpServlet {
 			response.sendRedirect("personas.jsp");
 
 		} else {
-			if (idper==0 || nombre=="null" ||apellido=="null" || dui=="null") {
+			if (nombre=="null" ||apellido=="null" || dui=="null") {
 			System.out.println("No se puede registrar con campos vacios");		
 		}else {
 			if (idper > 0) {

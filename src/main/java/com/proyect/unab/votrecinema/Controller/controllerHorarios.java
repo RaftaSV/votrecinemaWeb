@@ -68,7 +68,7 @@ public class controllerHorarios extends HttpServlet {
 			response.sendRedirect("Horarios.jsp");
 
 		} else {
-			if (Id==0 || horaInicio=="null") {
+			if (horaInicio=="null") {
 				System.out.println("No se puede registrar con campos vacios");		
 			}else {
 			if (Id>0) {
