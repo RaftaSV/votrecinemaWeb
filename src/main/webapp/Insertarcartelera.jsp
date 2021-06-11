@@ -62,6 +62,7 @@
                     var fechaactual = d.getFullYear() + "/" + (d.getMonth() + 1) + "/" + d.getDate();
                     var sala = document.getElementById('sala');
                     document.getElementById('fecha').value = formatofecha(fechaactual);
+                    document.getElementById('fecha').min = formatofecha(fechaactual);
                     $.post('controllerSalas', function(datos) {
 
                         try {

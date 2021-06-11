@@ -92,7 +92,7 @@ public class controllerCRUDcarteleras extends HttpServlet {
 			ClsCarteleras cls = new ClsCarteleras();
 			cls.InsertarCartelera(carteleras);
 		}else {
-			System.out.println("actualizar");
+		
 			Carteleras carteleras = new Carteleras();
 			carteleras.setIdcartelera(id);
 			carteleras.setIdPelicula(idpelicula);
