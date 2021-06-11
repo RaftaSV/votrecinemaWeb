@@ -109,7 +109,6 @@ CREATE TABLE `detallesfacturas` (
 
 LOCK TABLES `detallesfacturas` WRITE;
 /*!40000 ALTER TABLE `detallesfacturas` DISABLE KEYS */;
-INSERT INTO `detallesfacturas` VALUES (134,55,9,NULL,1.00,1,0),(135,55,NULL,78,4.00,0,0),(136,56,9,NULL,1.00,1,0),(137,56,NULL,79,4.00,0,0),(138,57,9,NULL,1.00,1,0),(139,57,NULL,80,4.00,0,0),(140,58,9,NULL,1.00,1,0),(141,58,NULL,81,4.00,0,0),(142,58,9,NULL,1.00,1,0),(143,59,NULL,82,4.00,0,0),(144,60,9,NULL,1.00,1,0),(145,59,NULL,83,4.00,0,0),(146,60,10,NULL,1.00,1,0),(147,60,NULL,84,4.00,0,0),(148,61,9,NULL,1.00,1,0),(149,61,NULL,85,4.00,0,0),(150,63,NULL,86,6.00,0,0);
 /*!40000 ALTER TABLE `detallesfacturas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -139,7 +138,6 @@ CREATE TABLE `estadoasientos` (
 
 LOCK TABLES `estadoasientos` WRITE;
 /*!40000 ALTER TABLE `estadoasientos` DISABLE KEYS */;
-INSERT INTO `estadoasientos` VALUES (66,5,1013,'2021-06-08'),(67,5,1014,'2021-06-08'),(68,5,1015,'2021-06-08'),(69,5,1016,'2021-06-08'),(70,5,1017,'2021-06-08'),(71,5,1018,'2021-06-08'),(72,5,1019,'2021-06-08'),(73,5,1020,'2021-06-08'),(74,5,933,'2021-06-09');
 /*!40000 ALTER TABLE `estadoasientos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -171,7 +169,6 @@ CREATE TABLE `facturas` (
 
 LOCK TABLES `facturas` WRITE;
 /*!40000 ALTER TABLE `facturas` DISABLE KEYS */;
-INSERT INTO `facturas` VALUES (55,10,'2021-06-08',11,5.00,0),(56,10,'2021-06-08',11,5.00,0),(57,10,'2021-06-08',11,5.00,0),(58,10,'2021-06-08',11,5.00,0),(59,10,'2021-06-08',11,5.00,0),(60,10,'2021-06-08',11,10.00,0),(61,10,'2021-06-08',11,5.00,0),(63,14,'2021-06-09',11,6.00,0);
 /*!40000 ALTER TABLE `facturas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -218,7 +215,7 @@ CREATE TABLE `peliculas` (
   `Clasificacion` int DEFAULT NULL,
   `Estado` int DEFAULT NULL,
   PRIMARY KEY (`idPeliculas`)
-) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -227,7 +224,7 @@ CREATE TABLE `peliculas` (
 
 LOCK TABLES `peliculas` WRITE;
 /*!40000 ALTER TABLE `peliculas` DISABLE KEYS */;
-INSERT INTO `peliculas` VALUES (47,'Bob Esponja al rescate','bob.jpg','2020-11-06','02:01:00','Cuando su mejor amigo Gary es secuestrado, Bob Esponja se emprende con Patricio en una loca misión lejos de Fondo de Bikini para salvar a su mascota',1,0,0),(48,'Camino hacia el terror 5','aa.png','2020-08-05','01:01:00','camino hacia el terror ',1,2,0),(60,'Camino hacia el terror 6','camino.jpg','2020-09-01','02:01:00','Camino hacia el terror ',1,1,0),(61,'bob esponja','bob.jpg','2019-05-10','02:18:00','asdfg',1,0,1),(62,'Camino hacia el terror 7','tarea.PNG','2019-08-10','01:01:00','hola',1,0,1);
+INSERT INTO `peliculas` VALUES (47,'Bob Esponja al rescate','bob.jpg','2020-11-06','02:01:00','Cuando su mejor amigo Gary es secuestrado, Bob Esponja se emprende con Patricio en una loca misión lejos de Fondo de Bikini para salvar a su mascota',1,0,0),(48,'Camino hacia el terror 5','aa.png','2020-08-05','01:01:00','camino hacia el terror ',1,2,0),(60,'Camino hacia el terror 6','camino.jpg','2020-09-01','02:01:00','Camino hacia el terror ',1,1,0),(61,'bob esponja','bob.jpg','2019-05-10','02:18:00','asdfg',1,0,1),(62,'Camino hacia el terror 7','tarea.PNG','2019-08-10','01:01:00','hola',1,0,1),(63,'Camino hacia el terror','tarea.PNG','2019-08-10','01:01:00','ergh',0,0,1),(64,'Camino hacia el terror','carbon (3).png','2019-08-10','01:01:00','asdfghj',0,0,1);
 /*!40000 ALTER TABLE `peliculas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -245,7 +242,7 @@ CREATE TABLE `personas` (
   `Dui` varchar(45) NOT NULL,
   `Estado` int DEFAULT NULL,
   PRIMARY KEY (`idPersonas`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -254,7 +251,7 @@ CREATE TABLE `personas` (
 
 LOCK TABLES `personas` WRITE;
 /*!40000 ALTER TABLE `personas` DISABLE KEYS */;
-INSERT INTO `personas` VALUES (18,'                Rafael Antonio        ','        Gonzalez Portillo','05408734-0',0),(19,'GENERICO','GENERICO','0',0),(20,'Jacqueline Jasmin','Robles Galdamez','06507687-7',0),(21,'GENERICO','GENERICO','0',0),(22,'Jose Ismael','Gonzalez Portillo','04560967-9',0),(23,'Jose Ismael','Gonzalez Portillo','04560967-9',0),(24,'GENERICO','GENERICO','0',0);
+INSERT INTO `personas` VALUES (25,'Rafael Antonio','Gonzalez portillo','05408734-7',0),(26,'GENERICO','GENERICO','0',0);
 /*!40000 ALTER TABLE `personas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -274,7 +271,7 @@ CREATE TABLE `precios` (
   PRIMARY KEY (`idPrecio`),
   KEY `idP_idx` (`IdPelicula`),
   CONSTRAINT `idPelicula` FOREIGN KEY (`IdPelicula`) REFERENCES `peliculas` (`idPeliculas`)
-) ENGINE=InnoDB AUTO_INCREMENT=118 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=126 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -283,7 +280,7 @@ CREATE TABLE `precios` (
 
 LOCK TABLES `precios` WRITE;
 /*!40000 ALTER TABLE `precios` DISABLE KEYS */;
-INSERT INTO `precios` VALUES (56,9.00,48,0,0),(57,4.50,48,1,1),(58,5.85,48,2,0),(59,4.50,48,3,0),(63,6.00,47,0,0),(64,3.00,47,1,0),(65,3.90,47,2,0),(66,3.00,47,3,0),(107,8.00,60,0,0),(108,5.20,60,2,0),(109,4.00,60,3,0),(110,9.00,61,0,1),(111,4.50,61,1,1),(112,5.85,61,2,1),(113,4.50,61,3,0),(114,5.00,62,0,1),(115,2.50,62,1,1),(116,3.25,62,2,1),(117,2.50,62,3,0);
+INSERT INTO `precios` VALUES (56,9.00,48,0,0),(57,4.50,48,1,1),(58,5.85,48,2,0),(59,4.50,48,3,0),(63,6.00,47,0,0),(64,3.00,47,1,0),(65,3.90,47,2,0),(66,3.00,47,3,0),(107,8.00,60,0,0),(108,5.20,60,2,0),(109,4.00,60,3,0),(110,9.00,61,0,1),(111,4.50,61,1,1),(112,5.85,61,2,1),(113,4.50,61,3,0),(114,5.00,62,0,1),(115,2.50,62,1,1),(116,3.25,62,2,1),(117,2.50,62,3,0),(118,9.00,63,0,1),(119,4.50,63,1,1),(120,5.85,63,2,1),(121,4.50,63,3,0),(122,6.00,64,0,1),(123,3.00,64,1,1),(124,3.90,64,2,1),(125,3.00,64,3,0);
 /*!40000 ALTER TABLE `precios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -361,7 +358,7 @@ CREATE TABLE `roles` (
   PRIMARY KEY (`idRoles`),
   KEY `idP_idx` (`Id_Persona`),
   CONSTRAINT `id` FOREIGN KEY (`Id_Persona`) REFERENCES `personas` (`idPersonas`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -370,7 +367,7 @@ CREATE TABLE `roles` (
 
 LOCK TABLES `roles` WRITE;
 /*!40000 ALTER TABLE `roles` DISABLE KEYS */;
-INSERT INTO `roles` VALUES (10,'rafa','3c9909afec25354d551dae21590bb26e38d53f2173b8d3dc3eee4c047e7ab1c1eb8b85103e3be7ba613b31bb5c9c36214dc9f14a42fd7a2fdb84856bca5c44c2',0,18,1),(11,'generico','bdc247a1a0e28a586ed40744d281993d519abe981aaef33277d4877d167e1150816e9723d068a59509991ed0cdd8c5cea0f9ecd0ef23664db7cb85db5a0dbe12',2,19,1),(12,'jasmin','f90ddd77e400dfe6a3fcf479b00b1ee29e7015c5bb8cd70f5f15b4886cc339275ff553fc8a053f8ddc7324f45168cffaf81f8c3ac93996f6536eef38e5e40768',0,20,1),(14,'rafta','3c9909afec25354d551dae21590bb26e38d53f2173b8d3dc3eee4c047e7ab1c1eb8b85103e3be7ba613b31bb5c9c36214dc9f14a42fd7a2fdb84856bca5c44c2',0,18,1),(18,'Jose','3c9909afec25354d551dae21590bb26e38d53f2173b8d3dc3eee4c047e7ab1c1eb8b85103e3be7ba613b31bb5c9c36214dc9f14a42fd7a2fdb84856bca5c44c2',2,22,1),(19,'Jose','3c9909afec25354d551dae21590bb26e38d53f2173b8d3dc3eee4c047e7ab1c1eb8b85103e3be7ba613b31bb5c9c36214dc9f14a42fd7a2fdb84856bca5c44c2',0,23,0),(20,'generico','bdc247a1a0e28a586ed40744d281993d519abe981aaef33277d4877d167e1150816e9723d068a59509991ed0cdd8c5cea0f9ecd0ef23664db7cb85db5a0dbe12',2,24,0);
+INSERT INTO `roles` VALUES (29,'rafa','3c9909afec25354d551dae21590bb26e38d53f2173b8d3dc3eee4c047e7ab1c1eb8b85103e3be7ba613b31bb5c9c36214dc9f14a42fd7a2fdb84856bca5c44c2',0,25,0),(30,'generico','bdc247a1a0e28a586ed40744d281993d519abe981aaef33277d4877d167e1150816e9723d068a59509991ed0cdd8c5cea0f9ecd0ef23664db7cb85db5a0dbe12',2,26,0);
 /*!40000 ALTER TABLE `roles` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -429,7 +426,6 @@ CREATE TABLE `taquillas` (
 
 LOCK TABLES `taquillas` WRITE;
 /*!40000 ALTER TABLE `taquillas` DISABLE KEYS */;
-INSERT INTO `taquillas` VALUES (78,85,1013,107,0),(79,85,1014,107,0),(80,85,1015,107,0),(81,85,1016,107,0),(82,85,1017,107,0),(83,85,1018,107,0),(84,85,1019,107,0),(85,85,1020,107,0),(86,92,933,63,0);
 /*!40000 ALTER TABLE `taquillas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1246,7 +1242,7 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_S_LOGIN`(pUsuario varchar (50), pPass varchar (500))
 BEGIN
-select *from roles as a where a.Usuario= pUsuario and a.Pasword= sha2(pPass,512);
+select *from roles as a where a.Usuario= pUsuario and a.Pasword= sha2(pPass,512) and a.estado=0;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -1763,4 +1759,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-06-10 10:17:37
+-- Dump completed on 2021-06-11  8:54:36
