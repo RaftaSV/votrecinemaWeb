@@ -5,10 +5,11 @@
     <head>
         <meta charset="ISO-8859-1">
         <title>Facturación</title>
-        
+
     </head>
     <!-- css -->
     <LINK REL=StyleSheet HREF="CCS/facturar.css" TYPE="text/css" />
+
     <!--- ajax -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <!-- Bootstrap CSS -->
