@@ -20,65 +20,67 @@
     </head>
 
     <body>
-    
-    <% HttpSession sesion = (HttpSession) request.getSession();
+
+        <% HttpSession sesion = (HttpSession) request.getSession();
         String id = String.valueOf(sesion.getAttribute("id"));
-        if (id.equals(null) || id.equals("null") || id.equals("Error")) {
+		String tipo = String.valueOf(sesion.getAttribute("tipo"));
+        if (id.equals(null) || id.equals("null") || id.equals("Error") || tipo.equals("1") || tipo.equals("2")) {
                response.sendRedirect("Index.jsp");
            }
         %>
 
-        <h1 class="text-center display-1" style="font-family: 'Old Standard TT', serif;">
-            <font COLOR="black"> PRODUCTOS</font>
-        </h1>
 
-        <script type="text/javascript">
-            function MOSTRARCRUD() {
-                var CRUD = document.getElementById("PANELCRUD"),
-                    tabladiv = document.getElementById('tabladiv');
-                document.getElementById('id').value = "";
-                document.getElementById('Producto').value = "";
-                document.getElementById('Precio').value = "";
-                document.getElementById('Cantidad').value = "";
-                if (CRUD.style.display === "none") {
-                    CRUD.style.display = "inline-block";
-                    tabladiv.style.width = "75%";
+            <h1 class="text-center display-1" style="font-family: 'Old Standard TT', serif;">
+                <font COLOR="black"> PRODUCTOS</font>
+            </h1>
 
-
-
-                } else {
-                    CRUD.style.display = "none";
-                    tabladiv.style.width = "98%";
+            <script type="text/javascript">
+                function MOSTRARCRUD() {
+                    var CRUD = document.getElementById("PANELCRUD"),
+                        tabladiv = document.getElementById('tabladiv');
+                    document.getElementById('id').value = "";
+                    document.getElementById('Producto').value = "";
+                    document.getElementById('Precio').value = "";
+                    document.getElementById('Cantidad').value = "";
+                    if (CRUD.style.display === "none") {
+                        CRUD.style.display = "inline-block";
+                        tabladiv.style.width = "75%";
 
 
+
+                    } else {
+                        CRUD.style.display = "none";
+                        tabladiv.style.width = "98%";
+
+
+
+                    }
 
                 }
 
-            }
-
-            $(document).ready(function() {
-
-                setTimeout(cargardatos, 1000);
-            });
-
-            function cargardatos() {
-
                 $(document).ready(function() {
 
-                    $.post('controllerProductos', {
-                        //Enviar informacion
+                    setTimeout(cargardatos, 1000);
+                });
 
-                    }, function(response) {
-                        //Recibir informacion
+                function cargardatos() {
 
-                        let datos = JSON.parse(response);
-                        //console.log(datos);
+                    $(document).ready(function() {
 
-                        var tabla = document.getElementById('tablaproductos');
-                        $('#tablaproductos tbody tr').remove();
-                        for (let item of datos) {
+                        $.post('controllerProductos', {
+                            //Enviar informacion
 
-                            tabla.innerHTML += `
+                        }, function(response) {
+                            //Recibir informacion
+
+                            let datos = JSON.parse(response);
+                            //console.log(datos);
+
+                            var tabla = document.getElementById('tablaproductos');
+                            $('#tablaproductos tbody tr').remove();
+                            for (let item of datos) {
+
+                                tabla.innerHTML += `
 				 <tr>
 					<td style="display:none;"> ${item.idProducto} </td>
 				    <td> ${item.Producto} </td>
@@ -93,199 +95,199 @@
 				`
 
 
-                        }
+                            }
+                        });
                     });
-                });
-            }
-
-            $(document).on("click", "#tablaproductos tr", function() {
-                var idProducto, producto, precio, cantidad, proveedor;
-
-                idProducto = $(this).find('td:first-child').html();
-                producto = $(this).find('td:nth-child(2)').html();
-                precio = $(this).find('td:nth-child(3)').html().replace(" ", "");
-                cantidad = $(this).find('td:nth-child(4)').html().replace(" ", "");
-                proveedor = $(this).find('td:nth-child(5)').html();
-
-                if (idProducto > 0) {
-                    var select = document.getElementById('combo');
-                    for (var i = 0; i < select.length; i++) {
-
-                        if (select.options[i].value == proveedor) {
-                            // seleccionamos el valor que coincide
-
-                            select.selectedIndex = i;
-                            document.getElementById('id').value = idProducto;
-                            document.getElementById('Producto').value = producto;
-                            document.getElementById('Precio').value = precio;
-                            document.getElementById('Cantidad').value = cantidad;
-                            break
-                        } else {
-                            //si ninguno coincide selecionamos el valor que esta en la posicion 0
-                            select.selectedIndex = 0;
-                        }
-                    }
-
                 }
-            });
+
+                $(document).on("click", "#tablaproductos tr", function() {
+                    var idProducto, producto, precio, cantidad, proveedor;
+
+                    idProducto = $(this).find('td:first-child').html();
+                    producto = $(this).find('td:nth-child(2)').html();
+                    precio = $(this).find('td:nth-child(3)').html().replace(" ", "");
+                    cantidad = $(this).find('td:nth-child(4)').html().replace(" ", "");
+                    proveedor = $(this).find('td:nth-child(5)').html();
+
+                    if (idProducto > 0) {
+                        var select = document.getElementById('combo');
+                        for (var i = 0; i < select.length; i++) {
+
+                            if (select.options[i].value == proveedor) {
+                                // seleccionamos el valor que coincide
+
+                                select.selectedIndex = i;
+                                document.getElementById('id').value = idProducto;
+                                document.getElementById('Producto').value = producto;
+                                document.getElementById('Precio').value = precio;
+                                document.getElementById('Cantidad').value = cantidad;
+                                break
+                            } else {
+                                //si ninguno coincide selecionamos el valor que esta en la posicion 0
+                                select.selectedIndex = 0;
+                            }
+                        }
+
+                    }
+                });
 
 
 
-            function cargarcombo() {
+                function cargarcombo() {
 
-                $(document).ready(function() {
+                    $(document).ready(function() {
 
 
-                    $.post('controllerProveedores', function(datos) {
-                        try {
-                            var combo = document.getElementById('combo');
+                        $.post('controllerProveedores', function(datos) {
+                            try {
+                                var combo = document.getElementById('combo');
 
-                            datos.forEach(function(item) {
-                                combo.innerHTML += `
+                                datos.forEach(function(item) {
+                                    combo.innerHTML += `
 									<option value="${item.idProveedor}">${item.Nombre} </option>
 										
 									`
 
-                            })
+                                })
 
-                        } catch (e) {
-                            // TODO: handle exception
+                            } catch (e) {
+                                // TODO: handle exception
+                            }
+
+                        });
+                    })
+                }
+
+                function Guardar() {
+
+                    $(document).ready(function() {
+                        var id, producto, precio, cantidad, idpro;
+                        id = $("#id").val();
+                        producto = $("#Producto").val();
+                        precio = $("#Precio").val();
+                        cantidad = $("#Cantidad").val();
+                        idpro = $("#combo").val();
+                        Eliminar = "no";
+
+
+                        if (producto == "") {
+
+
+                            swal({
+                                title: "Alerta",
+                                text: "Es necesario llenar el campo de producto",
+                                icon: "warning",
+                            });
+                            $("#Producto").focus();
+
+                        } else if (precio == "") {
+                            swal({
+                                title: "Alerta",
+                                text: "Es necesario agregar precio",
+                                icon: "warning",
+                            });
+
+                            $("#Precio").focus();
+
+                        } else if (cantidad == "") {
+
+                            swal({
+                                title: "Alerta",
+                                text: "Es necesario agregar la cantidad",
+                                icon: "warning",
+                            });
+                            $("#Cantidad").focus();
+
+                        } else {
+                            swal("Alerta", "Desea guardar el producto " + producto + " ?", "info", {
+                                    buttons: {
+                                        cancelar: {
+                                            text: "Cancelar"
+                                        },
+                                        Agregar: {
+                                            text: "Agregar"
+                                        },
+                                    },
+                                })
+                                .then((value) => {
+                                    switch (value) {
+
+                                        case "cancelar":
+                                            swal({
+                                                title: "Cancelado",
+                                                icon: "error"
+                                            })
+
+                                            break;
+
+                                        case "Agregar":
+                                            $.get('controllerProductos', {
+
+                                                id,
+                                                producto,
+                                                precio,
+                                                cantidad,
+                                                idpro,
+                                                Eliminar
+
+
+                                            });
+
+                                            document.getElementById('id').value = "";
+                                            document.getElementById('Producto').value = "";
+                                            document.getElementById('Precio').value = "";
+                                            document.getElementById('Cantidad').value = "";
+
+                                            window.location.reload();
+
+                                    }
+                                })
+
                         }
 
-                    });
-                })
-            }
+                    })
 
-            function Guardar() {
+                }
 
-                $(document).ready(function() {
-                    var id, producto, precio, cantidad, idpro;
-                    id = $("#id").val();
-                    producto = $("#Producto").val();
-                    precio = $("#Precio").val();
-                    cantidad = $("#Cantidad").val();
-                    idpro = $("#combo").val();
-                    Eliminar = "no";
-
-
-                    if (producto == "") {
-
-
-                        swal({
-                            title: "Alerta",
-                            text: "Es necesario llenar el campo de producto",
-                            icon: "warning",
-                        });
-                        $("#Producto").focus();
-
-                    } else if (precio == "") {
-                        swal({
-                            title: "Alerta",
-                            text: "Es necesario agregar precio",
-                            icon: "warning",
-                        });
-
-                        $("#Precio").focus();
-
-                    } else if (cantidad == "") {
-
-                        swal({
-                            title: "Alerta",
-                            text: "Es necesario agregar la cantidad",
-                            icon: "warning",
-                        });
-                        $("#Cantidad").focus();
-
-                    } else {
-                        swal("Alerta", "Desea guardar el producto " + producto + " ?", "info", {
-                                buttons: {
-                                    cancelar: {
-                                        text: "Cancelar"
-                                    },
-                                    Agregar: {
-                                        text: "Agregar"
-                                    },
-                                },
-                            })
-                            .then((value) => {
-                                switch (value) {
-
-                                    case "cancelar":
-                                        swal({
-                                            title: "Cancelado",
-                                            icon: "error"
-                                        })
-
-                                        break;
-
-                                    case "Agregar":
-                                        $.get('controllerProductos', {
-
-                                            id,
-                                            producto,
-                                            precio,
-                                            cantidad,
-                                            idpro,
-                                            Eliminar
-
-
-                                        });
-
-                                        document.getElementById('id').value = "";
-                                        document.getElementById('Producto').value = "";
-                                        document.getElementById('Precio').value = "";
-                                        document.getElementById('Cantidad').value = "";
-
-                                        window.location.reload();
-
-                                }
-                            })
-
-                    }
-
-                })
-
-            }
-
-            window.onload = cargarcombo();
-            window.onload = cargardatos();
-        </script>
+                window.onload = cargarcombo();
+                window.onload = cargardatos();
+            </script>
 
 
 
 
 
 
-        <button id="EDITAR" onclick="MOSTRARCRUD()" class="far fa-edit fa-2x"></button>
-        <div>
+            <button id="EDITAR" onclick="MOSTRARCRUD()" class="far fa-edit fa-2x"></button>
+            <div>
 
-            <div class="tabla" id="tabladiv">
-                <table id="tablaproductos" class="table table-sm table-dark">
-                    <thead>
-                        <th style="display: none;">IDPRODUCTO</th>
-                        <th>PRODUCTO</th>
-                        <th>PRECIO</th>
-                        <th>CANTIDAD</th>
-                        <th style="display: none;">IDPROVE</th>
-                        <th>PROVEEDOR</th>
-                        <th>ACCIONES</th>
-                    </thead>
-                </table>
-            </div>
+                <div class="tabla" id="tabladiv">
+                    <table id="tablaproductos" class="table table-sm table-dark">
+                        <thead>
+                            <th style="display: none;">IDPRODUCTO</th>
+                            <th>PRODUCTO</th>
+                            <th>PRECIO</th>
+                            <th>CANTIDAD</th>
+                            <th style="display: none;">IDPROVE</th>
+                            <th>PROVEEDOR</th>
+                            <th>ACCIONES</th>
+                        </thead>
+                    </table>
+                </div>
 
 
-            <div class="crudProductos" id="PANELCRUD" style="display: none;">
-                <center>
-                    <input type="hidden" id="id"> <br> <label>Producto</label>
-                    <br> <input type="text" id="Producto"> <br> <label>Precio</label>
-                    <br> <input type="number" id="Precio"> <br> <label>Cantidad</label>
-                    <br> <input type="number" id="Cantidad"> <br> <label>Proveerdor</label>
-                    <br> <select class="" id="combo" required>
+                <div class="crudProductos" id="PANELCRUD" style="display: none;">
+                    <center>
+                        <input type="hidden" id="id"> <br> <label>Producto</label>
+                        <br> <input type="text" id="Producto"> <br> <label>Precio</label>
+                        <br> <input type="number" id="Precio"> <br> <label>Cantidad</label>
+                        <br> <input type="number" id="Cantidad"> <br> <label>Proveerdor</label>
+                        <br> <select class="" id="combo" required>
 				</select> <br> <br>
-                    <button class="Confirmar" onclick="Guardar()">Guardar</button>
-                </center>
+                        <button class="Confirmar" onclick="Guardar()">Guardar</button>
+                    </center>
+                </div>
             </div>
-        </div>
 
 
     </body>

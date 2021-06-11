@@ -41,14 +41,9 @@ public class ControllerLogin extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		// doGet(request, response);
-		HttpSession session = request.getSession(true);
+		
 
-		String btncerrar = request.getParameter("btncerrar");
-
-		if (btncerrar != null) {
-
-			session.invalidate();
-		} else {
+	
 
 			String user = request.getParameter("user");
 			String pass = request.getParameter("pass");
@@ -65,21 +60,22 @@ public class ControllerLogin extends HttpServlet {
 			
 
 			if (resultado == true) {
-
+				HttpSession session = request.getSession(true);
 				session.setAttribute("usuario", resultado);
 				int tipo = cls.rol;
 				int id = cls.id;
-				if (tipo == 0) {
+				
 					String usuario = cls.usuario;
 
 					request.getSession().setAttribute("usu", usuario.toUpperCase());
 					request.getSession().setAttribute("id", id);
+					request.getSession().setAttribute("tipo", tipo);
 					response.sendRedirect("Principal.jsp");
-				}
+				
 			} else {
 		
 				response.sendRedirect("Index.jsp");
 			}
-		}
+		
 	}
 }

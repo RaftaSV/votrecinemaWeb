@@ -19,63 +19,65 @@
 </head>
 
 <body>
-<% HttpSession sesion = (HttpSession) request.getSession();
-        String id = String.valueOf(sesion.getAttribute("id"));
-        if (id.equals(null) || id.equals("null") || id.equals("Error")) {
-               response.sendRedirect("Index.jsp");
-           }
-        %>
-
-    <h1 class="text-center display-1" style="font-family: 'Old Standard TT', serif;">
-        <font COLOR="black"> ROLES</font>
-    </h1>
-
-    <script type="text/javascript">
-        function MOSTRARCRUD() {
-            var CRUD = document.getElementById("PANELCRUD"),
-                tabladiv = document.getElementById('tabladiv');
-            document.getElementById('id').value = "";
-            document.getElementById('usuario').value = "";
-            document.getElementById('password').value = "";
-            if (CRUD.style.display === "none") {
-                CRUD.style.display = "inline-block";
-                tabladiv.style.width = "75%";
+    <% HttpSession sesion = (HttpSession) request.getSession();
+    String id = String.valueOf(sesion.getAttribute("id"));
+    String tipo = String.valueOf(sesion.getAttribute("tipo"));
+    if (id.equals(null) || id.equals("null") || id.equals("Error") || tipo.equals("1") || tipo.equals("2")) {
+           response.sendRedirect("Index.jsp");
+       }
+    %>
 
 
+        <h1 class="text-center display-1" style="font-family: 'Old Standard TT', serif;">
+            <font COLOR="black"> ROLES</font>
+        </h1>
 
-            } else {
-                CRUD.style.display = "none";
-                tabladiv.style.width = "98%";
+        <script type="text/javascript">
+            function MOSTRARCRUD() {
+                var CRUD = document.getElementById("PANELCRUD"),
+                    tabladiv = document.getElementById('tabladiv');
+                document.getElementById('id').value = "";
+                document.getElementById('usuario').value = "";
+                document.getElementById('password').value = "";
+                if (CRUD.style.display === "none") {
+                    CRUD.style.display = "inline-block";
+                    tabladiv.style.width = "75%";
 
 
+
+                } else {
+                    CRUD.style.display = "none";
+                    tabladiv.style.width = "98%";
+
+
+
+                }
 
             }
 
-        }
+            $(document).ready(function() {
 
-        $(document).ready(function() {
+                $.post('controllerRoles', {
+                    //Enviar informacion
 
-            $.post('controllerRoles', {
-                //Enviar informacion
+                }, function(response) {
+                    //Recibir informacion
 
-            }, function(response) {
-                //Recibir informacion
+                    let datos = JSON.parse(response);
+                    //console.log(datos);
 
-                let datos = JSON.parse(response);
-                //console.log(datos);
+                    var tabla = document.getElementById('tablaroles');
+                    for (let item of datos) {
+                        var tipo = item.TipoRol;
+                        if (tipo == 0) {
+                            tipo = "ADMIN";
+                        } else if (tipo == 1) {
+                            tipo = "CAJERO";
+                        } else {
+                            tipo = "USUARIO";
+                        }
 
-                var tabla = document.getElementById('tablaroles');
-                for (let item of datos) {
-                    var tipo = item.TipoRol;
-                    if (tipo == 0) {
-                        tipo = "ADMIN";
-                    } else if (tipo == 1) {
-                        tipo = "CAJERO";
-                    } else {
-                        tipo = "USUARIO";
-                    }
-
-                    tabla.innerHTML += `
+                        tabla.innerHTML += `
 					
 				 <tr>
 					<td  style="display: none;"> ${item.idRol} </td>
@@ -91,232 +93,231 @@
 				 
 					</tr>
 				`
-                }
+                    }
 
 
+                });
             });
-        });
 
 
-        function leerdatos() {
-            var rowIdx;
-            var idRol, usuario, password = " ",
-                tiporoll, persona;
-            var tabla = document.getElementById('tablaroles');
-            var rows = tabla.getElementsByTagName('tr');
-            var selectedRow;
-            var rowCellValue;
-            for (i = 0; i < rows.length; i++) {
-                rows[i].onclick = function() {
-                    rowIdx = this.rowIndex;
-                    selectedRow = this.cells;
-                    var contador = 1;
-                    for (j = 0; j < selectedRow.length; j++) {
-                        if (contador == 1) {
-                            idRol = selectedRow[j].innerText;
-                            contador++;
-                        } else if (contador == 2) {
+            function leerdatos() {
+                var rowIdx;
+                var idRol, usuario, password = " ",
+                    tiporoll, persona;
+                var tabla = document.getElementById('tablaroles');
+                var rows = tabla.getElementsByTagName('tr');
+                var selectedRow;
+                var rowCellValue;
+                for (i = 0; i < rows.length; i++) {
+                    rows[i].onclick = function() {
+                        rowIdx = this.rowIndex;
+                        selectedRow = this.cells;
+                        var contador = 1;
+                        for (j = 0; j < selectedRow.length; j++) {
+                            if (contador == 1) {
+                                idRol = selectedRow[j].innerText;
+                                contador++;
+                            } else if (contador == 2) {
 
-                            contador++;
-                        } else if (contador == 3) {
-                            usuario = selectedRow[j].innerText;
-                            contador++;
-                        } else if (contador == 4) {
+                                contador++;
+                            } else if (contador == 3) {
+                                usuario = selectedRow[j].innerText;
+                                contador++;
+                            } else if (contador == 4) {
 
-                            contador++;
-                        } else if (contador == 5) {
-                            tiporoll = selectedRow[j].innerText;
-                            contador++;
-                        } else if (contador == 6) {
-                            persona = selectedRow[j].innerText;
-                            contador++;
-                        }
-
-                    }
-                    if (idRol > 0) {
-                        var comborol = document.getElementById('comborol');
-                        comborol.selectedIndex = tiporoll;
-                        var combo = document.getElementById('combo');
-                        for (var i = 0; i < combo.length; i++) {
-                            if (combo.options[i].value == persona) {
-                                // seleccionamos el valor que coincide
-                                combo.selectedIndex = i;
-                                break
-                            } else {
-                                combo.selectedIndex = 0;
+                                contador++;
+                            } else if (contador == 5) {
+                                tiporoll = selectedRow[j].innerText;
+                                contador++;
+                            } else if (contador == 6) {
+                                persona = selectedRow[j].innerText;
+                                contador++;
                             }
+
                         }
-                        document.getElementById('id').value = idRol;
-                        document.getElementById('usuario').value = usuario;
-                        document.getElementById('password').value = password;
+                        if (idRol > 0) {
+                            var comborol = document.getElementById('comborol');
+                            comborol.selectedIndex = tiporoll;
+                            var combo = document.getElementById('combo');
+                            for (var i = 0; i < combo.length; i++) {
+                                if (combo.options[i].value == persona) {
+                                    // seleccionamos el valor que coincide
+                                    combo.selectedIndex = i;
+                                    break
+                                } else {
+                                    combo.selectedIndex = 0;
+                                }
+                            }
+                            document.getElementById('id').value = idRol;
+                            document.getElementById('usuario').value = usuario;
+                            document.getElementById('password').value = password;
+
+                        }
+
 
                     }
-
-
                 }
             }
-        }
 
 
 
-        function cargarcombo() {
+            function cargarcombo() {
 
-            $(document).ready(function() {
+                $(document).ready(function() {
 
-                $.post('controllerPersonas', function(datos) {
-                    try {
-                        var combopersonas = document.getElementById('combo');
+                    $.post('controllerPersonas', function(datos) {
+                        try {
+                            var combopersonas = document.getElementById('combo');
 
-                        datos.forEach(function(item) {
-                            combopersonas.innerHTML += `
+                            datos.forEach(function(item) {
+                                combopersonas.innerHTML += `
 								//console.log(${item.id_Persona});
 									<option value="${item.idPersona}">${item.Nombres} </option>
 										
 									`
 
-                        })
+                            })
 
-                        var comborol = document.getElementById('comborol');
+                            var comborol = document.getElementById('comborol');
 
-                        comborol.innerHTML += `
+                            comborol.innerHTML += `
 								<option value=0> ADMIN</option>
 								<option value=1> CAJERO</option>
 								<option value=2> USUARIO</option>
 									
 								`
 
-                    } catch (e) {
-                        // TODO: handle exception
-                    }
+                        } catch (e) {
+                            // TODO: handle exception
+                        }
 
-                });
-            })
-        }
-
-        function Guardar() {
-
-            $(document).ready(function() {
-                var idRol, usuario, password, tiporol, idpersona;
-                id = $("#id").val();
-                usuario = $("#usuario").val();
-                password = $("#password").val();
-                tiporol = $("#comborol").val();
-                idpersona = $("#combo").val();
-                Eliminar = "no";
-
-                if (usuario == "") {
-                    swal({
-                    	title: "Alerta",
-                    	text: "El usuario no puede ir vacio",
-                    	icon: "warning"
                     });
-                    $("#usuario").focus();
+                })
+            }
+
+            function Guardar() {
+
+                $(document).ready(function() {
+                        var idRol, usuario, password, tiporol, idpersona;
+                        id = $("#id").val();
+                        usuario = $("#usuario").val();
+                        password = $("#password").val();
+                        tiporol = $("#comborol").val();
+                        idpersona = $("#combo").val();
+                        Eliminar = "no";
+
+                        if (usuario == "") {
+                            swal({
+                                title: "Alerta",
+                                text: "El usuario no puede ir vacio",
+                                icon: "warning"
+                            });
+                            $("#usuario").focus();
 
 
-                } else if (password == "") {
-                	swal({
-                    	title: "Alerta",
-                    	text: "Es necesario agregar una contraseña",
-                    	icon: "warning",
-                    });
-                    $("#password").focus();
+                        } else if (password == "") {
+                            swal({
+                                title: "Alerta",
+                                text: "Es necesario agregar una contraseï¿½a",
+                                icon: "warning",
+                            });
+                            $("#password").focus();
 
 
-                } else {
-                   swal("Alert", "¿Desea guardar al usuario " + usuario + "?", "info", {
-                	   buttons: {
-                		   Guardar: {
-                			   text: "Guardar"
-                		   },
-                           Cancelar: {
-                        	   text: "Cancelar"
-                           },
-                	   }
-                   })
-                   .then((value) =>{
-                	   switch (value) {
-                	   
-                	   case "Cancelar":
-                		   swal({
-              				 title: "Cancelado",
-              				 icon: "error"
-              			 })
-              			 break;
-                		   
-                	   case "Guardar":
-                		   document.getElementById('id').value = "#id";
-                           document.getElementById('usuario').value = "#usuario";
-                           document.getElementById('password').value = "#password";
+                        } else {
+                            swal("Alert", "ï¿½Desea guardar al usuario " + usuario + "?", "info", {
+                                    buttons: {
+                                        Guardar: {
+                                            text: "Guardar"
+                                        },
+                                        Cancelar: {
+                                            text: "Cancelar"
+                                        },
+                                    }
+                                })
+                                .then((value) => {
+                                    switch (value) {
 
-                           $.get('controllerRoles', {
+                                        case "Cancelar":
+                                            swal({
+                                                title: "Cancelado",
+                                                icon: "error"
+                                            })
+                                            break;
 
-                               id,
-                               usuario,
-                               password,
-                               tiporol,
-                               idpersona,
-                               Eliminar
+                                        case "Guardar":
+                                            document.getElementById('id').value = "#id";
+                                            document.getElementById('usuario').value = "#usuario";
+                                            document.getElementById('password').value = "#password";
 
+                                            $.get('controllerRoles', {
 
-                           });
-                           document.getElementById('id').value = "";
-                           document.getElementById('usuario').value = "";
-                           document.getElementById('password').value = "";
-
-                           window.location.reload();
-              			 swal({
-              				 title: "Guardado",
-              				 text: "Guardado con exito",
-              				 icon: "success"
-              			 })
-              			 break;
-                	   }
-                   }
-                	)
-                }//CierreElse
-            })//CierreDocument
+                                                id,
+                                                usuario,
+                                                password,
+                                                tiporol,
+                                                idpersona,
+                                                Eliminar
 
 
-        }//CierreGuardar
+                                            });
+                                            document.getElementById('id').value = "";
+                                            document.getElementById('usuario').value = "";
+                                            document.getElementById('password').value = "";
 
-        window.onload = cargarcombo();
-    </script>
-    <button id="EDITAR" onclick="MOSTRARCRUD()" class="far fa-edit fa-2x"></button>
-    <div>
-
-        <div class="tabla" id="tabladiv">
-            <table id="tablaroles" onclick="leerdatos() " class="table table-sm table-dark">
-                <thead>
-                    <th style="display: none;">ID</th>
-                    <th>NOMBRES</th>
-                    <th>USUARIO</th>
-                    <th style="display: none;">pass</th>
-                    <th style="display: none;">TIPO</th>
-                    <th style="display: none;">IDPERSONA</th>
-                    <th>TIPO</th>
-                    <th>ACCIONES</th>
-                </thead>
-            </table>
-        </div>
+                                            window.location.reload();
+                                            swal({
+                                                title: "Guardado",
+                                                text: "Guardado con exito",
+                                                icon: "success"
+                                            })
+                                            break;
+                                    }
+                                })
+                        } //CierreElse
+                    }) //CierreDocument
 
 
-        <div class="crudProductos" id="PANELCRUD" style="display: none;">
-            <center>
-                <input type="hidden" id="id"> <br>
-                <label>Usuario</label>
-                <br> <input type="text" id="usuario"> <br>
-                <label>Password</label>
-                <br> <input type="password" id="password"> <br>
-                <label>Tipo Rol</label> <br>
-                <select id="comborol" required>
+            } //CierreGuardar
+
+            window.onload = cargarcombo();
+        </script>
+        <button id="EDITAR" onclick="MOSTRARCRUD()" class="far fa-edit fa-2x"></button>
+        <div>
+
+            <div class="tabla" id="tabladiv">
+                <table id="tablaroles" onclick="leerdatos() " class="table table-sm table-dark">
+                    <thead>
+                        <th style="display: none;">ID</th>
+                        <th>NOMBRES</th>
+                        <th>USUARIO</th>
+                        <th style="display: none;">pass</th>
+                        <th style="display: none;">TIPO</th>
+                        <th style="display: none;">IDPERSONA</th>
+                        <th>TIPO</th>
+                        <th>ACCIONES</th>
+                    </thead>
+                </table>
+            </div>
+
+
+            <div class="crudProductos" id="PANELCRUD" style="display: none;">
+                <center>
+                    <input type="hidden" id="id"> <br>
+                    <label>Usuario</label>
+                    <br> <input type="text" id="usuario"> <br>
+                    <label>Password</label>
+                    <br> <input type="password" id="password"> <br>
+                    <label>Tipo Rol</label> <br>
+                    <select id="comborol" required>
 				</select> <br>
-                <label>Persona</label>
-                <br> <select id="combo" required>
+                    <label>Persona</label>
+                    <br> <select id="combo" required>
 				</select> <br> <br>
-                <button class="Confirmar" onclick="Guardar()">Guardar</button>
-            </center>
+                    <button class="Confirmar" onclick="Guardar()">Guardar</button>
+                </center>
+            </div>
         </div>
-    </div>
 
 </body>
 

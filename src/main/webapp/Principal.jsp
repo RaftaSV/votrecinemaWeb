@@ -22,6 +22,7 @@
         <% HttpSession sesion = (HttpSession) request.getSession();
 	 String usu = String.valueOf(sesion.getAttribute("usu")); 
 	   String id = String.valueOf(sesion.getAttribute("id"));
+	   String tipo = String.valueOf(sesion.getAttribute("tipo"));
         if (id.equals(null) || id.equals("null") || id.equals("Error")) {
                response.sendRedirect("Index.jsp");
            }
@@ -30,23 +31,23 @@
                 <nav id="sidebar">
                     <div class="sidebar-header" id="menu">
                     </div>
-                    <button type="button" class="button" onclick="peliculas()">PELICULAS</button>
-                    <br>
-                    <button type="button" class="button" onclick="productos()">PRODUCTOS</button>
-                    <br>
-                    <button type="button" class=" button" onclick="proveedores()">PROVEEDORES</button>
-                    <br>
-                    <button type="button" class=" button" onclick="personas()">PERSONAS</button>
-                    <br>
-                    <button type="button" class=" button" onclick="Roles()">ROLES</button>
-                    <br>
-                    <button type="button" class=" button" onclick="salas()">SALAS</button>
-                    <br>
-                    <button type="button" class="button" onclick="Horerios()">HORARIOS</button>
-                    <br>
-                    <button type="button" class=" button" onclick="Carteleras()">CARTELERAS</button>
-                    <br>
-                    <button type="button" class="button" onclick="Facturar()">FACTURAS</button>
+                    <button type="button" class="button" onclick="peliculas()" id="pelicula">PELICULAS</button>
+
+                    <button type="button" class="button" onclick="productos()" id="producto">PRODUCTOS</button>
+
+                    <button type="button" class=" button" onclick="proveedores()" id="proveedor">PROVEEDORES</button>
+
+                    <button type="button" class=" button" onclick="personas()" id="persona">PERSONAS</button>
+
+                    <button type="button" class=" button" onclick="Roles()" id="rol">ROLES</button>
+
+                    <button type="button" class=" button" onclick="salas()" id="sala">SALAS</button>
+
+                    <button type="button" class="button" onclick="Horerios()" id="horario">HORARIOS</button>
+
+                    <button type="button" class=" button" onclick="Carteleras()" id="cartelera">CARTELERAS</button>
+
+                    <button type="button" class="button" onclick="Facturar()" id="factura">FACTURAS</button>
                 </nav>
 
                 <!-- CONTENEDOR -->
@@ -60,7 +61,7 @@
 
                         <label id="usuario"> <%=usu%> </label>
                         <form action="controllerCerrar" method="post">
-                            <button class="btn btn-success " name="cerrar" value="index" id="cerrar"><span><i class="fas fa-sign-out-alt"></i></span></button>
+                            <button class="btn btn-danger " name="cerrar" value="index" id="cerrar"><span><i class="fas fa-sign-out-alt"></i></span></button>
                         </form>
                     </div>
 
@@ -187,6 +188,33 @@
                 if (performance.navigation.type == 2) {
 
                     location.reload(true);
+
+                }
+
+                var tipo = "<%=tipo%>";
+
+                if (tipo == 0) {
+
+
+                } else if (tipo == 1) {
+                    $('#producto').hide();
+                    $('#proveedor').hide();
+                    $('#persona').hide();
+                    $('#rol').hide();
+                    $('#sala').hide();
+                    $('#horario').hide();
+
+                } else if (tipo = 2) {
+
+                    $('#producto').hide();
+                    $('#proveedor').hide();
+                    $('#persona').hide();
+                    $('#rol').hide();
+                    $('#sala').hide();
+                    $('#horario').hide();
+                    $('#factura').hide();
+
+
 
                 }
             </script>

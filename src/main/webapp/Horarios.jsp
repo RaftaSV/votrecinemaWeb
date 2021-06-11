@@ -24,47 +24,48 @@
     </h1>
 
     <body>
-    <% HttpSession sesion = (HttpSession) request.getSession();
+        <% HttpSession sesion = (HttpSession) request.getSession();
         String id = String.valueOf(sesion.getAttribute("id"));
-        if (id.equals(null) || id.equals("null") || id.equals("Error")) {
+		String tipo = String.valueOf(sesion.getAttribute("tipo"));
+        if (id.equals(null) || id.equals("null") || id.equals("Error") || tipo.equals("1") || tipo.equals("2")) {
                response.sendRedirect("Index.jsp");
            }
         %>
 
 
-        <script type="text/javascript">
-            function MOSTRARCRUD() {
-                var CRUD = document.getElementById("PANELCRUD"),
-                    tabladiv = document.getElementById('tabladiv');
+            <script type="text/javascript">
+                function MOSTRARCRUD() {
+                    var CRUD = document.getElementById("PANELCRUD"),
+                        tabladiv = document.getElementById('tabladiv');
 
-                if (CRUD.style.display === "none") {
-                    CRUD.style.display = "inline-block";
-                    tabladiv.style.width = "75%";
-                    document.getElementById('Horario').value = "09:00";
+                    if (CRUD.style.display === "none") {
+                        CRUD.style.display = "inline-block";
+                        tabladiv.style.width = "75%";
+                        document.getElementById('Horario').value = "09:00";
 
 
-                } else {
-                    CRUD.style.display = "none";
-                    tabladiv.style.width = "98%";
+                    } else {
+                        CRUD.style.display = "none";
+                        tabladiv.style.width = "98%";
 
+                    }
                 }
-            }
 
 
-            $(document).ready(function() {
+                $(document).ready(function() {
 
-                $.post('controllerHorarios', {
-                    //Enviar informacion
+                    $.post('controllerHorarios', {
+                        //Enviar informacion
 
-                }, function(response) {
-                    //Recibir informacion
+                    }, function(response) {
+                        //Recibir informacion
 
-                    let datos = response;
-                    //console.log(datos);
-                    var tabla = document.getElementById('tablahorario');
-                    for (let item of datos) {
+                        let datos = response;
+                        //console.log(datos);
+                        var tabla = document.getElementById('tablahorario');
+                        for (let item of datos) {
 
-                        tabla.innerHTML += `
+                            tabla.innerHTML += `
 	 <tr>
 		<td style="display:none;"> ${item.idHorario} </td>
 	    <td style="text-align:center;"> <time> ${item.HoraInicio} </time></td>
@@ -74,146 +75,144 @@
 	   
 	</tr>
 `
-                    }
+                        }
 
+                    });
                 });
-            });
 
-            function leerdatos() {
-                var rowIdx;
+                function leerdatos() {
+                    var rowIdx;
 
-                var id, horario;
-                var tabla = document.getElementById('tablahorario');
-                var rows = tabla.getElementsByTagName('tr');
-                var selectedRow;
-                var rowCellValue;
-                for (i = 0; i < rows.length; i++) {
-                    rows[i].onclick = function() {
-                        rowIdx = this.rowIndex;
-                        selectedRow = this.cells;
-                        var contador = 1;
-                        for (j = 0; j < selectedRow.length; j++) {
+                    var id, horario;
+                    var tabla = document.getElementById('tablahorario');
+                    var rows = tabla.getElementsByTagName('tr');
+                    var selectedRow;
+                    var rowCellValue;
+                    for (i = 0; i < rows.length; i++) {
+                        rows[i].onclick = function() {
+                            rowIdx = this.rowIndex;
+                            selectedRow = this.cells;
+                            var contador = 1;
+                            for (j = 0; j < selectedRow.length; j++) {
 
-                            if (contador == 1) {
-                                id = selectedRow[j].innerText;
-                                contador++;
-                            } else if (contador == 2) {
-                                horario = selectedRow[j].innerText;
-                                contador++;
+                                if (contador == 1) {
+                                    id = selectedRow[j].innerText;
+                                    contador++;
+                                } else if (contador == 2) {
+                                    horario = selectedRow[j].innerText;
+                                    contador++;
+                                }
+
+
+                            }
+                            var hora = horario.substr(0, 2);
+                            var minutos = horario.substr(2, 3);
+                            var indicador = horario.substr(8, 9).replace('p.ï¿½m.', '1');
+                            if (indicador == 1) {
+                                hora = hora.replace('0', '');
+                                hora = parseInt(hora);
+                                if (hora < 12) {
+                                    hora = hora + 12;
+                                }
+
                             }
 
+                            var horacompleta = hora + minutos;
+                            if (id > 0) {
 
-                        }
-                        var hora = horario.substr(0, 2);
-                        var minutos = horario.substr(2, 3);
-                        var indicador = horario.substr(8, 9).replace('p.ï¿½m.', '1');
-                        if (indicador == 1) {
-                            hora = hora.replace('0', '');
-                            hora = parseInt(hora);
-                            if (hora < 12) {
-                                hora = hora + 12;
+                                document.getElementById('id').value = id;
+                                document.getElementById('Horario').value = horacompleta;
+
                             }
-
-                        }
-
-                        var horacompleta = hora + minutos;
-                        if (id > 0) {
-
-                            document.getElementById('id').value = id;
-                            document.getElementById('Horario').value = horacompleta;
-
                         }
                     }
                 }
-            }
 
-            function Guardar() {
-            	$(document).ready(function() {
-                    var id, hora, Eliminar, evaluar;
-                    hora = $("#Horario").val();
-                    evaluar = $("#Horario").val().substr(0, 2);
-                    id = $("#id").val();
-                    Eliminar = "no";
+                function Guardar() {
+                    $(document).ready(function() {
+                            var id, hora, Eliminar, evaluar;
+                            hora = $("#Horario").val();
+                            evaluar = $("#Horario").val().substr(0, 2);
+                            id = $("#id").val();
+                            Eliminar = "no";
 
-                    if (evaluar < 9) {
-                        swal({
-                        	title: "No es un horario laboral",
-                        	text: "Porfavor, seleccione una hora entre las 9 am y las 10 pm",
-                        	icon: "warning",
-                        });
-                        $("#Hora").focus();
+                            if (evaluar < 9) {
+                                swal({
+                                    title: "No es un horario laboral",
+                                    text: "Porfavor, seleccione una hora entre las 9 am y las 10 pm",
+                                    icon: "warning",
+                                });
+                                $("#Hora").focus();
 
-                    } else if (evaluar > 22) {
-                    	 swal({
-                         	title: "No es un horario laboral",
-                         	text: "Porfavor, seleccione una hora entre las 9 am y las 10 pm",
-                         	icon: "warning",
-                         });
-                        $("#Hora").focus();
+                            } else if (evaluar > 22) {
+                                swal({
+                                    title: "No es un horario laboral",
+                                    text: "Porfavor, seleccione una hora entre las 9 am y las 10 pm",
+                                    icon: "warning",
+                                });
+                                $("#Hora").focus();
 
-                    } else {
-                    	swal("Alerta", "¿Desea guardar la hora " + hora + "?", "info",{
-                    		buttons: {
-                  			  Guardar: {
-                  				  text: "Guardar"
-                  			  },
-                  			  Cancelar: {
-                  				  text: "Cancelar"
-                  			  },
-                  		  } 
-                    	}).then((value) =>{
-                    		switch (value)
-                    		{
-                    		
-                    		 case "Cancelar": 
-                    			 swal({
-                    				 title: "Cancelado",
-                    				 icon: "error"
-                    			 })
-                   			  break;
-                   		  
-                   		  case "Guardar": 
+                            } else {
+                                swal("Alerta", "ï¿½Desea guardar la hora " + hora + "?", "info", {
+                                    buttons: {
+                                        Guardar: {
+                                            text: "Guardar"
+                                        },
+                                        Cancelar: {
+                                            text: "Cancelar"
+                                        },
+                                    }
+                                }).then((value) => {
+                                    switch (value) {
 
-                              $.get('controllerHorarios', {
+                                        case "Cancelar":
+                                            swal({
+                                                title: "Cancelado",
+                                                icon: "error"
+                                            })
+                                            break;
 
-                                  Eliminar,
-                                  id,
-                                  hora
-                              });
-                              window.location.reload();
-                    		}
-                    	}
-                    	)
-                    }//CierreElse
-                })//CierreDocument
-            }//CierreFunction
-        </script>
-        <button id="EDITAR" onclick="MOSTRARCRUD()" class="far fa-edit fa-2x"></button>
-        <div>
+                                        case "Guardar":
 
-            <div class="tabla" id="tabladiv">
-                <table class="table table-dark" id="tablahorario" onclick="leerdatos()">
-                    <thead>
-                        <th style="display:none;">ID HORARIO</th>
-                        <th style="text-align:center;">HORA DE INICIO</th>
-                        <th>ACCIONES</th>
+                                            $.get('controllerHorarios', {
+
+                                                Eliminar,
+                                                id,
+                                                hora
+                                            });
+                                            window.location.reload();
+                                    }
+                                })
+                            } //CierreElse
+                        }) //CierreDocument
+                } //CierreFunction
+            </script>
+            <button id="EDITAR" onclick="MOSTRARCRUD()" class="far fa-edit fa-2x"></button>
+            <div>
+
+                <div class="tabla" id="tabladiv">
+                    <table class="table table-dark" id="tablahorario" onclick="leerdatos()">
+                        <thead>
+                            <th style="display:none;">ID HORARIO</th>
+                            <th style="text-align:center;">HORA DE INICIO</th>
+                            <th>ACCIONES</th>
 
 
-                    </thead>
-                </table>
+                        </thead>
+                    </table>
+                </div>
+
+                <div class="crud" id="PANELCRUD" style="display: none;">
+                    <center>
+                        <input type="hidden" id="id"> <br>
+                        <label>Horario</label>
+                        <br> <input type="time" id="Horario" name="hora" max="17:00" step="900" />
+                        <br>
+                        <br>
+                        <button class="Confirmar" onclick="Guardar()">Guardar</button>
+                    </center>
+                </div>
             </div>
-
-            <div class="crud" id="PANELCRUD" style="display: none;">
-                <center>
-                    <input type="hidden" id="id"> <br>
-                    <label>Horario</label>
-                    <br> <input type="time" id="Horario" name="hora" max="17:00" step="900" />
-                    <br>
-                    <br>
-                    <button class="Confirmar" onclick="Guardar()">Guardar</button>
-                </center>
-            </div>
-        </div>
     </body>
 
     </html>

@@ -24,50 +24,52 @@
 
 
     <body>
-    <% HttpSession sesion = (HttpSession) request.getSession();
+        <% HttpSession sesion = (HttpSession) request.getSession();
         String id = String.valueOf(sesion.getAttribute("id"));
-        if (id.equals(null) || id.equals("null") || id.equals("Error")) {
+		String tipo = String.valueOf(sesion.getAttribute("tipo"));
+        if (id.equals(null) || id.equals("null") || id.equals("Error") || tipo.equals("1") || tipo.equals("2")) {
                response.sendRedirect("Index.jsp");
            }
         %>
 
 
-        <script type="text/javascript">
-            function MOSTRARCRUD() {
-                var CRUD = document.getElementById("PANELCRUD"),
-                    tabladiv = document.getElementById('tabladiv');
+            <script type="text/javascript">
+                function MOSTRARCRUD() {
+                    var CRUD = document.getElementById("PANELCRUD"),
+                        tabladiv = document.getElementById('tabladiv');
 
-                if (CRUD.style.display === "none") {
-                    CRUD.style.display = "inline-block";
-                    tabladiv.style.width = "75%";
-
-
-                } else {
-                    CRUD.style.display = "none";
-                    tabladiv.style.width = "98%";
-                    document.getElementById('capacidad').value = "";
-                    document.getElementById('NumeroSala').value = "";
-                    document.getElementById('idsala').value = "";
+                    if (CRUD.style.display === "none") {
+                        CRUD.style.display = "inline-block";
+                        tabladiv.style.width = "75%";
 
 
+                    } else {
+                        CRUD.style.display = "none";
+                        tabladiv.style.width = "98%";
+                        document.getElementById('capacidad').value = "";
+                        document.getElementById('NumeroSala').value = "";
+                        document.getElementById('idsala').value = "";
+
+
+                    }
                 }
-            }
-
-            $(document).ready(function(){
-        	    //Cada 6 segundos (6000 milisegundos) se ejecutará la función refrescar y cargara la imagen insertada 
-        	    setTimeout(cargardatos, 1000);
-        	  });
-            function cargardatos() {
 
                 $(document).ready(function() {
+                    //Cada 6 segundos (6000 milisegundos) se ejecutarï¿½ la funciï¿½n refrescar y cargara la imagen insertada 
+                    setTimeout(cargardatos, 1000);
+                });
+
+                function cargardatos() {
+
+                    $(document).ready(function() {
 
 
-                    $.post('controllerSalas', function(datos) {
-                        try {
-                            var tabla = document.getElementById('tablaDatos');
-                            $('#tablaDatos tbody tr').remove();
-                            datos.forEach(function(item) {
-                                tabla.innerHTML += `
+                        $.post('controllerSalas', function(datos) {
+                            try {
+                                var tabla = document.getElementById('tablaDatos');
+                                $('#tablaDatos tbody tr').remove();
+                                datos.forEach(function(item) {
+                                    tabla.innerHTML += `
 							 <tr onclick="seleccionar()" >
 								<td style="display:none;"> ${item.idSala} </td>
 							    <td >  ${item.Capacidad} </td>
@@ -78,171 +80,170 @@
 								</tr>
 							`
 
-                            })
+                                })
 
-                        } catch (e) {
-                            // TODO: handle exception
+                            } catch (e) {
+                                // TODO: handle exception
+                            }
+
+                        });
+
+
+
+                    })
+
+
+                }
+
+                $(document).on("click", "#tablaDatos tr", function() {
+                    // leerdatos();
+
+                    var id, capacidad, NumeroSala;
+                    id = $(this).find('td:first-child').html();
+                    capacidad = $(this).find('td:nth-child(2)').html();
+                    NumeroSala = $(this).find('td:nth-child(3)').html();
+
+                    document.getElementById('idsala').value = id;
+                    document.getElementById('capacidad').value = capacidad;
+                    document.getElementById('NumeroSala').value = NumeroSala;
+
+                });
+
+
+
+                function solonumeros(e) {
+
+                    key = e.keyCode || e.which;
+                    teclado = String.fromCharCode(key);
+                    numero = "0123456789";
+                    especiales = "8-37-38-46";
+                    tecladoEspecial = false;
+                    for (var i in especiales) {
+
+                        if (key == especiales[i]) {
+
+                            tecladoEspecial = true;
                         }
+                    }
 
-                    });
-
-
-
-                })
-
-
-            }
-
-            $(document).on("click", "#tablaDatos tr", function() {
-                // leerdatos();
-
-                var id, capacidad, NumeroSala;
-                id = $(this).find('td:first-child').html();
-                capacidad = $(this).find('td:nth-child(2)').html();
-                NumeroSala = $(this).find('td:nth-child(3)').html();
-
-                document.getElementById('idsala').value = id;
-                document.getElementById('capacidad').value = capacidad;
-                document.getElementById('NumeroSala').value = NumeroSala;
-
-            });
-
-
-
-            function solonumeros(e) {
-
-                key = e.keyCode || e.which;
-                teclado = String.fromCharCode(key);
-                numero = "0123456789";
-                especiales = "8-37-38-46";
-                tecladoEspecial = false;
-                for (var i in especiales) {
-
-                    if (key == especiales[i]) {
-
-                        tecladoEspecial = true;
+                    if (numero.indexOf(teclado) == -1 && !tecladoEspecial) {
+                        return false;
                     }
                 }
 
-                if (numero.indexOf(teclado) == -1 && !tecladoEspecial) {
-                    return false;
-                }
-            }
 
 
+                function Guardar() {
 
-            function Guardar() {
-
-                $(document).ready(function() {
-                    var id, capacidad, NumeroSala, Eliminar;
-                    id = $("#idsala").val();
-                    capacidad = $("#capacidad").val();
-                    NumeroSala = $("#NumeroSala").val();
-                    Eliminar = "no";
-
-
-                    if (capacidad == "") {
-                        swal({
-                        	title: "Alerta",
-                        	text: "Ingrese una capacidad valida",
-                        	icon: "warning",
-                        });
-                        $("#capacidad").focus();
+                    $(document).ready(function() {
+                            var id, capacidad, NumeroSala, Eliminar;
+                            id = $("#idsala").val();
+                            capacidad = $("#capacidad").val();
+                            NumeroSala = $("#NumeroSala").val();
+                            Eliminar = "no";
 
 
-                    } else if (NumeroSala == "") {
-                        swal({
-                        	title: "Alerta",
-                        	text: "El numero de la sala es obligatorio",
-                        	icon: "warning",
-                        });
-                        $("#NumeroSala").focus();
+                            if (capacidad == "") {
+                                swal({
+                                    title: "Alerta",
+                                    text: "Ingrese una capacidad valida",
+                                    icon: "warning",
+                                });
+                                $("#capacidad").focus();
 
 
-                    } else {
-                        swal("Alerta", "¿Desea guardar la sala numero " + NumeroSala + "?", "info",  {
-                        	buttons: {
-                        		Guardar: {
-                        			text: "Guardar"
-                        		},
-                                Cancelar: {
-                                	text: "Cancelar"
-                                },
-                        	}
-                        })
-                        .then((value) =>{
-                        	switch (value){
-
-                     	   case "Cancelar":
-                     		   swal({
-                   				 title: "Cancelado",
-                   				 icon: "error"
-                   			 })
-                   			 break;
-                     		   
-                     	   case "Guardar":
-                     		  document.getElementById('capacidad').value = "#capacidad";
-                              document.getElementById('NumeroSala').value = "#NumeroSala";
-                              document.getElementById('idsala').value = "#idsala";
-                              $.get('controllerSalas', {
-
-                                  id,
-                                  capacidad,
-                                  NumeroSala,
-                                  Eliminar
+                            } else if (NumeroSala == "") {
+                                swal({
+                                    title: "Alerta",
+                                    text: "El numero de la sala es obligatorio",
+                                    icon: "warning",
+                                });
+                                $("#NumeroSala").focus();
 
 
-                              });
+                            } else {
+                                swal("Alerta", "ï¿½Desea guardar la sala numero " + NumeroSala + "?", "info", {
+                                        buttons: {
+                                            Guardar: {
+                                                text: "Guardar"
+                                            },
+                                            Cancelar: {
+                                                text: "Cancelar"
+                                            },
+                                        }
+                                    })
+                                    .then((value) => {
+                                        switch (value) {
 
-                              document.getElementById('capacidad').value = "";
-                              document.getElementById('NumeroSala').value = "";
-                              document.getElementById('idsala').value = "";
-                              window.location.reload();
-                              swal({
-                            	  title: "Guardado",
-                            	  text: "Guardado con exito",
-                            	  icon: "success",
-                              })
-                              break;
-                          }
-                        }
-                        	)
-                    }//CierreElse
-                })//CierreDocument
-            }//CierreGuardar
+                                            case "Cancelar":
+                                                swal({
+                                                    title: "Cancelado",
+                                                    icon: "error"
+                                                })
+                                                break;
 
-            window.onload = cargardatos;
-        </script>
+                                            case "Guardar":
+                                                document.getElementById('capacidad').value = "#capacidad";
+                                                document.getElementById('NumeroSala').value = "#NumeroSala";
+                                                document.getElementById('idsala').value = "#idsala";
+                                                $.get('controllerSalas', {
 
-        <button id="EDITAR" onclick="MOSTRARCRUD()" class="far fa-edit fa-2x"></button>
-        <div>
+                                                    id,
+                                                    capacidad,
+                                                    NumeroSala,
+                                                    Eliminar
 
-            <div class="tabla" id="tabladiv">
-                <table id="tablaDatos" onclick="leerdatos() " class="table table-sm table-dark">
-                    <thead>
-                        <th style="display:none;">ID</th>
-                        <th>CAPACIDAD</th>
-                        <th>NUMERO DE SALA</th>
-                        <th> ACCIONES </th>
-                    </thead>
-                </table>
 
+                                                });
+
+                                                document.getElementById('capacidad').value = "";
+                                                document.getElementById('NumeroSala').value = "";
+                                                document.getElementById('idsala').value = "";
+                                                window.location.reload();
+                                                swal({
+                                                    title: "Guardado",
+                                                    text: "Guardado con exito",
+                                                    icon: "success",
+                                                })
+                                                break;
+                                        }
+                                    })
+                            } //CierreElse
+                        }) //CierreDocument
+                } //CierreGuardar
+
+                window.onload = cargardatos;
+            </script>
+
+            <button id="EDITAR" onclick="MOSTRARCRUD()" class="far fa-edit fa-2x"></button>
+            <div>
+
+                <div class="tabla" id="tabladiv">
+                    <table id="tablaDatos" onclick="leerdatos() " class="table table-sm table-dark">
+                        <thead>
+                            <th style="display:none;">ID</th>
+                            <th>CAPACIDAD</th>
+                            <th>NUMERO DE SALA</th>
+                            <th> ACCIONES </th>
+                        </thead>
+                    </table>
+
+                </div>
+
+
+                <div class="crud" id="PANELCRUD" style="display: none;">
+                    <center>
+                        <input type="hidden" id="idsala"> <br>
+                        <label>Capacidad</label>
+                        <br> <input type="text" id="capacidad" onkeypress="return solonumeros(event)"> <br>
+                        <label>Numero de Sala</label>
+                        <br> <input type="text" id="NumeroSala" onkeypress="return solonumeros(event)"> <br>
+                        <br>
+
+                        <button class="Confirmar" onclick="Guardar()">Guardar</button>
+                    </center>
+                </div>
             </div>
-
-
-            <div class="crud" id="PANELCRUD" style="display: none;">
-                <center>
-                    <input type="hidden" id="idsala"> <br>
-                    <label>Capacidad</label>
-                    <br> <input type="text" id="capacidad" onkeypress="return solonumeros(event)"> <br>
-                    <label>Numero de Sala</label>
-                    <br> <input type="text" id="NumeroSala" onkeypress="return solonumeros(event)"> <br>
-                    <br>
-
-                    <button class="Confirmar" onclick="Guardar()">Guardar</button>
-                </center>
-            </div>
-        </div>
 
 
     </body>

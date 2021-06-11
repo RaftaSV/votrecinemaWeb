@@ -21,53 +21,55 @@
     </head>
 
     <body>
-    
-    <% HttpSession sesion = (HttpSession) request.getSession();
+
+        <% HttpSession sesion = (HttpSession) request.getSession();
         String id = String.valueOf(sesion.getAttribute("id"));
-        if (id.equals(null) || id.equals("null") || id.equals("Error")) {
+		String tipo = String.valueOf(sesion.getAttribute("tipo"));
+        if (id.equals(null) || id.equals("null") || id.equals("Error") || tipo.equals("1") || tipo.equals("2")) {
                response.sendRedirect("Index.jsp");
            }
         %>
-        <h1 class="text-center display-1" style="font-family: 'Old Standard TT', serif;">
-            <font COLOR="black"> PROVEEDORES</font>
-        </h1>
+
+            <h1 class="text-center display-1" style="font-family: 'Old Standard TT', serif;">
+                <font COLOR="black"> PROVEEDORES</font>
+            </h1>
 
 
 
-        <script type="text/javascript">
-            function MOSTRARCRUD() {
-                var CRUD = document.getElementById("PANELCRUD"),
-                    tabladiv = document.getElementById('tabladiv');
-                document.getElementById('nombre').value = "";
-                document.getElementById('telefono').value = "";
-                document.getElementById('direccion').value = "";
-                document.getElementById('idpro').value = "";
-                if (CRUD.style.display === "none") {
-                    CRUD.style.display = "inline-block";
-                    tabladiv.style.width = "75%";
+            <script type="text/javascript">
+                function MOSTRARCRUD() {
+                    var CRUD = document.getElementById("PANELCRUD"),
+                        tabladiv = document.getElementById('tabladiv');
+                    document.getElementById('nombre').value = "";
+                    document.getElementById('telefono').value = "";
+                    document.getElementById('direccion').value = "";
+                    document.getElementById('idpro').value = "";
+                    if (CRUD.style.display === "none") {
+                        CRUD.style.display = "inline-block";
+                        tabladiv.style.width = "75%";
 
 
-                } else {
-                    CRUD.style.display = "none";
-                    tabladiv.style.width = "98%";
+                    } else {
+                        CRUD.style.display = "none";
+                        tabladiv.style.width = "98%";
 
 
 
+                    }
                 }
-            }
 
 
-            function cargardatos() {
+                function cargardatos() {
 
-                $(document).ready(function() {
+                    $(document).ready(function() {
 
 
-                    $.post('controllerProveedores', function(datos) {
-                        try {
-                            var tabla = document.getElementById('tablaDatos');
-                            $('#tablaDatos tbody tr').remove();
-                            datos.forEach(function(item) {
-                                tabla.innerHTML += `
+                        $.post('controllerProveedores', function(datos) {
+                            try {
+                                var tabla = document.getElementById('tablaDatos');
+                                $('#tablaDatos tbody tr').remove();
+                                datos.forEach(function(item) {
+                                    tabla.innerHTML += `
 								 <tr>
 									<td style="display:none;"> ${item.idProveedor} </td>
 								    <td >  ${item.Nombre} </td>
@@ -79,151 +81,151 @@
 									</tr>
 								`
 
-                            })
+                                })
 
-                        } catch (e) {
-                            // TODO: handle exception
+                            } catch (e) {
+                                // TODO: handle exception
+                            }
+
+                        });
+                    })
+                }
+
+                //leerdatos
+                $(document).on("click", "#tablaDatos tr", function() {
+                    var idProveedor, Nombre, Telefono, Direccion;
+
+                    idProveedor = $(this).find('td:first-child').html();
+                    Nombre = $(this).find('td:nth-child(2)').html();
+                    Telefono = $(this).find('td:nth-child(3)').html().replace(" ", "");
+                    Direccion = $(this).find('td:nth-child(4)').html();
+
+                    document.getElementById('idpro').value = idProveedor;
+                    document.getElementById('nombre').value = Nombre;
+                    document.getElementById('telefono').value = Telefono;
+                    document.getElementById('direccion').value = Direccion;
+                });
+
+
+
+                function Guardar() {
+
+                    $(document).ready(function() {
+                        var id, nombre, direccion, telefono, Eliminar;
+                        nombre = $("#nombre").val();
+                        telefono = $("#telefono").val();
+                        direccion = $("#direccion").val();
+                        id = $("#idpro").val();
+                        Eliminar = "no";
+
+
+                        if (nombre == "") {
+                            swal({
+                                title: "Alerta",
+                                text: "Debe rellenar un nombre",
+                                icon: "warning",
+                            });
+
+
+                            $("#nombre").focus();
+
+                        } else if (telefono == "") {
+                            swal({
+                                title: "Alerta",
+                                text: "Ingrese un numero de telefono",
+                                icon: "warning",
+                            });
+
+                            $("#telefono").focus();
+
+                        } else if (direccion == "") {
+                            swal({
+                                title: "Alerta",
+                                text: "Ingrese una direccion",
+                                icon: "warning",
+                            });
+                            $("#direccion").focus();
+                        } else {
+                            swal("Alerta", "Desea guardar el proveedor " + nombre + " ?", "info", {
+                                    buttons: {
+                                        cancelar: {
+                                            text: "Cancelar"
+                                        },
+                                        Agregar: {
+                                            text: "Agregar"
+                                        },
+                                    },
+                                })
+                                .then((value) => {
+                                    switch (value) {
+
+                                        case "cancelar":
+
+                                            break;
+
+                                        case "Agregar":
+
+                                            $.get('controllerProveedores', {
+
+                                                id,
+                                                nombre,
+                                                direccion,
+                                                telefono,
+                                                Eliminar
+
+                                            });
+                                            document.getElementById('nombre').value = "";
+                                            document.getElementById('telefono').value = "";
+                                            document.getElementById('direccion').value = "";
+                                            document.getElementById('idpro').value = "";
+                                            window.location.reload();
+
+                                    }
+                                })
                         }
+                    })
 
-                    });
-                })
-            }
+                }
+                //validar solo numeros
+                function numeros() {
+                    var numero = ($('#telefono').val().replace("-", ""));
+                    numero = numero.replace(".", "");
+                    document.getElementById('telefono').value = numero;
+                }
 
-            //leerdatos
-            $(document).on("click", "#tablaDatos tr", function() {
-                var idProveedor, Nombre, Telefono, Direccion;
+                window.onload = cargardatos;
+            </script>
+            <button id="EDITAR" onclick="MOSTRARCRUD()" class="far fa-edit fa-2x"></button>
+            <div>
 
-                idProveedor = $(this).find('td:first-child').html();
-                Nombre = $(this).find('td:nth-child(2)').html();
-                Telefono = $(this).find('td:nth-child(3)').html().replace(" ", "");
-                Direccion = $(this).find('td:nth-child(4)').html();
+                <div class="tabla" id="tabladiv">
+                    <table id="tablaDatos" class="table table-sm table-dark">
+                        <thead>
+                            <th style="display:none;">ID</th>
+                            <th>NOMBRE</th>
+                            <th>TELEFONO</th>
+                            <th>DIRECCION</th>
+                            <th>ACCIONES</th>
+                        </thead>
+                    </table>
 
-                document.getElementById('idpro').value = idProveedor;
-                document.getElementById('nombre').value = Nombre;
-                document.getElementById('telefono').value = Telefono;
-                document.getElementById('direccion').value = Direccion;
-            });
-
-
-
-            function Guardar() {
-
-                $(document).ready(function() {
-                    var id, nombre, direccion, telefono, Eliminar;
-                    nombre = $("#nombre").val();
-                    telefono = $("#telefono").val();
-                    direccion = $("#direccion").val();
-                    id = $("#idpro").val();
-                    Eliminar = "no";
+                </div>
 
 
-                    if (nombre == "") {
-                        swal({
-                            title: "Alerta",
-                            text: "Debe rellenar un nombre",
-                            icon: "warning",
-                        });
+                <div class="crud" id="PANELCRUD" style="display: none;">
+                    <center>
+                        <input type="hidden" id="idpro"> <br>
+                        <label>Nombre</label>
+                        <br> <input type="text" id="nombre"> <br>
+                        <label>Telefono</label>
+                        <br> <input type="number" id="telefono" onkeyup="numeros()" onkeydown="numeros()"> <br>
+                        <label>Direccion</label>
+                        <br> <input type="text" id="direccion"> <br> <br>
 
-
-                        $("#nombre").focus();
-
-                    } else if (telefono == "") {
-                        swal({
-                            title: "Alerta",
-                            text: "Ingrese un numero de telefono",
-                            icon: "warning",
-                        });
-
-                        $("#telefono").focus();
-
-                    } else if (direccion == "") {
-                        swal({
-                            title: "Alerta",
-                            text: "Ingrese una direccion",
-                            icon: "warning",
-                        });
-                        $("#direccion").focus();
-                    } else {
-                        swal("Alerta", "Desea guardar el proveedor " + nombre + " ?", "info", {
-                                buttons: {
-                                    cancelar: {
-                                        text: "Cancelar"
-                                    },
-                                    Agregar: {
-                                        text: "Agregar"
-                                    },
-                                },
-                            })
-                            .then((value) => {
-                                switch (value) {
-
-                                    case "cancelar":
-
-                                        break;
-
-                                    case "Agregar":
-
-                                        $.get('controllerProveedores', {
-
-                                            id,
-                                            nombre,
-                                            direccion,
-                                            telefono,
-                                            Eliminar
-
-                                        });
-                                        document.getElementById('nombre').value = "";
-                                        document.getElementById('telefono').value = "";
-                                        document.getElementById('direccion').value = "";
-                                        document.getElementById('idpro').value = "";
-                                        window.location.reload();
-
-                                }
-                            })
-                    }
-                })
-
-            }
-            //validar solo numeros
-            function numeros() {
-                var numero = ($('#telefono').val().replace("-", ""));
-                numero = numero.replace(".", "");
-                document.getElementById('telefono').value = numero;
-            }
-
-            window.onload = cargardatos;
-        </script>
-        <button id="EDITAR" onclick="MOSTRARCRUD()" class="far fa-edit fa-2x"></button>
-        <div>
-
-            <div class="tabla" id="tabladiv">
-                <table id="tablaDatos" class="table table-sm table-dark">
-                    <thead>
-                        <th style="display:none;">ID</th>
-                        <th>NOMBRE</th>
-                        <th>TELEFONO</th>
-                        <th>DIRECCION</th>
-                        <th>ACCIONES</th>
-                    </thead>
-                </table>
-
+                        <button class="Confirmar" onclick="Guardar()">Guardar</button>
+                    </center>
+                </div>
             </div>
-
-
-            <div class="crud" id="PANELCRUD" style="display: none;">
-                <center>
-                    <input type="hidden" id="idpro"> <br>
-                    <label>Nombre</label>
-                    <br> <input type="text" id="nombre"> <br>
-                    <label>Telefono</label>
-                    <br> <input type="number" id="telefono" onkeyup="numeros()" onkeydown="numeros()"> <br>
-                    <label>Direccion</label>
-                    <br> <input type="text" id="direccion"> <br> <br>
-
-                    <button class="Confirmar" onclick="Guardar()">Guardar</button>
-                </center>
-            </div>
-        </div>
 
     </body>
 
