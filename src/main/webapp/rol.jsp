@@ -99,65 +99,38 @@
                 });
             });
 
-
-            function leerdatos() {
-                var rowIdx;
-                var idRol, usuario, password = " ",
+            $(document).on("click", "#tablaroles tr", function() {
+                var idRol, usuario,
                     tiporoll, persona;
-                var tabla = document.getElementById('tablaroles');
-                var rows = tabla.getElementsByTagName('tr');
-                var selectedRow;
-                var rowCellValue;
-                for (i = 0; i < rows.length; i++) {
-                    rows[i].onclick = function() {
-                        rowIdx = this.rowIndex;
-                        selectedRow = this.cells;
-                        var contador = 1;
-                        for (j = 0; j < selectedRow.length; j++) {
-                            if (contador == 1) {
-                                idRol = selectedRow[j].innerText;
-                                contador++;
-                            } else if (contador == 2) {
 
-                                contador++;
-                            } else if (contador == 3) {
-                                usuario = selectedRow[j].innerText;
-                                contador++;
-                            } else if (contador == 4) {
+                idRol = $(this).find('td:first-child').html();
+                usuario = $(this).find('td:nth-child(3)').html();
+                tiporoll = $(this).find('td:nth-child(5)').html().replace(" ", "");
+                persona = $(this).find('td:nth-child(6)').html().replace(" ", "");
 
-                                contador++;
-                            } else if (contador == 5) {
-                                tiporoll = selectedRow[j].innerText;
-                                contador++;
-                            } else if (contador == 6) {
-                                persona = selectedRow[j].innerText;
-                                contador++;
-                            }
 
+                if (idRol > 0) {
+                    var comborol = document.getElementById('comborol');
+                    comborol.selectedIndex = tiporoll;
+                    var combo = document.getElementById('combo');
+                    for (var i = 0; i < combo.length; i++) {
+                        if (combo.options[i].value == persona) {
+                            // seleccionamos el valor que coincide
+                            combo.selectedIndex = i;
+                            break
+                        } else {
+                            combo.selectedIndex = 0;
                         }
-                        if (idRol > 0) {
-                            var comborol = document.getElementById('comborol');
-                            comborol.selectedIndex = tiporoll;
-                            var combo = document.getElementById('combo');
-                            for (var i = 0; i < combo.length; i++) {
-                                if (combo.options[i].value == persona) {
-                                    // seleccionamos el valor que coincide
-                                    combo.selectedIndex = i;
-                                    break
-                                } else {
-                                    combo.selectedIndex = 0;
-                                }
-                            }
-                            document.getElementById('id').value = idRol;
-                            document.getElementById('usuario').value = usuario;
-                            document.getElementById('password').value = password;
-
-                        }
-
-
                     }
+                    document.getElementById('id').value = idRol;
+                    document.getElementById('usuario').value = usuario;
+
+
                 }
-            }
+            });
+
+
+
 
 
 
@@ -225,7 +198,7 @@
 
 
                         } else {
-                            swal("Alert", "�Desea guardar al usuario " + usuario + "?", "info", {
+                            swal("Alert", "Desea guardar al usuario " + usuario + "?", "info", {
                                     buttons: {
                                         Guardar: {
                                             text: "Guardar"
@@ -266,11 +239,6 @@
                                             document.getElementById('password').value = "";
 
                                             window.location.reload();
-                                            swal({
-                                                title: "Guardado",
-                                                text: "Guardado con exito",
-                                                icon: "success"
-                                            })
                                             break;
                                     }
                                 })
@@ -303,7 +271,7 @@
 
             <div class="crudProductos" id="PANELCRUD" style="display: none;">
                 <center>
-                    <input type="hidden" id="id"> <br>
+                    <input type="hidden" id="id" value="0"> <br>
                     <label>Usuario</label>
                     <br> <input type="text" id="usuario"> <br>
                     <label>Password</label>
