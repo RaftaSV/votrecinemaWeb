@@ -26,13 +26,17 @@
             </div>
             <center>
 			 <input class=" " type="submit" name="go" id="go" value="ACCEDER">
-			 <font color="white"><h3 font="white">¿Eres Nuevo?Procede a <a class="link" href ="NuevoUser.jsp">Registrarte</a></h3></font> 
+			 <font color="white"><h3 font="white">¿Eres Nuevo? Procede a <a onclick="abrir()">Registrarte</a></h3></font> 
             </center>
 
 
         </form>
 
+<script type="text/javascript">
+function abrir() {
 
+    window.open('http://localhost:8080/Votre/NuevoUser.jsp', 'Registro', 'menubar=no,status=no,toolbar=no');
+}</script>
 
 </body>
 

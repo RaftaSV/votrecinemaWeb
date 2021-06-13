@@ -146,7 +146,7 @@ public class ClsRoles {
 
     public void InsertarAdmin(Roles rol) {
         try {
-            CallableStatement call = conect.prepareCall("call  votrecinemaweb.SP_REGISTRO(?,?,?,?,?)");
+            CallableStatement call = conect.prepareCall("call SP_REGISTRO(?,?,?,?,?)");
             call.setString("pNombres", rol.getNombres());
             call.setString("pApellidos", rol.getApellidos());
             call.setString("pDUI", rol.getDUI());

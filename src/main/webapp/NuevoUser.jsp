@@ -16,15 +16,45 @@
 
 </head>
 <body>
+
+<div class="form-register" align="center">
+		
+		<h4>Registro de usuario</h4>
+	      <label for="name">Nombre</label><br>
+          <input class="controls" type="text" id="Nombres" name="Nombres" placeholder="Ingresa tu nombre"/><br>
+          <label for="lastname">Apellidos</label><br>
+          <input class="controls" type="text" id="Apellidos" name="Apellidos" placeholder="Ingresa tu apellido"/><br>
+          <label for="dui">DUI</label><br>
+          <input class="controls" type="number" id="Dui" name="Dui" placeholder="Ingresa tu DUI"/><br>
+          <label for="user">Usuario</label><br>
+          <input class="controls" type="text" id="user" name="user" placeholder="Ingresa un nombre de usuario"/><br>
+          <label for="pass">Clave</label><br>
+          <input class="controls " type="password" id="pass" name="pass" placeholder="Ingresa una password"/><br>
+           <button class="Confirmar" type="button" id="Registrar" style="width:100%; height:15%" onclick="Guardar()">Registrar</button>
+           <br>
+          <p onclick="cerrar()">Tengo una cuenta Iniciar Sesion</p>
+		
+	</div>
+     
+
 <script type="text/javascript">
 
+$('#Dui').on(
+        'input',
+        function() {
+            this.value = this.value.replace("-", '').replace(".", '');
+        });
+        
+        function cerrar(){
+        	close();
+        }
 
 
 function Guardar() {
 
     $(document).ready(function() {
-        var id,Nombres, Apellidos, Dui, user, pass;
-        id = $("#id").val();
+        var Nombres, Apellidos, Dui, user, pass;
+       
         Nombres = $("#Nombres").val();
         Apellidos = $("#Apellidos").val();
         Dui = $("#Dui").val();
@@ -94,10 +124,12 @@ function Guardar() {
       				 title: "Cancelado",
       				 icon: "error"
       			 })
+        	  
       			 break;
         		   
-
-                   $.get('controllerRegistro', {
+        	   case "Guardar":
+        		   
+                   $.post('controllerRegistro', {
 
                        Nombres,
                        Apellidos,
@@ -111,17 +143,10 @@ function Guardar() {
             	   document.getElementById('Dui').value = ""
                    document.getElementById('user').value = "";
                    document.getElementById('pass').value = "";
-
-                   window.location.reload();
-      			 swal({
-      				 title: "Guardado",
-      				 text: "Guardado con exito",
-      				 icon: "success"
-      			 })
+                   close();
       			 break;
         	   }
-           }
-        	)
+           })
         }//CierreElse
     })//CierreDocument
 
@@ -129,25 +154,7 @@ function Guardar() {
 
   
 </script>
-<div>
-		<form class="form-register">
-		<h4>Registro de usuario</h4>
-	      <label for="name">Nombre</label><br>
-          <input class="controls" type="text" id="Nombres" name="Nombres" placeholder="Ingresa tu nombre"/><br>
-          <label for="lastname">Apellidos</label><br>
-          <input class="controls" type="text" id="Apellidos" name="Apellidos" placeholder="Ingresa tu apellido"/><br>
-          <label for="dui">DUI</label><br>
-          <input class="controls" type="number" id="Dui" name="Dui" placeholder="Ingresa tu DUI"/><br>
-          <label for="user">Usuario</label><br>
-          <input class="controls" type="text" id="user" name="user" placeholder="Ingresa un nombre de usuario"/><br>
-          <label for="pass">Clave</label><br>
-          <input class="controls " type="password" id="pass" name="pass" placeholder="Ingresa una password"/><br>
-           <button class="Confirmar" type="submit" id="Registrar" style="width:100%; height:15%" onclick="Guardar()">Registrar</button>
-           <br>
-          <p>Tengo una cuenta <a href="Index.jsp">Iniciar Sesion</a></p>
-		</form>
-	</div>
-     
+
   
 </body>
 </html>

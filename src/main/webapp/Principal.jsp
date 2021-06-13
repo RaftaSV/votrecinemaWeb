@@ -150,6 +150,7 @@
                 }
 
                 function Horerios() {
+
                     var link = "http://localhost:8080/Votre/Horarios.jsp"
                     iframe.remove();
                     iframe.frameBorder = 0;
@@ -162,6 +163,7 @@
                 }
 
                 function Roles() {
+
                     var link = "http://localhost:8080/Votre/rol.jsp"
                     iframe.remove();
                     iframe.frameBorder = 0;
@@ -185,13 +187,10 @@
 
                 }
 
-                if (performance.navigation.type == 2) {
 
-                    location.reload(true);
-
-                }
 
                 var tipo = "<%=tipo%>";
+
 
                 if (tipo == 0) {
 
@@ -215,6 +214,11 @@
                     $('#factura').hide();
 
 
+
+                }
+                if (performance.navigation.type == 2) {
+
+                    location.reload(true);
 
                 }
             </script>

@@ -37,6 +37,12 @@
 
 
             <script type="text/javascript">
+                /*
+                             var id = '<%=id%>';
+                                if (id = "null") {
+                                    parent.location.reload();
+                                }
+                                */
                 function MOSTRARCRUD() {
                     var CRUD = document.getElementById("PANELCRUD"),
                         tabladiv = document.getElementById('tabladiv');

@@ -55,6 +55,12 @@ public class controllerRegistro extends HttpServlet {
 			
 		}
 		try {
+			if(nombres.equals("") || nombres.isEmpty() || nombres == "null" || apellidos.equals("") || apellidos.isEmpty() || apellidos == "null"
+					|| Dui.equals("") || Dui.isEmpty() || Dui == "null"	|| usuario.equals("") || usuario.isEmpty() || usuario == "null"	
+					|| password.equals("") || password.isEmpty() || password == "null"
+					) {
+				System.out.println("No se puede guardar");
+			}else {
 			Roles rol = new Roles();
 			rol.setNombres(nombres);
 			rol.setApellidos(apellidos);
@@ -63,12 +69,13 @@ public class controllerRegistro extends HttpServlet {
 			rol.setPasword(password);
 			ClsRoles cls = new ClsRoles();
 			cls.InsertarAdmin(rol);
+			}
 		} catch (Exception e) {
 			// TODO: handle exception
 			System.out.println(e);
 		}
 
-		response.sendRedirect("Index.jsp");
+		
 	}
 
 }
