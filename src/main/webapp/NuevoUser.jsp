@@ -19,8 +19,8 @@
 
 <div class="form-register" align="center">
 		
-		<h4>Registro de usuario</h4>
-	      <label for="name">Nombre</label><br>
+		<h4>Registro de nuevos usuarios</h4>
+	      <label for="name">Nombres</label><br>
           <input class="controls" type="text" id="Nombres" name="Nombres" placeholder="Ingresa tu nombre"/><br>
           <label for="lastname">Apellidos</label><br>
           <input class="controls" type="text" id="Apellidos" name="Apellidos" placeholder="Ingresa tu apellido"/><br>
