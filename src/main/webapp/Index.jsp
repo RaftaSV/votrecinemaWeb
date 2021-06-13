@@ -25,8 +25,8 @@
 
             </div>
             <center>
-
-                <input class=" " type="submit" name="go" id="go" value="ACCEDER">
+			 <input class=" " type="submit" name="go" id="go" value="ACCEDER">
+			 <font color="white"><h3 font="white">¿Eres Nuevo?Procede a <a class="link" href ="NuevoUser.jsp">Registrarte</a></h3></font> 
             </center>
 
 

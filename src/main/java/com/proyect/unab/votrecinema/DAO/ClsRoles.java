@@ -146,17 +146,16 @@ public class ClsRoles {
 
     public void InsertarAdmin(Roles rol) {
         try {
-            CallableStatement call = conect.prepareCall("call  votrecinéma.SP_REGISTROADMIN(?,?,?,?,?)");
+            CallableStatement call = conect.prepareCall("call  votrecinemaweb.SP_REGISTRO(?,?,?,?,?)");
             call.setString("pNombres", rol.getNombres());
             call.setString("pApellidos", rol.getApellidos());
             call.setString("pDUI", rol.getDUI());
             call.setString("pUser", rol.getUsuario());
             call.setString("pPass", rol.getPasword());
-            call.executeQuery();
+            call.execute();
             System.out.println("Registro exitoso");
         } catch (Exception e) {
             System.out.println("error" + e);
         }
     }
-
 }

@@ -109,6 +109,12 @@
 		<description></description>
 		<servlet-class>com.proyect.unab.votrecinema.Controller.controllerCerrar</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>controllerRegistro</servlet-name>
+		<display-name>controllerRegistro</display-name>
+		<description></description>
+		<servlet-class>com.proyect.unab.votrecinema.Controller.controllerRegistro</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>controllerProveedores</servlet-name>
 		<url-pattern>/controllerProveedores</url-pattern>
@@ -181,5 +187,9 @@
 		<servlet-name>controllerCerrar</servlet-name>
 		<url-pattern>/controllerCerrar</url-pattern>
 	</servlet-mapping>
+<servlet-mapping>
+	<servlet-name>controllerRegistro</servlet-name>
+	<url-pattern>/controllerRegistro</url-pattern>
+</servlet-mapping>
 
 </web-app>
