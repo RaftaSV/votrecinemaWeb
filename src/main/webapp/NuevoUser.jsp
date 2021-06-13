@@ -143,8 +143,34 @@ function Guardar() {
             	   document.getElementById('Dui').value = ""
                    document.getElementById('user').value = "";
                    document.getElementById('pass').value = "";
-                   close();
+                   swal("Alert", "¿Desea salir?", "info", {
+                	   buttons: {
+                		   Salir: {
+                			   text: "Salir"
+                		   },
+                           Cancelar: {
+                        	   text: "Cancelar"
+                           },
+                	   }
+                   })
+                   .then((value) =>{
+                	   switch (value) {
+                	   
+                	   case "Cancelar":
+                		 
+              			 break;
+                		   
+                	   case "Salir":
+                		   
+                       close();
+              			 break;
+              			 
+              			 
+                	   }
+                   })
       			 break;
+      			 
+      			 
         	   }
            })
         }//CierreElse
