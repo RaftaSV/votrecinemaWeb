@@ -26,7 +26,7 @@
             </div>
             <center>
 			 <input class=" " type="submit" name="go" id="go" value="ACCEDER">
-			 <font color="white"><h3 font="white">¿Eres Nuevo? Procede a <a onclick="abrir()">Registrarte</a></h3></font> 
+			 <font color="white"><h3 font="white">¿Eres Nuevo? Procede a <a onclick="abrir()" style="cursor:pointer;">Registrarte</a></h3></font> 
             </center>
 
 

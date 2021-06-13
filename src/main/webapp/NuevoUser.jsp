@@ -32,7 +32,7 @@
           <input class="controls " type="password" id="pass" name="pass" placeholder="Ingresa una password"/><br>
            <button class="Confirmar" type="button" id="Registrar" style="width:100%; height:15%" onclick="Guardar()">Registrar</button>
            <br>
-          <p onclick="cerrar()">Tengo una cuenta Iniciar Sesion</p>
+          <p onclick="cerrar()" style="cursor:pointer;">Tengo una cuenta Iniciar Sesion</p>
 		
 	</div>
      
