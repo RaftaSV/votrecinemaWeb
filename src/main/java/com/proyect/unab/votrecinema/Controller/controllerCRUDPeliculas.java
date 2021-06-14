@@ -99,7 +99,12 @@ try {
 			precio = 0;
 
 		}
-		if (id == 0) {
+		if(nombre=="" || nombre=="null" || nombre.isEmpty() || clasificacion<=0 || precio==0 || hora==null
+			|| sinopsis=="" || sinopsis=="null" || sinopsis.isEmpty() || fecha==null || tipo>=0 ) {
+			
+			System.out.println("No se puede guardar la pelicula");
+			
+		}else if (id == 0) {
 
 			Peliculas peliculas = new Peliculas();
 			portada = request.getPart("imagenp");

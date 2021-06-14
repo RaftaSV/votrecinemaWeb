@@ -71,11 +71,12 @@ public class controllerPersonas extends HttpServlet {
 			cls.EliminarPersonas(per);
 			response.sendRedirect("personas.jsp");
 
-		} else {
-			if (nombre=="null" ||apellido=="null" || dui=="null") {
-			System.out.println("No se puede registrar con campos vacios");		
-		}else {
-			if (idper > 0) {
+		} else{
+			if(nombre.equals("") || nombre.isEmpty() || nombre == "null" || apellido.equals("") || apellido.isEmpty() || apellido == "null"
+					|| dui.equals("") || dui.isEmpty() || dui == "null"	
+					) {
+			System.out.println("No se puede guardar");
+		}else if (idper > 0) {
 				Personas per = new Personas();
 				per.setIdPersona(idper);
 				per.setNombres(nombre);
@@ -95,7 +96,6 @@ public class controllerPersonas extends HttpServlet {
 			}
 		}
 	}
-}
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

@@ -82,7 +82,9 @@ public class controllerCRUDcarteleras extends HttpServlet {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		if(id==0) {
+		if(idpelicula== 0 || idhorario==0 || idsala==0 || fecha==null) {
+			System.out.println("No se pueda guardar la cartelera");
+		}else if(id==0) {
 			
 			Carteleras carteleras = new Carteleras();
 			carteleras.setIdPelicula(idpelicula);

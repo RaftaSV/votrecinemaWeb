@@ -131,7 +131,7 @@
                 }
             }
 
-            //funcion para el metodo guardar 
+          //funcion para el metodo guardar 
             function Guardar() {
 
                 $(document).ready(function() {
