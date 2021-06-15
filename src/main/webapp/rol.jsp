@@ -219,10 +219,7 @@
                                             break;
 
                                         case "Guardar":
-                                            document.getElementById('id').value = "#id";
-                                            document.getElementById('usuario').value = "#usuario";
-                                            document.getElementById('password').value = "#password";
-
+                                         
                                             $.get('controllerRoles', {
 
                                                 id,

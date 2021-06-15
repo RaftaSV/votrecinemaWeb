@@ -55,7 +55,7 @@ public class controllerRoles extends HttpServlet {
 		try {
 	
 			idPersona = Integer.parseInt(request.getParameter("idpersona"));
-			usuario  = request.getParameter("usuario");
+			usuario  = request.getParameter("usuario").replace(" ","");
 			password  = request.getParameter("password");
 			tiporol = Integer.parseInt(request.getParameter("tiporol"));
 			
