@@ -60,11 +60,7 @@ function Guardar() {
         Dui = $("#Dui").val();
         user = $("#user").val();
         pass = $("#pass").val();
-		console.log(Nombres)
-		console.log(Apellidos)
-		console.log(Dui)
-		console.log(user)
-		console.log(pass)
+		
         if(Nombres == ""){
         	swal({
             	title: "Alerta",
