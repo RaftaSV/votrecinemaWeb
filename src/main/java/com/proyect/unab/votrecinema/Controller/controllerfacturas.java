@@ -84,8 +84,13 @@ public class controllerfacturas extends HttpServlet {
 		} catch (Exception e) {
 
 		}
-	
+		
 		if (identificador == 0) {
+			
+			if(costo==0 || asiento==0 || idprecio==0  || Idcartelera==0) {
+				System.out.println("No se puede guardar la taquilla");
+				
+			}else {
 
 			Taquillas taquilla = new Taquillas();
 			taquilla.setDiferenciador(identificador);
@@ -94,15 +99,19 @@ public class controllerfacturas extends HttpServlet {
 			taquilla.setId_Asiento(asiento);
 			ClsTaquilla cls = new ClsTaquilla();
 			cls.InsertarTaquilla(taquilla);
-
-		} {
+			}
+		} else {
+			if(costo==0 || idproducto==0) 
+			{
+				System.out.println("No se puede guardar el detalle de factura");
+			}else {
 			DetallesFacturas det = new DetallesFacturas();
 			det.setCosto(costo);
 			det.setDiferenciador(identificador);
 			det.setId_Producto(idproducto);
 			ClsDetallesFactura detalle = new ClsDetallesFactura();
 			detalle.insertarDetalle(det);
-			
+			}
 		}
 
 	}
