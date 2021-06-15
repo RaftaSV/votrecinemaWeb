@@ -33,10 +33,48 @@
         <h1 class="text-center display-1" style="font-family: 'Old Standard TT', serif;">
             <font COLOR="black"> PERSONAS </font>
         </h1>
+        <button id="EDITAR" onclick="MOSTRARCRUD()" class="far fa-edit fa-2x"></button>
+        <div>
+
+            <div class="tabla" id="tabladiv">
+                <table id="tablaDatos" class="table table-sm table-dark">
+                    <thead>
+                        <th style="display:none;">ID</th>
+                        <th>NOMBRE</th>
+                        <th>APELLIDO</th>
+                        <th>DUI</th>
+                        <th>ACCIONES</th>
+                    </thead>
+                </table>
+
+            </div>
+
+            <div class="crud" id="PANELCRUD" style="display: none;">
+                <center>
+                    <input type="hidden" id="idper" value="0"> 
+                    <input type="hidden" id="id" value="0"> <br>
+                    <label>Nombre</label>
+                    <br> <input type="text" id="nombre"> <br>
+                    <label>Apellido</label>
+                    <br> <input type="text" id="apellido"> <br>
+                    <label>DUI</label>
+                    <br> <input type="number" id="dui" min="1" /> <br>
+                    <br>
+                    <button class="Confirmar" onclick="Guardar()">Guardar</button>
+
+                </center>
+            </div>
+        </div>
+        
 
 
 
         <script type="text/javascript">
+        
+        
+    	$('#dui').on('input', function() {
+			this.value = this.value.replace(".","").replace("-","");
+		});
             function MOSTRARCRUD() {
                 var CRUD = document.getElementById("PANELCRUD"),
                     tabladiv = document.getElementById('tabladiv');
@@ -100,7 +138,7 @@
                 idPersona = $(this).find('td:first-child').html();
                 Nombres = $(this).find('td:nth-child(2)').html();
                 Apellidos = $(this).find('td:nth-child(3)').html();
-                DUI = $(this).find('td:nth-child(4)').html();
+                DUI = $(this).find('td:nth-child(4)').html().replace(" ","");
 
                 document.getElementById('idper').value = idPersona;
                 document.getElementById('nombre').value = Nombres;
@@ -108,28 +146,8 @@
                 document.getElementById('dui').value = DUI;
             });
 
-            function solonumeros(e) {
-
-                key = e.keyCode || e.which;
-                teclado = String.fromCharCode(key);
-                numero = "0123456789";
-                especiales = "8-37-38-46";
-                tecladoEspecial = false;
-                for (var i in especiales) {
-
-                    if (key == especiales[i]) {
-
-                        tecladoEspecial = true;
-                    }
-                }
-
-                if (numero.indexOf(teclado) == -1 && !tecladoEspecial) {
-                    return false;
-                }
-                if (this.value.length <= 9) {
-                    return true;
-                }
-            }
+            
+            
 
           //funcion para el metodo guardar 
             function Guardar() {
@@ -224,39 +242,7 @@
             } //CierreFunction
             window.onload = cargardatos;
         </script>
-        <button id="EDITAR" onclick="MOSTRARCRUD()" class="far fa-edit fa-2x"></button>
-        <div>
-
-            <div class="tabla" id="tabladiv">
-                <table id="tablaDatos" class="table table-sm table-dark">
-                    <thead>
-                        <th style="display:none;">ID</th>
-                        <th>NOMBRE</th>
-                        <th>APELLIDO</th>
-                        <th>DUI</th>
-                        <th>ACCIONES</th>
-                    </thead>
-                </table>
-
-            </div>
-
-            <div class="crud" id="PANELCRUD" style="display: none;">
-                <center>
-                    <input type="hidden" id="idper" value="0"> 
-                    <input type="hidden" id="id" value="0"> <br>
-                    <label>Nombre</label>
-                    <br> <input type="text" id="nombre"> <br>
-                    <label>Apellido</label>
-                    <br> <input type="text" id="apellido"> <br>
-                    <label>DUI</label>
-                    <br> <input type="text" id="dui" onkeypress="return solonumeros(event)"> <br>
-                    <br>
-                    <button class="Confirmar" onclick="Guardar()">Guardar</button>
-
-                </center>
-            </div>
-        </div>
-
+        
 </body>
 
 </html>
