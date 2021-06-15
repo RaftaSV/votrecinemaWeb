@@ -46,7 +46,7 @@
                 <select id="sala"> </select> <br>
                 <label> Hora </label> <br>
                 <select id="hora"></select> <br> <br>
-                <button class="Confirmar" onclick="Guardar()">Guardar</button>
+                <button id="Confirmar" onclick="Guardar()">Guardar</button>
             </div>
             <script type="text/javascript">
                 var queryString = window.location.search;

@@ -254,7 +254,7 @@
         <div>
 
             <div class="tabla" id="tabladiv">
-                <table id="tablaroles" onclick="leerdatos() " class="table table-sm table-dark">
+                <table id="tablaroles" class="table table-sm table-dark">
                     <thead>
                         <th style="display: none;">ID</th>
                         <th>NOMBRES</th>

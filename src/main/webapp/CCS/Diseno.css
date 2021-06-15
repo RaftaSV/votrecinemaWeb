@@ -23,7 +23,7 @@ table {
 .crud {
     position: absolute;
     display: inline-block;
-    background: rgba(0, 0, 0, 0.6);
+    background: black;
     width: 22%;
     height: 310px;
 }
@@ -38,7 +38,7 @@ table {
 .crudProductos {
     position: absolute;
     display: inline-block;
-    background: rgba(0, 0, 0, 0.6);
+    background: black;
     width: 22%;
     height: 380px;
 }
