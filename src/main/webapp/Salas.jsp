@@ -81,6 +81,7 @@
 
             
                 function MOSTRARCRUD() {
+                	$('#NumeroSala').prop('disabled', false);
                     var CRUD = document.getElementById("PANELCRUD"),
                         tabladiv = document.getElementById('tabladiv');
 
@@ -148,7 +149,7 @@
                     document.getElementById('idsala').value = parseInt(id);
                     document.getElementById('capacidad').value = parseInt(capacidad) ;
                     document.getElementById('NumeroSala').value = parseInt(NumeroSala);
-
+                    $('#NumeroSala').prop('disabled', true);
                 });
 
 
@@ -205,48 +206,88 @@
                                     icon: "warning"
                                 });
                                 $("#NumeroSala ").focus();
-                            }
+                            }else {
+                                swal("Alerta ", "Desea guardar la sala " + NumeroSala + "? ", "info", {
+                                    buttons: {
+                                        Guardar: {
+                                            text: "Guardar"
+                                        },
+                                        Cancelar: {
+                                            text: "Cancelar"
+                                        },
+                                    }
+                                })
+                                .then((value) => {
+                                    switch (value) {
+
+                                        case "Cancelar":
+                                            swal({
+                                                title: "Cancelado ",
+                                                icon: "error"
+                                            })
+                                            break;
+
+                                        case "Guardar":
+                                            
+                                            $.get('controllerSalas', {
+
+                                                id,
+                                                capacidad,
+                                                NumeroSala,
+                                                Eliminar
+
+
+                                            });
+
+                                            document.getElementById('capacidad').value = " ";
+                                            document.getElementById('NumeroSala').value = " ";
+                                            document.getElementById('idsala').value = " ";
+                                            window.location.reload();
+                                            break;
+                                    }
+                                })
+                        } //CierreElse
                             } else {
                                 swal("Alerta ", "Desea guardar la sala " + NumeroSala + "? ", "info", {
-                                        buttons: {
-                                            Guardar: {
-                                                text: "Guardar"
-                                            },
-                                            Cancelar: {
-                                                text: "Cancelar"
-                                            },
-                                        }
-                                    })
-                                    .then((value) => {
-                                        switch (value) {
+                                    buttons: {
+                                        Guardar: {
+                                            text: "Guardar"
+                                        },
+                                        Cancelar: {
+                                            text: "Cancelar"
+                                        },
+                                    }
+                                })
+                                .then((value) => {
+                                    switch (value) {
 
-                                            case "Cancelar":
-                                                swal({
-                                                    title: "Cancelado ",
-                                                    icon: "error"
-                                                })
-                                                break;
+                                        case "Cancelar":
+                                            swal({
+                                                title: "Cancelado ",
+                                                icon: "error"
+                                            })
+                                            break;
 
-                                            case "Guardar":
-                                                
-                                                $.get('controllerSalas', {
+                                        case "Guardar":
+                                            
+                                            $.get('controllerSalas', {
 
-                                                    id,
-                                                    capacidad,
-                                                    NumeroSala,
-                                                    Eliminar
+                                                id,
+                                                capacidad,
+                                                NumeroSala,
+                                                Eliminar
 
 
-                                                });
+                                            });
 
-                                                document.getElementById('capacidad').value = " ";
-                                                document.getElementById('NumeroSala').value = " ";
-                                                document.getElementById('idsala').value = " ";
-                                                window.location.reload();
-                                                break;
-                                        }
-                                    })
-                            } //CierreElse
+                                            document.getElementById('capacidad').value = " ";
+                                            document.getElementById('NumeroSala').value = " ";
+                                            document.getElementById('idsala').value = " ";
+                                            window.location.reload();
+                                            break;
+                                    }
+                                })
+                        } //CierreElse
                         }) //CierreDocument
                 } //CierreGuardar //CierreGuardar
 
