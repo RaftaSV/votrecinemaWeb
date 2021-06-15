@@ -74,14 +74,14 @@ label {
 
 .subir{
     padding: 5px 10px;
-    background: #f55d3e;
+    background: rgb(19, 168, 206);
     color:#fff;
     border:0px solid #fff;
 }
  
 .subir:hover{
     color:#fff;
-    background: #f7cb15;
+    background:  #2c2fa5;
 }
 
  
