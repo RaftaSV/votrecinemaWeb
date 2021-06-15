@@ -58,7 +58,7 @@
                     <label>Apellido</label>
                     <br> <input type="text" id="apellido"> <br>
                     <label>DUI</label>
-                    <br> <input type="number" id="dui" min="1" /> <br>
+                    <br> <input type="number" id="dui"> <br>
                     <br>
                     <button class="Confirmar" onclick="Guardar()">Guardar</button>
 
@@ -71,10 +71,12 @@
 
         <script type="text/javascript">
         
-        
-    	$('#dui').on('input', function() {
-			this.value = this.value.replace(".","").replace("-","");
-		});
+        $('#dui').on(
+                'input',
+                function() {
+                    this.value = this.value.replace('-', '').replace('.', '').replace(' ','');
+                });
+
             function MOSTRARCRUD() {
                 var CRUD = document.getElementById("PANELCRUD"),
                     tabladiv = document.getElementById('tabladiv');

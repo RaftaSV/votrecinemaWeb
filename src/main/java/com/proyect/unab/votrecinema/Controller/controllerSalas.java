@@ -68,6 +68,8 @@ public class controllerSalas extends HttpServlet {
 			
 
 		} else {
+			System.out.println(capacidad);
+			System.out.println(NumeroSala);
 			if ( capacidad==0 ||NumeroSala==0 ) {
 				System.out.println("No se puede registrar con campos vacios");		
 			}else if (id > 0) {

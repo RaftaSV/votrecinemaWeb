@@ -49,11 +49,11 @@
 
                 <div class="crud" id="PANELCRUD" style="display: none;">
                     <center>
-                        <input type="hidden" id="idsala"> <br>
+                        <input type="hidden" id="idsala" value="0"> <br>
                         <label>Capacidad</label>
-                        <br> <input type="text" id="capacidad" > <br>
+                        <br> <input type="number" id="capacidad" > <br>
                         <label>Numero de Sala</label>
-                        <br> <input type="text" id="NumeroSala"> <br>
+                        <br> <input type="number" id="NumeroSala"> <br>
                         <br>
 
                         <button class="Confirmar" onclick="Guardar()">Guardar</button>
@@ -70,13 +70,13 @@
             $('#capacidad').on(
                 'input',
                 function() {
-                    this.value = this.value.replace('-', '').replace('.', '');
+                    this.value = this.value.replace('-', '').replace('.', '').replace(' ','');
                 });
 
             $('#NumeroSala').on(
                 'input',
                 function() {
-                    this.value = this.value.replace('-', '').replace('.', '');
+                    this.value = this.value.replace('-', '').replace('.', '').replace(' ','');
                 });
 
             
@@ -100,11 +100,7 @@
                     }
                 }
 
-                $(document).ready(function() {
-                    //Cada 6 segundos (6000 milisegundos) se ejecutar� la funci�n refrescar y cargara la imagen insertada 
-                    setTimeout(cargardatos, 1000);
-                });
-
+                
                 function cargardatos() {
 
                     $(document).ready(function() {
@@ -149,9 +145,9 @@
                     capacidad = $(this).find('td:nth-child(2)').html();
                     NumeroSala = $(this).find('td:nth-child(3)').html();
 
-                    document.getElementById('idsala').value = id;
-                    document.getElementById('capacidad').value = capacidad;
-                    document.getElementById('NumeroSala').value = NumeroSala;
+                    document.getElementById('idsala').value = parseInt(id);
+                    document.getElementById('capacidad').value = parseInt(capacidad) ;
+                    document.getElementById('NumeroSala').value = parseInt(NumeroSala);
 
                 });
 
@@ -162,8 +158,8 @@
                             var id, capacidad, NumeroSala, Eliminar, contador = 0,
                                 contador2 = 0;
                             id = $("#idsala ").val();
-                            capacidad = $("#capacidad ").val();
-                            NumeroSala = $("#NumeroSala ").val();
+                            capacidad = $("#capacidad ").val().replace('.','');
+                            NumeroSala = $("#NumeroSala ").val().replace('.','');
                             Eliminar = "no ";
 
                             $('#tablaDatos tr').each(function() {
@@ -201,14 +197,15 @@
                                 $("#NumeroSala ").focus();
 
 
-                            } else if (contador != contador2) {
+                            }else if(id==0){
+                            	if (contador != contador2) {
                                 swal({
                                     title: "Alerta",
                                     text: "El numero de la sala ya asido asignado",
                                     icon: "warning"
                                 });
                                 $("#NumeroSala ").focus();
-
+                            }
                             } else {
                                 swal("Alerta ", "Desea guardar la sala " + NumeroSala + "? ", "info", {
                                         buttons: {
@@ -231,9 +228,7 @@
                                                 break;
 
                                             case "Guardar":
-                                                document.getElementById('capacidad').value = "#capacidad ";
-                                                document.getElementById('NumeroSala').value = "#NumeroSala ";
-                                                document.getElementById('idsala').value = "#idsala ";
+                                                
                                                 $.get('controllerSalas', {
 
                                                     id,
