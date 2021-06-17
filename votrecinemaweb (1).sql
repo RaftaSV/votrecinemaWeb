@@ -215,7 +215,7 @@ CREATE TABLE `peliculas` (
   `Clasificacion` int DEFAULT NULL,
   `Estado` int DEFAULT NULL,
   PRIMARY KEY (`idPeliculas`)
-) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -224,7 +224,7 @@ CREATE TABLE `peliculas` (
 
 LOCK TABLES `peliculas` WRITE;
 /*!40000 ALTER TABLE `peliculas` DISABLE KEYS */;
-INSERT INTO `peliculas` VALUES (47,'Bob Esponja al rescate','bob.jpg','2020-11-06','02:01:00','Cuando su mejor amigo Gary es secuestrado, Bob Esponja se emprende con Patricio en una loca misión lejos de Fondo de Bikini para salvar a su mascota',1,0,0),(48,'Camino hacia el terror 5','aa.png','2020-08-05','01:01:00','camino hacia el terror ',1,2,0),(60,'Camino hacia el terror 6','camino.jpg','2020-09-01','02:01:00','Camino hacia el terror ',1,1,0),(61,'bob esponja','bob.jpg','2019-05-10','02:18:00','asdfg',1,0,1),(62,'Camino hacia el terror 7','tarea.PNG','2019-08-10','01:01:00','hola',1,0,1),(63,'Camino hacia el terror','tarea.PNG','2019-08-10','01:01:00','ergh',0,0,1),(64,'Camino hacia el terror','carbon (3).png','2019-08-10','01:01:00','asdfghj',0,0,1),(65,'50 Sombras de gray','50.jpg','2019-08-10','01:01:00','Cincuenta sombras de Grey narra la historia de Anastasia «Ana» Steele, una joven estudiante, que cursa la carrera de Literatura en la Universidad de Washington, y que vive con su mejor amiga, Katherine «Kate» Kavanagh, quien escribe para el periódico estudiantil de su universidad.',1,2,0);
+INSERT INTO `peliculas` VALUES (47,'Bob Esponja al rescate','bob.jpg','2020-11-06','02:01:00','Cuando su mejor amigo Gary es secuestrado, Bob Esponja se emprende con Patricio en una loca misión lejos de Fondo de Bikini para salvar a su mascota',1,0,0),(48,'Camino hacia el terror 5','aa.png','2020-08-05','01:01:00','camino hacia el terror ',1,2,0),(60,'Camino hacia el terror 6','camino.jpg','2020-09-01','02:01:00','Camino hacia el terror ',1,1,0),(61,'bob esponja','bob.jpg','2019-05-10','02:18:00','asdfg',1,0,1),(62,'Camino hacia el terror 7','tarea.PNG','2019-08-10','01:01:00','hola',1,0,1),(63,'Camino hacia el terror','tarea.PNG','2019-08-10','01:01:00','ergh',0,0,1),(64,'Camino hacia el terror','carbon (3).png','2019-08-10','01:01:00','asdfghj',0,0,1);
 /*!40000 ALTER TABLE `peliculas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -242,7 +242,7 @@ CREATE TABLE `personas` (
   `Dui` varchar(45) NOT NULL,
   `Estado` int DEFAULT NULL,
   PRIMARY KEY (`idPersonas`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -251,7 +251,7 @@ CREATE TABLE `personas` (
 
 LOCK TABLES `personas` WRITE;
 /*!40000 ALTER TABLE `personas` DISABLE KEYS */;
-INSERT INTO `personas` VALUES (25,'  Rafael Antonio ',' Gonzalez portillo','054087347',0),(26,'  GENERICO ',' GENERICO','054087376',0);
+INSERT INTO `personas` VALUES (25,'Rafael Antonio','Gonzalez portillo','05408734-7',0),(26,'GENERICO','GENERICO','0',0);
 /*!40000 ALTER TABLE `personas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -271,7 +271,7 @@ CREATE TABLE `precios` (
   PRIMARY KEY (`idPrecio`),
   KEY `idP_idx` (`IdPelicula`),
   CONSTRAINT `idPelicula` FOREIGN KEY (`IdPelicula`) REFERENCES `peliculas` (`idPeliculas`)
-) ENGINE=InnoDB AUTO_INCREMENT=129 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=126 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -280,7 +280,7 @@ CREATE TABLE `precios` (
 
 LOCK TABLES `precios` WRITE;
 /*!40000 ALTER TABLE `precios` DISABLE KEYS */;
-INSERT INTO `precios` VALUES (56,9.00,48,0,0),(57,4.50,48,1,1),(58,5.85,48,2,0),(59,4.50,48,3,0),(63,6.00,47,0,0),(64,3.00,47,1,0),(65,3.90,47,2,0),(66,3.00,47,3,0),(107,8.00,60,0,0),(108,5.20,60,2,0),(109,4.00,60,3,0),(110,9.00,61,0,1),(111,4.50,61,1,1),(112,5.85,61,2,1),(113,4.50,61,3,0),(114,5.00,62,0,1),(115,2.50,62,1,1),(116,3.25,62,2,1),(117,2.50,62,3,0),(118,9.00,63,0,1),(119,4.50,63,1,1),(120,5.85,63,2,1),(121,4.50,63,3,0),(122,6.00,64,0,1),(123,3.00,64,1,1),(124,3.90,64,2,1),(125,3.00,64,3,0),(126,7.00,65,0,0),(127,4.55,65,2,0),(128,3.50,65,3,0);
+INSERT INTO `precios` VALUES (56,9.00,48,0,0),(57,4.50,48,1,1),(58,5.85,48,2,0),(59,4.50,48,3,0),(63,6.00,47,0,0),(64,3.00,47,1,0),(65,3.90,47,2,0),(66,3.00,47,3,0),(107,8.00,60,0,0),(108,5.20,60,2,0),(109,4.00,60,3,0),(110,9.00,61,0,1),(111,4.50,61,1,1),(112,5.85,61,2,1),(113,4.50,61,3,0),(114,5.00,62,0,1),(115,2.50,62,1,1),(116,3.25,62,2,1),(117,2.50,62,3,0),(118,9.00,63,0,1),(119,4.50,63,1,1),(120,5.85,63,2,1),(121,4.50,63,3,0),(122,6.00,64,0,1),(123,3.00,64,1,1),(124,3.90,64,2,1),(125,3.00,64,3,0);
 /*!40000 ALTER TABLE `precios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -310,7 +310,7 @@ CREATE TABLE `productos` (
 
 LOCK TABLES `productos` WRITE;
 /*!40000 ALTER TABLE `productos` DISABLE KEYS */;
-INSERT INTO `productos` VALUES (8,'  Coca cola zero         ',0.75,23,7,0),(9,'coca zero 355ml',1.00,32,6,0),(10,'Coca lite 355ml    ',1.20,41,6,0),(11,'Fanta 355ml',1.00,44,6,1),(12,'Cascada Uva 355ml   ',1.00,32,7,0),(13,'Fanta 355ml',1.00,34,6,0),(14,'Salvacola 355ml',7.75,54,7,0),(15,'Uva 355ml',1.00,34,6,0),(16,'Colashanpan',0.75,32,7,1),(17,'Cantaros',5.00,1,8,0),(18,'Salvacola 355ml',7.75,31,6,0);
+INSERT INTO `productos` VALUES (8,' Coca cola zero 2       ',0.75,23,7,0),(9,'coca zero 355ml',1.00,32,6,0),(10,'Coca lite 355ml    ',1.20,41,6,0),(11,'Fanta 355ml',1.00,44,6,1),(12,'Cascada Uva 355ml   ',1.00,32,7,0),(13,'Fanta 355ml',1.00,34,6,0),(14,'Salvacola 355ml',7.75,54,7,0),(15,'Uva 355ml',1.00,34,6,0),(16,'Colashanpan',0.75,32,7,1),(17,'Cantaros',5.00,1,8,0),(18,'Salvacola 355ml',7.75,31,6,0);
 /*!40000 ALTER TABLE `productos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -337,7 +337,7 @@ CREATE TABLE `proveedores` (
 
 LOCK TABLES `proveedores` WRITE;
 /*!40000 ALTER TABLE `proveedores` DISABLE KEYS */;
-INSERT INTO `proveedores` VALUES (6,'  Industria la constancia   ','63114858','Avenida independencia, #526 San Salvador El Salvador   ',0),(7,'Enbotelladora la cascada','32444444','29 Calle Oriente, San Salvador',0),(8,'Tienda la bendicion ','22098766','cascascaxaC',0),(9,'Industrias Hilasal sv ','63114850','Avenida independencia, #526 San Salvador El Salvador                ',0),(10,'Industrias toma ','32444444','Avenida independencia, #526 San Salvador El Salvador  ',0);
+INSERT INTO `proveedores` VALUES (6,'Industria la constancia  ','63114859','Avenida independencia, #526 San Salvador El Salvador  ',0),(7,'Enbotelladora la cascada','32444444','29 Calle Oriente, San Salvador',0),(8,'Tienda la bendicion ','22098766','cascascaxaC',0),(9,'Industrias Hilasal sv ','63114850','Avenida independencia, #526 San Salvador El Salvador                ',0),(10,'Industrias toma ','32444444','Avenida independencia, #526 San Salvador El Salvador  ',0);
 /*!40000 ALTER TABLE `proveedores` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -358,7 +358,7 @@ CREATE TABLE `roles` (
   PRIMARY KEY (`idRoles`),
   KEY `idP_idx` (`Id_Persona`),
   CONSTRAINT `id` FOREIGN KEY (`Id_Persona`) REFERENCES `personas` (`idPersonas`)
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -367,7 +367,7 @@ CREATE TABLE `roles` (
 
 LOCK TABLES `roles` WRITE;
 /*!40000 ALTER TABLE `roles` DISABLE KEYS */;
-INSERT INTO `roles` VALUES (29,' rafael','3c9909afec25354d551dae21590bb26e38d53f2173b8d3dc3eee4c047e7ab1c1eb8b85103e3be7ba613b31bb5c9c36214dc9f14a42fd7a2fdb84856bca5c44c2',0,25,0),(30,'generico','bdc247a1a0e28a586ed40744d281993d519abe981aaef33277d4877d167e1150816e9723d068a59509991ed0cdd8c5cea0f9ecd0ef23664db7cb85db5a0dbe12',2,26,0);
+INSERT INTO `roles` VALUES (29,'rafa','3c9909afec25354d551dae21590bb26e38d53f2173b8d3dc3eee4c047e7ab1c1eb8b85103e3be7ba613b31bb5c9c36214dc9f14a42fd7a2fdb84856bca5c44c2',0,25,0),(30,'generico','bdc247a1a0e28a586ed40744d281993d519abe981aaef33277d4877d167e1150816e9723d068a59509991ed0cdd8c5cea0f9ecd0ef23664db7cb85db5a0dbe12',2,26,0);
 /*!40000 ALTER TABLE `roles` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1759,4 +1759,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-06-15 12:10:31
+-- Dump completed on 2021-06-11  8:54:36
