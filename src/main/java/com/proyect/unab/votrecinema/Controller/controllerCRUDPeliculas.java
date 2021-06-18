@@ -99,8 +99,8 @@ try {
 			precio = 0;
 
 		}
-		if(nombre=="" || nombre=="null" || nombre.isEmpty() || clasificacion<=0 || precio==0 || hora==null
-			|| sinopsis=="" || sinopsis=="null" || sinopsis.isEmpty() || fecha==null || tipo<=0 ) {
+		if(nombre=="" || nombre=="null" || nombre.isEmpty() || precio==0 || hora==null
+			|| sinopsis=="" || sinopsis=="null" || sinopsis.isEmpty() || fecha==null  ) {
 			
 			
 			System.out.println("No se puede guardar la pelicula");
